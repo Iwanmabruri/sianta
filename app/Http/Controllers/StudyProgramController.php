@@ -14,7 +14,8 @@ class StudyProgramController extends Controller
      */
     public function index()
     {
-        return view('jurusan.index');
+        $study = StudyProgram::all();
+        return view('jurusan.index', compact('study'));
     }
 
     /**
@@ -35,7 +36,12 @@ class StudyProgramController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // StudyProgram::create([
+        //     'nmProdi=>$request->nmProdi',
+        //     'konsKeahlian=>$request->konsKeahlian'
+        // ]);
+        StudyProgram::query()->create($request->all());
+        // return view('jurusan.index');
     }
 
     /**

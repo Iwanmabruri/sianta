@@ -22,3 +22,4 @@ Route::get('/', function () {
 Route::get('/program', [StudyProgramController::class, 'index']);
 Route::get('/student', [StudentController::class, 'index']);
 Route::get('/employee', [EmployeeController::class, 'index']);
+Route::post('add.employee', [EmployeeController::class, 'store'])->name('add-employee');
