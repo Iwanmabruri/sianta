@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\StudyProgramController;
 
 /*
@@ -17,4 +19,6 @@ use App\Http\Controllers\StudyProgramController;
 Route::get('/', function () {
     return view('dashboard');
 });
-Route::get('/jurusan', [StudyProgramController::class, 'index']);
+Route::get('/program', [StudyProgramController::class, 'index']);
+Route::get('/student', [StudentController::class, 'index']);
+Route::get('/employee', [EmployeeController::class, 'index']);

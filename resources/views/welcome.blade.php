@@ -55,7 +55,7 @@
     <div class="wrapper">
         <nav id="sidebar" class="sidebar">
             <div class="sidebar-content js-simplebar">
-                <a class='sidebar-brand' href="{{url('/')}}">
+                <a class='sidebar-brand' href="{{ url('/') }}">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                         x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20"
                         enable-background="new 0 0 20 20" xml:space="preserve">
@@ -76,22 +76,24 @@
                     </li> --}}
 
                     <li class="sidebar-item">
-						<a class='sidebar-link' href="{{url('/')}}">
-                            <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                        <a class='sidebar-link' href="{{ url('/') }}">
+                            <i class="align-middle" data-feather="sliders"></i> <span
+                                class="align-middle">Dashboard</span>
                         </a>
-					</li>
+                    </li>
                     <li class="sidebar-item active">
                         <a data-bs-target="#dashboards" data-bs-toggle="collapse" class="sidebar-link collapsed">
                             <i class="align-middle" data-feather="list"></i> <span class="align-middle">Data
                                 Induk</span>
                         </a>
                         <ul id="dashboards" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-                            <li class="sidebar-item"><a class="sidebar-link" href="{{ url('/jurusan') }}">Data
+                            <li class="sidebar-item"><a class="sidebar-link" href="{{ url('/program') }}">Data
                                     Jurusan</a>
                             </li>
-                            <li class="sidebar-item"><a class='sidebar-link' href='dashboard-analytics.html'>Data
+                            <li class="sidebar-item"><a class='sidebar-link' href="{{ url('/student') }}">Data
                                     Siswa</a></li>
-                            <li class="sidebar-item"><a class='sidebar-link' href='dashboard-saas.html'>Data Pegawai</a>
+                            <li class="sidebar-item"><a class='sidebar-link' href="{{ url('/employee') }}">Data
+                                    Pegawai</a>
                             </li>
                         </ul>
                     </li>
@@ -134,20 +136,9 @@
                         </ul> --}}
                     </li>
                     <li class="sidebar-item">
-                        <a data-bs-target="#auth" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                            <i class="align-middle" data-feather="users"></i> <span class="align-middle">Auth</span>
-                            <span class="badge badge-sidebar-secondary">Special</span>
+                        <a class='sidebar-link' href="{{ url('/') }}">
+                            <i class="align-middle" data-feather="users"></i> <span class="align-middle">Pengguna</span>
                         </a>
-                        <ul id="auth" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-                            <li class="sidebar-item"><a class='sidebar-link' href='pages-sign-in.html'>Sign In</a>
-                            </li>
-                            <li class="sidebar-item"><a class='sidebar-link' href='pages-sign-up.html'>Sign Up</a>
-                            </li>
-                            <li class="sidebar-item"><a class='sidebar-link' href='pages-reset-password.html'>Reset
-                                    Password</a></li>
-                            <li class="sidebar-item"><a class='sidebar-link' href='pages-404.html'>404 Page</a></li>
-                            <li class="sidebar-item"><a class='sidebar-link' href='pages-500.html'>500 Page</a></li>
-                        </ul>
                     </li>
                 </ul>
 
