@@ -55,7 +55,7 @@
     <div class="wrapper">
         <nav id="sidebar" class="sidebar">
             <div class="sidebar-content js-simplebar">
-                <a class='sidebar-brand' href='index.html'>
+                <a class='sidebar-brand' href="{{url('/')}}">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                         x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20"
                         enable-background="new 0 0 20 20" xml:space="preserve">
@@ -75,9 +75,14 @@
                         Pages
                     </li> --}}
 
+                    <li class="sidebar-item">
+						<a class='sidebar-link' href="{{url('/')}}">
+                            <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                        </a>
+					</li>
                     <li class="sidebar-item active">
                         <a data-bs-target="#dashboards" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                            <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Data
+                            <i class="align-middle" data-feather="list"></i> <span class="align-middle">Data
                                 Induk</span>
                         </a>
                         <ul id="dashboards" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
