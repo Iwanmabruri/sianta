@@ -1,10 +1,10 @@
 @extends('welcome')
 @section('judul')
-    Dashboard | Halaman Utama
+    Data Jurusan
 @endsection
 
 @section('konten')
-    <h1 class="h3 mb-3">Dashboard | Halaman Utama</h1>
+    <h1 class="h3 mb-3">Data Jurusan</h1>
 
     <div class="row">
         <div class="col-12">
