@@ -20,7 +20,9 @@ Route::get('/', function () {
     return view('dashboard');
 });
 Route::get('/program', [StudyProgramController::class, 'index']);
+Route::post('add-program', [StudyProgramController::class, 'store'])->name('add-program');
+Route::post('delete-program', [StudyProgramController::class, 'destroy'])->name('delete-program');
 Route::get('/student', [StudentController::class, 'index']);
 Route::get('/step1', [StudentController::class, 'step1']);
 Route::get('/employee', [EmployeeController::class, 'index']);
-Route::post('add.employee', [EmployeeController::class, 'store'])->name('add-employee');
+

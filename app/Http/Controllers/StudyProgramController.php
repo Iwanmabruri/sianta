@@ -41,7 +41,7 @@ class StudyProgramController extends Controller
         //     'konsKeahlian=>$request->konsKeahlian'
         // ]);
         StudyProgram::query()->create($request->all());
-        // return view('jurusan.index');
+        return view('jurusan.index');
     }
 
     /**
@@ -84,8 +84,9 @@ class StudyProgramController extends Controller
      * @param  \App\Models\StudyProgram  $studyProgram
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StudyProgram $studyProgram)
+    public function destroy(StudyProgram $id)
     {
-        //
+        StudyProgram::query()->findOrFail($id)->delete();
+        
     }
 }

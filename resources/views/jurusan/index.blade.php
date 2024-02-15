@@ -38,10 +38,16 @@
                                     <td class="d-none d-md-table-cell">{{ $item->konsKeahlian }}</td>
                                     <td>{{ $item->thnBuat }}</td>
                                     <td>{{ $item->status }}</td>
-                                    <td class="table-action">
-                                        <a href="#"><i class="align-middle" data-feather="edit-2"></i></a>
-                                        <a href="#"><i class="align-middle" data-feather="trash"></i></a>
-                                    </td>
+                                    <form action="{{ route('delete-program', $item->idProdi) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <td class="table-action">
+                                            <a href="#"><i class="align-middle" data-feather="edit-2"></i></a>
+                                            <a href="#"
+                                                onclick="return confirm('Apa anda yakin ingin menghapus data?')"><i
+                                                    class="align-middle" data-feather="trash"></i></a>
+                                        </td>
+                                    </form>
                                 </tr>
                             </tbody>
                         @empty
@@ -56,7 +62,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <form action="{{ url('add.employee') }}" method="POST">
+                                <form action="add-program" method="POST">
                                     @csrf
                                     @method('POST')
                                     <div class="modal-body m-3">
@@ -66,6 +72,9 @@
                                         <label class="form-label mt-2" for="konsKeahlian">Kons Keahlian</label>
                                         <input type="text" class="form-control" id="konsKeahlian"
                                             placeholder="Isi Konsentrasi Keahlian" name="konsKeahlian">
+                                        <label class="form-label mt-2" for="thnBuat">Thn Pembuatan</label>
+                                        <input type="text" class="form-control" id="thnBuat"
+                                            placeholder="Isi Tahun Pembuatan Keahlian" name="thnBuat">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
