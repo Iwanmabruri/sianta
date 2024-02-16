@@ -22,6 +22,16 @@ class StudentController extends Controller
         return view('siswa.inputStep1');
     }
 
+    public function step2()
+    {
+        return view('siswa.inputStep2');
+    }
+
+    public function step3()
+    {
+        return view('siswa.inputStep3');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

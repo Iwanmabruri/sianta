@@ -16,12 +16,58 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th style="width:40%;">Name</th>
-                                    <th style="width:25%">Phone Number</th>
-                                    <th class="d-none d-md-table-cell" style="width:25%">Date of Birth</th>
-                                    <th>Actions</th>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>NIPD</th>
+                                    <th>Alamat</th>
+                                    <th>Berkas</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Fulan Bin</td>
+                                    <td>00000000</td>
+                                    <td>Jl. Gajah Mada 009</td>
+                                    <td>Actions</td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <button type="button" class="btn btn-secondary dropdown-toggle"
+                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Aksi
+                                            </button>
+                                            <div class="dropdown-menu z-50">
+                                                <a class="dropdown-item" href="#">Detail Data</a>
+                                                <a class="dropdown-item" href="#">Edit Data</a>
+                                                <a class="dropdown-item" href="#">Upload Berkas</a>
+                                                <a class="dropdown-item" href="#">Print Formulir</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Fulan Bin</td>
+                                    <td>00000000</td>
+                                    <td>Jl. Gajah Mada 009</td>
+                                    <td>Actions</td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <button type="button" class="btn btn-secondary dropdown-toggle"
+                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Aksi
+                                            </button>
+                                            <div class="dropdown-menu z-50">
+                                                <a class="dropdown-item" href="#">Detail Data</a>
+                                                <a class="dropdown-item" href="#">Edit Data</a>
+                                                <a class="dropdown-item" href="#">Upload Berkas</a>
+                                                <a class="dropdown-item" href="#">Print Formulir</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
