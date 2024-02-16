@@ -30,6 +30,12 @@
     <!-- Remove this after purchasing -->
     <link class="js-stylesheet" href="{{ asset('css/light.css') }}" rel="stylesheet">
     <script src="{{ asset('js/settings.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    {{-- <link href="{{asset('DataTables/datatables.min.css')}}" rel="stylesheet">
+    <script src="{{asset('DataTables/datatables.min.js')}}"></script> --}}
+    <link href="https://cdn.datatables.net/v/dt/dt-2.0.0/datatables.min.css" rel="stylesheet">
+
+    <script src="https://cdn.datatables.net/v/dt/dt-2.0.0/datatables.min.js"></script>
     <!-- END SETTINGS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3ZYEKLQ68"></script>
     <script>
