@@ -43,9 +43,11 @@
                                         @method('DELETE')
                                         <td class="table-action">
                                             <a href="#"><i class="align-middle" data-feather="edit-2"></i></a>
-                                            <a href="#"
-                                                onclick="return confirm('Apa anda yakin ingin menghapus data?')"><i
-                                                    class="align-middle" data-feather="trash"></i></a>
+                                            <button type="submit">
+                                                <a href="#"
+                                                    onclick="return confirm('Apa anda yakin ingin menghapus data?')"><i
+                                                        class="align-middle" data-feather="trash"></i></a>
+                                            </button>
                                         </td>
                                     </form>
                                 </tr>

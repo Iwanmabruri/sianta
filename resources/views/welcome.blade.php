@@ -16,7 +16,7 @@
     <title>@yield('judul')</title>
 
     <link rel="canonical" href="pages-blank-2.html" />
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="img/smk.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>

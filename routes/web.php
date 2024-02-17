@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 Route::get('/program', [StudyProgramController::class, 'index']);
 Route::post('add-program', [StudyProgramController::class, 'store'])->name('add-program');
-Route::post('delete-program', [StudyProgramController::class, 'destroy'])->name('delete-program');
+Route::delete('delete-program/{idProdi}', [StudyProgramController::class, 'destroy'])->name('delete-program');
 Route::get('/student', [StudentController::class, 'index']);
 Route::get('/step1', [StudentController::class, 'step1']);
 Route::get('/step2', [StudentController::class, 'step2']);
