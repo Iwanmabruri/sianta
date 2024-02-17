@@ -74,4 +74,9 @@
             </div>
         </div>
     </div>
+    <script>
+        $(function() {
+            // $("#loading").css("display", "block")
+        })
+    </script>
 @endsection

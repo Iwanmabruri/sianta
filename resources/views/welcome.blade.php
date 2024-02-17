@@ -29,8 +29,8 @@
     <!-- BEGIN SETTINGS -->
     <!-- Remove this after purchasing -->
     <link class="js-stylesheet" href="{{ asset('css/light.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/settings.js') }}"></script>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/settings.js') }}"></script>
     {{-- <link href="{{asset('DataTables/datatables.min.css')}}" rel="stylesheet">
     <script src="{{asset('DataTables/datatables.min.js')}}"></script> --}}
     <link href="https://cdn.datatables.net/v/dt/dt-2.0.0/datatables.min.css" rel="stylesheet">
@@ -48,6 +48,27 @@
 
         gtag('config', 'G-Q3ZYEKLQ68');
     </script>
+
+    <style>
+        #loading {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            align-items: center;
+            padding: 20% 0;
+            justify-content: center;
+            text-align: center;
+            display: flex;
+            left: 0;
+            top: 0;
+            min-height: 100%;
+            height: auto;
+            /* background-color: rgba(0, 0, 0, .5); */
+            background-color: aliceblue;
+            z-index: 99999;
+            display: none;
+        }
+    </style>
 </head>
 <!--
   HOW TO USE:
@@ -58,9 +79,8 @@
 -->
 
 <body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky">
-    <div
-        class="d-none position-fixed bg-light top-0 start-0 z-50 h-100 w-100 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" role="status">
+    <div id="loading" class="">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
