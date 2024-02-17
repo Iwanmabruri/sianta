@@ -23,8 +23,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th class="d-none d-md-table-cell">Kons Keahlian</th>
+                                <th>Prog. Keahlian</th>
+                                <th class="d-none d-md-table-cell">Bid. Keahlian</th>
                                 <th>Pembuatan</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -68,12 +68,12 @@
                                     @csrf
                                     @method('POST')
                                     <div class="modal-body m-3">
-                                        <label class="form-label" for="nmJurusan">Nama Jurusan</label>
+                                        <label class="form-label" for="nmJurusan">Prog. Keahlian</label>
                                         <input type="text" class="form-control" id="nmJurusan"
-                                            placeholder="Isi Nama Jurusan" name="nmProdi">
-                                        <label class="form-label mt-2" for="konsKeahlian">Kons Keahlian</label>
+                                            placeholder="Isi Program Keahlian" name="nmProdi">
+                                        <label class="form-label mt-2" for="konsKeahlian">Bid. Keahlian</label>
                                         <input type="text" class="form-control" id="konsKeahlian"
-                                            placeholder="Isi Konsentrasi Keahlian" name="konsKeahlian">
+                                            placeholder="Isi Bidang Keahlian" name="konsKeahlian">
                                         <label class="form-label mt-2" for="thnBuat">Thn Pembuatan</label>
                                         <input type="text" class="form-control" id="thnBuat"
                                             placeholder="Isi Tahun Pembuatan Keahlian" name="thnBuat">
