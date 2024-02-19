@@ -50,7 +50,10 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $count = Student::all()->count();
+        $data = new Student();
+        
+        // Student::query()->create($request->all());
     }
 
     /**

@@ -26,4 +26,5 @@ Route::get('/student', [StudentController::class, 'index']);
 Route::get('/step1', [StudentController::class, 'step1']);
 Route::get('/step2', [StudentController::class, 'step2']);
 Route::get('/step3', [StudentController::class, 'step3']);
+Route::post('add-siswa', [StudentController::class, 'store'])->name('add-siswa');
 Route::get('/employee', [EmployeeController::class, 'index'])->name('employee.index');

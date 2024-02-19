@@ -9,7 +9,8 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ url('/step1') }}" class="btn btn-primary">Tambah Data</a>
+                    {{-- <a href="{{ url('/step1') }}" class="btn btn-primary">Tambah Data</a> --}}
+                    <button id="tambah" class="btn btn-primary">Tambah Data</button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -76,7 +77,19 @@
     </div>
     <script>
         $(function() {
-            // $("#loading").css("display", "block")
+            $('#tambah').on('click', function() {
+                $("#loading").css("display", "block")
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('add-siswa') }}',
+                    data: {
+                        "_token": '{{ csrf_token() }}'
+                    },
+                    success: function(hasil) {
+                        alert('tersimpan')
+                    }
+                })
+            })
         })
     </script>
 @endsection
