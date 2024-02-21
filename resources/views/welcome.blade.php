@@ -29,11 +29,9 @@
     <!-- BEGIN SETTINGS -->
     <!-- Remove this after purchasing -->
     <link class="js-stylesheet" href="{{ asset('css/light.css') }}" rel="stylesheet">
-<<<<<<< HEAD
-    <link href="{{asset('DataTable/datatables.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('DataTable/datatables.min.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{asset('DataTable/datatables.min.js')}}"></script>
-=======
+    <script src="{{ asset('DataTable/datatables.min.js') }}"></script>
 
     <link rel="stylesheet" href="{{ asset('parsleyjs/parsley.css') }}">
     <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}">
@@ -42,7 +40,6 @@
     <script src="{{ asset('parsleyjs/i18n/id.js') }}"></script>
     <script src="{{ asset('parsleyjs/i18n/id.extra.js') }}"></script>
     <script src="{{ asset('select2/js/select2.full.min.js') }}"></script>
->>>>>>> ee7f0383493474aa7f125a75e7593a68c84946fa
     <script src="{{ asset('js/settings.js') }}"></script>
 
     <!-- END SETTINGS -->
