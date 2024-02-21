@@ -10,21 +10,34 @@ use Yajra\DataTables\DataTables;
 
 class EmployeeController extends Controller
 {
-    public function index(Request $request)
+    function pegawai_data()
     {
-        if ($request->ajax()) {
-            $data = DB::table("pegawai")->get();
-            return DataTables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function ($row) {
+        $data = DB::table("pegawai");
+        $datatable =  DataTables::of($data);
+        return $datatable
+            ->addIndexColumn()
+            ->addColumn('nik', function ($row) {
+                $a = $row->nikPeg;
+                return $a . "";
+            })
+            ->addColumn('nama', function ($row) {
+                $a = $row->nmPeg;
+                return $a . "";
+            })
+            ->addColumn('alamat', function ($row) {
+                $a = $row->alamat;
+                return $a . "";
+            })
+            ->addColumn('action', function ($row) {
+                $a = '<a href="/blank" class="edit btn btn-primary btn-sm">View</a>';
+                return $a . "";
+            })
+            ->rawColumns(['nik', 'nama', 'alamat', 'action'])
+            ->make(true);
+    }
 
-                    $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
-
-                    return $btn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
+    public function index()
+    {
         return view('pegawai.index');
     }
 
