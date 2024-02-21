@@ -86,7 +86,9 @@
                         "_token": '{{ csrf_token() }}'
                     },
                     success: function(hasil) {
-                        alert('tersimpan')
+                        // $("#loading").css("display", "none")
+                        // alert(hasil)
+                        window.location.href = "{{ url('/step1') }}/" + hasil + "/st"
                     }
                 })
             })

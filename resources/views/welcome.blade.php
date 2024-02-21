@@ -29,9 +29,20 @@
     <!-- BEGIN SETTINGS -->
     <!-- Remove this after purchasing -->
     <link class="js-stylesheet" href="{{ asset('css/light.css') }}" rel="stylesheet">
+<<<<<<< HEAD
     <link href="{{asset('DataTable/datatables.min.css')}}" rel="stylesheet">
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{asset('DataTable/datatables.min.js')}}"></script>
+=======
+
+    <link rel="stylesheet" href="{{ asset('parsleyjs/parsley.css') }}">
+    <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}">
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('parsleyjs/parsley.js') }}"></script>
+    <script src="{{ asset('parsleyjs/i18n/id.js') }}"></script>
+    <script src="{{ asset('parsleyjs/i18n/id.extra.js') }}"></script>
+    <script src="{{ asset('select2/js/select2.full.min.js') }}"></script>
+>>>>>>> ee7f0383493474aa7f125a75e7593a68c84946fa
     <script src="{{ asset('js/settings.js') }}"></script>
 
     <!-- END SETTINGS -->
@@ -65,6 +76,12 @@
             background-color: aliceblue;
             z-index: 99999;
             display: none;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
     </style>
 </head>
@@ -190,8 +207,9 @@
 
                             <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
                                 data-bs-toggle="dropdown">
-                                <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded-circle me-1"
-                                    alt="Chris Wood" /> <span class="text-dark">Chris Wood</span>
+                                <img src="{{ asset('img/avatars/avatar.jpg') }}"
+                                    class="avatar img-fluid rounded-circle me-1" alt="Chris Wood" /> <span
+                                    class="text-dark">Chris Wood</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class='dropdown-item' href='pages-profile.html'><i class="align-middle me-1"
