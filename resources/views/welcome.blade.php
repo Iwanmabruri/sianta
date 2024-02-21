@@ -35,7 +35,6 @@
 
     <link rel="stylesheet" href="{{ asset('parsleyjs/parsley.css') }}">
     <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}">
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('parsleyjs/parsley.js') }}"></script>
     <script src="{{ asset('parsleyjs/i18n/id.js') }}"></script>
     <script src="{{ asset('parsleyjs/i18n/id.extra.js') }}"></script>
