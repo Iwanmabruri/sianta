@@ -10,7 +10,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Empty card</h5>
+                    <button id="tambah" class="btn btn-primary">Tambah Data</button>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered data-table">
@@ -60,6 +60,12 @@
                 ]
             })
         
+        })
+
+        $(function () {
+            $("#tambah").on('click', function (e) {
+                window.location.href="{{route('employee.form_data')}}";
+            })
         })
     </script>
 @endsection

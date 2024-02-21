@@ -41,6 +41,11 @@ class EmployeeController extends Controller
         return view('pegawai.index');
     }
 
+    public function form_data()
+    {
+        return view('pegawai.form_data');
+    }
+
     public function create()
     {
         //

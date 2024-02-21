@@ -30,5 +30,9 @@ Route::post('add-siswa', [StudentController::class, 'store'])->name('add-siswa')
 Route::post('getKabupaten', [StudentController::class, 'get_kabupaten'])->name('getKabupaten');
 Route::post('getKecamatan', [StudentController::class, 'get_kecamatan'])->name('getKecamatan');
 Route::post('getDesa', [StudentController::class, 'get_desa'])->name('getDesa');
-Route::get('/employee', [EmployeeController::class, 'index'])->name('employee.index');
-Route::post('/pegawai_data', [EmployeeController::class, 'pegawai_data'])->name('employee.pegawai_data');
+
+Route::controller(EmployeeController::class)->group(function () {
+    Route::get('/employee', 'index')->name('employee.index');
+    Route::get('/form_data', 'form_data')->name('employee.form_data');
+    Route::post('/pegawai_data', 'pegawai_data')->name('employee.pegawai_data');
+});
