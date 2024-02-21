@@ -13,7 +13,7 @@
                     <button id="tambah" class="btn btn-primary">Tambah Data</button>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered data-table">
+                    <table id="table" class="table table-bordered data-table">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -32,40 +32,37 @@
     </div>
 
     <script type="text/javascript">
-        $(document).ready(function (){
-            var table = $('.data-table').DataTable({
-                processing: true,
-                serverSide: true,
-                paging: true,
-                searchable: true,
-                ajax: {
-                    type : "post",
-                    url : '{{route("employee.pegawai_data")}}',
-                    data: {
-                    "_token": "{{csrf_token()}}"
-                }
-                },
-                columns: [
-                    {data: 'DT_RowIndex', orderable: false, searchable: false},
-                    {data: 'nik', name: 'nik'},
-                    {data: 'nama', name: 'nama'},
-                    {data: 'alamat', name: 'alamat'},
-                    {data: 'action', name: 'action', orderable: false, searchable: false},
-                ],
-                "columnDefs": [
-                    {
-                        "targets": [ 1 ],
-                        "visible": false
-                    }
-                ]
-            })
-        
+        $(function() {
+            $('#table').DataTable()
         })
+        // $(document).ready(function (){
+        //     var table = $('.data-table').DataTable({
+        //         processing: true,
+        //         serverSide: true,
+        //         paging: true,
+        //         searchable: true,
+        //         ajax: {
+        //             type : "post",
+        //             url : '{{ route('employee.pegawai_data') }}',
+        //             data: {
+        //             "_token": "{{ csrf_token() }}"
+        //         }
+        //         },
+        //         columns: [
+        //             {data: 'DT_RowIndex', orderable: false, searchable: false},
+        //             {data: 'nik', name: 'nik'},
+        //             {data: 'nama', name: 'nama'},
+        //             {data: 'alamat', name: 'alamat'},
+        //             {data: 'action', name: 'action', orderable: false, searchable: false},
+        //         ],
+        //         "columnDefs": [
+        //             {
+        //                 "targets": [ 1 ],
+        //                 "visible": false
+        //             }
+        //         ]
+        //     })
 
-        $(function () {
-            $("#tambah").on('click', function (e) {
-                window.location.href="{{route('employee.form_data')}}";
-            })
-        })
+        // })
     </script>
 @endsection
