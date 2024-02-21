@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
+// use App\Models\Student;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -17,9 +19,9 @@ class StudentController extends Controller
         return view('siswa.index');
     }
 
-    public function step1()
+    public function step1($nik, $bt)
     {
-        return view('siswa.inputStep1');
+        return view('siswa.inputStep1', compact("nik", "bt"));
     }
 
     public function step2()
@@ -50,10 +52,52 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $count = Student::all()->count();
-        $data = new Student();
-        
-        // Student::query()->create($request->all());
+        $count = DB::table("siswa")->count() + 1;
+        $data = array();
+        $data['nikSiswa'] = $count; //nik tidak valid
+        $data['namaSiswa'] = '';
+        $data['nisnSiswa'] = 1;
+        $data['tglLahir'] = '';
+        $data['tempatLahir'] = '';
+        $data['detAlamat'] = '';
+        $data['desa'] = '';
+        $data['kecamatan'] = '';
+        $data['kabKota'] = '';
+        $data['provinsi'] = '';
+        $data['jk'] = '0';
+        $data['agama'] = '';
+        $data['nipdSiswa'] = '';
+        $data['noKK'] = '';
+        $data['statusAnak'] = '';
+        $data['anakKe'] = 99; //anakKe tidak valid
+        $data['jmlSaudara'] = 99; //jmlSaudara tidak valid
+        $data['jnsTempTinggal'] = '';
+        $data['sklAsal'] = '';
+        $data['nohp'] = 1; //nohp tidak valid
+        $data['noIjazah'] = '';
+        $data['nikAyah'] = '';
+        $data['nmAyah'] = '';
+        $data['tglLahirAyah'] = '';
+        $data['pendAyah'] = '';
+        $data['pkrjnAyah'] = '';
+        $data['penghAyah'] = '';
+        $data['nikIbu'] = '';
+        $data['nmIbu'] = '';
+        $data['tglLahirIbu'] = '';
+        $data['pendIbu'] = '';
+        $data['pkrjnIbu'] = '';
+        $data['penghIbu'] = '';
+        $data['idProdi'] = '';
+        $data['tglDiterima'] = '';
+        $data['thLulus'] = 1; //thLulus tidak valid
+        $data['fotoIjazah'] = '';
+        $data['fotoKK'] = '';
+        $data['fotoAkta'] = '';
+        $data['fotoMasuk'] = '';
+        $data['fotoKeluar'] = '';
+        $data['status'] = '0';
+        DB::table("siswa")->insert($data);
+        return $count;
     }
 
     /**
