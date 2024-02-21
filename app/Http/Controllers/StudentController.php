@@ -100,6 +100,24 @@ class StudentController extends Controller
         return $count;
     }
 
+    function get_kabupaten(Request $request) {
+        $idProvinsi = $request->id;
+        $kab = $request->kab;
+        return view('siswa.getKabupaten', compact('idProvinsi', 'kab'));
+    }
+
+    function get_kecamatan(Request $request) {
+        $idKabupaten = $request->id;
+        $kec = $request->kec;
+        return view('siswa.getKecamatan', compact('idKabupaten', 'kec'));
+    }
+    
+    function get_desa(Request $request) {
+        $idKecamatan = $request->id;
+        $des = $request->des;
+        return view('siswa.getDesa', compact('idKecamatan', 'des'));
+    }
+
     /**
      * Display the specified resource.
      *

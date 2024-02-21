@@ -43,7 +43,7 @@
                                     <div>
                                         <label class="form-check">
                                             <input class="form-check-input mb-2" type="radio" required
-                                                data-parsley-required-message="pilih salah satu" value="l"
+                                                data-parsley-required-message="pilih salah satu" value="L"
                                                 name="jenkel">
                                             <span class="form-check-label">
                                                 Pria
@@ -53,7 +53,7 @@
                                     <div>
                                         <label class="form-check">
                                             <input class="form-check-input mb-2" type="radio" required
-                                                data-parsley-required-message="pilih salah satu" value="p"
+                                                data-parsley-required-message="pilih salah satu" value="P"
                                                 name="jenkel">
                                             <span class="form-check-label">
                                                 Wanita
@@ -127,12 +127,41 @@
                                 <select class="form-control mb-2 select2" data-toggle="select2" id="input12"
                                     name="provinsi" required="">
                                     <option value="">Pilih Provinsi</option>
-                                    <option value="ala">ala</option>
-                                    <option value="bal">bal</option>
-                                    <option value="aww">aww</option>
-                                    <option value="wal">wal</option>
+                                    <?php 
+                                    $prov = DB::table("provinsi")->get();
+                                    foreach ($prov as $pr) { ?>
+                                    <option value="<?= $pr->id ?>"><?= $pr->name ?></option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                             </div>
+                            <script>
+                                $(function() {
+                                    $('#input12').change(function() {
+                                        var idProv = $(this).val()
+                                        $('#loading').css("display", "block")
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: '{{ route('getKabupaten') }}',
+                                            data: {
+                                                "_token": '{{ csrf_token() }}',
+                                                "id": idProv,
+                                                "kab": 0
+                                            },
+                                            success: function(data) {
+                                                $('#loading').css("display", "none")
+                                                $("#input13").html("")
+                                                $("#input13").append(data)
+                                                $("#input14").html("")
+                                                $("#input14").append("<option value=''>Pilih Kecamatan</option>")
+                                                $("#input15").html("");
+                                                $("#input15").append("<option value=''>Pilih Desa</option>");
+                                            }
+                                        })
+                                    })
+                                })
+                            </script>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input13">Kabupaten</label>
                                 <select class="form-control mb-2 select2" data-toggle="select2" id="input13"
@@ -140,6 +169,30 @@
                                     <option value="">Pilih Kabupaten</option>
                                 </select>
                             </div>
+                            <script>
+                                $(function() {
+                                    $('#input13').change(function() {
+                                        var idKab = $(this).val()
+                                        $('#loading').css("display", "block")
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: '{{ route('getKecamatan') }}',
+                                            data: {
+                                                "_token": '{{ csrf_token() }}',
+                                                "id": idKab,
+                                                "kec": 0
+                                            },
+                                            success: function(data) {
+                                                $('#loading').css("display", "none")
+                                                $("#input14").html("")
+                                                $("#input14").append(data)
+                                                $("#input15").html("");
+                                                $("#input15").append("<option value=''>Pilih Desa</option>");
+                                            }
+                                        })
+                                    })
+                                })
+                            </script>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input14">Kecamatan</label>
                                 <select class="form-control mb-2 select2" data-toggle="select2" id="input14"
@@ -147,6 +200,28 @@
                                     <option value="">Pilih Kecamatan</option>
                                 </select>
                             </div>
+                            <script>
+                                $(function() {
+                                    $('#input14').change(function() {
+                                        var idKec = $(this).val()
+                                        $('#loading').css("display", "block")
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: '{{ route('getDesa') }}',
+                                            data: {
+                                                "_token": '{{ csrf_token() }}',
+                                                "id": idKec,
+                                                "des": 0
+                                            },
+                                            success: function(data) {
+                                                $('#loading').css("display", "none")
+                                                $("#input15").html("");
+                                                $("#input15").append(data);
+                                            }
+                                        })
+                                    })
+                                })
+                            </script>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input15">Desa</label>
                                 <select class="form-control mb-2 select2" data-toggle="select2" id="input15"
