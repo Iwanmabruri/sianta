@@ -20,6 +20,7 @@
                                 <th>Nik</th>
                                 <th>Nama</th>
                                 <th>Alamat</th>
+                                <th>Berkas</th>
                                 <th width="100px">Action</th>
                             </tr>
                         </thead>
@@ -67,6 +68,10 @@
                         name: 'alamat'
                     },
                     {
+                        data: 'berkas',
+                        name: 'berkas'
+                    },
+                    {
                         data: 'action',
                         name: 'action',
                         orderable: false,
@@ -79,6 +84,10 @@
                 }]
             })
 
+
+            $('#tambah').on('click', function () {
+                window.location.href="{{route('employee.form_data')}}"
+            })
         })
     </script>
 @endsection

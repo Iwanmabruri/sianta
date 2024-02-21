@@ -28,11 +28,30 @@ class EmployeeController extends Controller
                 $a = $row->alamat;
                 return $a . "";
             })
-            ->addColumn('action', function ($row) {
-                $a = '<a href="/blank" class="edit btn btn-primary btn-sm">View</a>';
-                return $a . "";
+            ->addColumn('berkas', function ($row) {
+                if ($row->ijazah == "") {
+                    $fts = "<span class='text-danger'>Tidak Ada</span>";
+                } else {
+                    $fts =  "<span class='text-success'>Ada</span>";
+                }
+
+                return $fts . "";
             })
-            ->rawColumns(['nik', 'nama', 'alamat', 'action'])
+            ->addColumn('action', function ($row) {
+                $bt = '<div class="dropdown">
+                <button class="btn btn-warning btn-xs dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Konfigurasi
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button id="' . $row->nikPeg . '" class="bt_edit dropdown-item btn-xs" type="button">Edit</button>
+                    <button id="' . $row->nikPeg . '" class="bt_detail dropdown-item btn-xs" type="button">Detail</button>
+                    <button id="' . $row->nikPeg . '" class="bt_upload dropdown-item btn-xs" type="button">Upload Berkas</button>
+                    <button id="' . $row->nikPeg . '" class="bt_print dropdown-item btn-xs" type="button">Print Surat dan Formulir</button>
+                    </div>
+              </div>';
+                return $bt . "";
+            })
+            ->rawColumns(['nik', 'nama', 'alamat', 'berkas', 'action'])
             ->make(true);
     }
 
@@ -46,20 +65,36 @@ class EmployeeController extends Controller
         return view('pegawai.form_data');
     }
 
-    public function create()
+    public function store(Request $req)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $validasiNIK = DB::table("pegawai")
+            ->where("nikPeg", "=", $req->nik_p)
+            ->count();
+        $validasiNIY = DB::table("pegawai")
+            ->where("niyPeg", "=", $req->niy_p)
+            ->count();
+        if ($validasiNIK > 0) {
+            return "N";
+        } elseif ($validasiNIY > 0) {
+            return "Y";
+        } else {
+            $data = array();
+            $data["nikPeg"] = $req->nik_p;
+            $data["nmPeg"] = $req->nama_p;
+            $data["niyPeg"] = $req->niy_p;
+            $data["ttl"] = $req->thn_p . "-" . $req->bln_p . "-" . $req->tgl_p;
+            $data["alamat"] = $req->alamat;
+            $data["jk"] = $req->jenkel;
+            $data["noHp"] = $req->noHp_p;
+            $data["tugTambahan"] = $req->tug_t;
+            $data["PtkGtk"] = $req->ptkgtk;
+            $data["tmt"] = $req->tmt;
+            $data["ijazah"] = "";
+            $tambah = DB::table("pegawai")->insert($data);
+            if ($tambah) {
+                return "S";
+            }
+        }
     }
 
     /**
