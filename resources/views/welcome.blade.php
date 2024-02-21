@@ -16,7 +16,7 @@
     <title>@yield('judul')</title>
 
     <link rel="canonical" href="pages-blank-2.html" />
-    <link rel="shortcut icon" href="img/smk.png">
+    <link rel="shortcut icon" href="{{ asset('img/smk.png') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -39,6 +39,7 @@
     <script src="{{ asset('parsleyjs/i18n/id.js') }}"></script>
     <script src="{{ asset('parsleyjs/i18n/id.extra.js') }}"></script>
     <script src="{{ asset('select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('sweetalert2/sweetalert2.all.min.js') }}"></script>
     <script src="{{ asset('js/settings.js') }}"></script>
 
     <!-- END SETTINGS -->

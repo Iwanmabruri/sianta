@@ -7,7 +7,7 @@
     <h1 class="h3 mb-3">Detail Diri Dari Ananda <span class="text-danger" id="namaSiswa"></span></h1>
     <div class="row">
         <div class="col-12">
-            <form data-parsley-validate>
+            <form id="formSiswa" data-parsley-validate>
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -19,8 +19,9 @@
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input2">NISN</label>
-                                <input type="number" class="nomor form-control mb-2" id="input2" name="nisn"
-                                    placeholder="Isi dengan angka" required>
+                                <input type="number" data-parsley-length="[10,10]"
+                                    data-parsley-length-message="harus diisi 10 angka" class="nomor form-control mb-2"
+                                    id="input2" name="nisn" placeholder="Isi dengan angka" required>
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input3">NIPD</label>
@@ -29,8 +30,9 @@
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input4">NO KK</label>
-                                <input type="number" class="nomor form-control mb-2" id="input4" name="nokk"
-                                    placeholder="Isi dengan angka" required>
+                                <input type="number" data-parsley-length="[16,16]"
+                                    data-parsley-length-message="harus diisi 16 angka" class="nomor form-control mb-2"
+                                    id="input4" name="nokk" placeholder="Isi dengan angka" required>
                             </div>
                             <div class="mb-2 col-md-9">
                                 <label class="form-label" for="input5">Nama Lengkap</label>
@@ -260,6 +262,29 @@
                     return false;
                 }
             })
+
+            // $("#formSiswa").on('submit', function(e) {
+            //     e.preventDefault()
+            //     var data = $(this).serialize()
+            //     form.parsley().validate()
+            //     if (form.parsley().isValid()) {
+            //         $('#loading').css("display", "block")
+            //         $.ajax({
+            //             type: 'POST',
+            //             data: data,
+            //             success: function(hasil) {
+            //                 $('#loading').css("display", "none")
+            //                 if (hasil == 'k') {
+            //                     swal.fire({
+
+            //                     })
+            //                 } else {
+
+            //                 }
+            //             }
+            //         })
+            //     }
+            // })
         })
     </script>
 @endsection
