@@ -13,12 +13,13 @@
                     <h5 class="card-title mb-0">Empty card</h5>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered data-table" id="dataTable">
+                    <table class="table table-bordered data-table">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Name</th>
-                                <th>Email</th>
+                                <th>Nik</th>
+                                <th>Nama</th>
+                                <th>Alamat</th>
                                 <th width="100px">Action</th>
                             </tr>
                         </thead>
@@ -31,19 +32,34 @@
     </div>
 
     <script type="text/javascript">
-        $(function () {
-          var table = $('#dataTable').DataTable({
-              processing: true,
-              serverSide: true,
-              ajax: "{{ route('employee.index') }}",
-              columns: [
-                  {data: 'nikpeg', name: 'nikpeg'},
-                //   {data: 'name', name: 'name'},
-                //   {data: 'email', name: 'email'},
-                  {data: 'action', name: 'action', orderable: false, searchable: false},
-              ]
-          });
+        $(document).ready(function (){
+            var table = $('.data-table').DataTable({
+                processing: true,
+                serverSide: true,
+                paging: true,
+                searchable: true,
+                ajax: {
+                    type : "post",
+                    url : '{{route("employee.pegawai_data")}}',
+                    data: {
+                    "_token": "{{csrf_token()}}"
+                }
+                },
+                columns: [
+                    {data: 'DT_RowIndex', orderable: false, searchable: false},
+                    {data: 'nik', name: 'nik'},
+                    {data: 'nama', name: 'nama'},
+                    {data: 'alamat', name: 'alamat'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ],
+                "columnDefs": [
+                    {
+                        "targets": [ 1 ],
+                        "visible": false
+                    }
+                ]
+            })
         
-        });
-      </script>
+        })
+    </script>
 @endsection
