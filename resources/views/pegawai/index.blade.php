@@ -77,17 +77,18 @@
                         orderable: false,
                         searchable: false
                     },
-                ],
-                "columnDefs": [{
-                    "targets": [1],
-                    "visible": false
-                }]
+                ]
             })
 
 
             $('#tambah').on('click', function () {
                 window.location.href="{{route('employee.form_data')}}"
             })
+
+            $('.data-table').on("click", ".edit", function () {
+                var id=$(this).attr("id")
+                window.location.href=`{{url('form_data2')}}/`+id
+            });
         })
     </script>
 @endsection

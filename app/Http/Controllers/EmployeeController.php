@@ -38,17 +38,9 @@ class EmployeeController extends Controller
                 return $fts . "";
             })
             ->addColumn('action', function ($row) {
-                $bt = '<div class="dropdown">
-                <button class="btn btn-warning btn-xs dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Konfigurasi
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button id="' . $row->nikPeg . '" class="bt_edit dropdown-item btn-xs" type="button">Edit</button>
-                    <button id="' . $row->nikPeg . '" class="bt_detail dropdown-item btn-xs" type="button">Detail</button>
-                    <button id="' . $row->nikPeg . '" class="bt_upload dropdown-item btn-xs" type="button">Upload Berkas</button>
-                    <button id="' . $row->nikPeg . '" class="bt_print dropdown-item btn-xs" type="button">Print Surat dan Formulir</button>
-                    </div>
-              </div>';
+                $bt = '
+                    <button id="' . $row->nikPeg . '" class="edit btn btn-info btn-xs" type="button">edit</button>
+                    ';
                 return $bt . "";
             })
             ->rawColumns(['nik', 'nama', 'alamat', 'berkas', 'action'])
@@ -63,6 +55,12 @@ class EmployeeController extends Controller
     public function form_data()
     {
         return view('pegawai.form_data');
+    }
+
+    public function form_data2($id)
+    {
+
+        return view('pegawai.form_data2', compact("id"));
     }
 
     public function store(Request $req)
@@ -108,27 +106,25 @@ class EmployeeController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Employee $employee)
+    public function update(Request $req)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Employee $employee)
-    {
-        //
+        $data = array();
+        $data["nmPeg"] = $req->nama_p;
+        $data["niyPeg"] = $req->niy_p;
+        $data["ttl"] = $req->thn_p . "-" . $req->bln_p . "-" . $req->tgl_p;
+        $data["alamat"] = $req->alamat;
+        $data["jk"] = $req->jenkel;
+        $data["noHp"] = $req->noHp_p;
+        $data["tugTambahan"] = $req->tug_t;
+        $data["PtkGtk"] = $req->ptkgtk;
+        $data["tmt"] = $req->tmt;
+        $data["ijazah"] = "";
+        $tambah = DB::table("pegawai")
+            ->where('nikPeg', '=', $req->nik_p)
+            ->update($data);
+        if ($tambah) {
+            return "S";
+        }
     }
 
     /**
