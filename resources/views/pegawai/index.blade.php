@@ -10,7 +10,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Empty card</h5>
+                    <button id="tambah" class="btn btn-primary">Tambah Data</button>
                 </div>
                 <div class="card-body">
                     <table id="table" class="table table-bordered data-table">
@@ -20,6 +20,7 @@
                                 <th>Nik</th>
                                 <th>Nama</th>
                                 <th>Alamat</th>
+                                <th>Berkas</th>
                                 <th width="100px">Action</th>
                             </tr>
                         </thead>
@@ -67,6 +68,10 @@
                         name: 'alamat'
                     },
                     {
+                        data: 'berkas',
+                        name: 'berkas'
+                    },
+                    {
                         data: 'action',
                         name: 'action',
                         orderable: false,
@@ -79,6 +84,10 @@
                 }]
             })
 
+
+            $('#tambah').on('click', function () {
+                window.location.href="{{route('employee.form_data')}}"
+            })
         })
     </script>
 @endsection
