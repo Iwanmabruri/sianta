@@ -24,9 +24,9 @@ class StudentController extends Controller
         return view('siswa.inputStep1', compact("nik", "bt"));
     }
 
-    public function step2()
+    public function step2($nik, $bt)
     {
-        return view('siswa.inputStep2');
+        return view('siswa.inputStep2', compact("nik", "bt"));
     }
 
     public function step3()
@@ -98,6 +98,40 @@ class StudentController extends Controller
         $data['status'] = '0';
         DB::table("siswa")->insert($data);
         return $count;
+    }
+
+    public function simpan1(Request $request) {
+        $data = array();
+        $data['nikSiswa'] = $request->nik;
+        $data['nisnSiswa'] = $request->nisn;
+        $data['nipdSiswa'] = $request->nipd;
+        $data['noKK'] = $request->nokk;
+        $data['namaSiswa'] = strtoupper($request->nama);
+        $data['jk'] = $request->jenkel;
+        $data['tempatLahir'] = strtoupper($request->tmpLahir);
+        $data['tglLahir'] = $request->thnLahir.'-'.$request->blnLahir.'-'.$request->tglLahir;
+        $data['detAlamat'] = strtoupper($request->alamat);
+        $data['provinsi'] = $request->provinsi;
+        $data['kabKota'] = $request->kabupaten;
+        $data['kecamatan'] = $request->kecamatan;
+        $data['desa'] = $request->desa;
+        $update = DB::table('siswa')->where('nikSiswa', $request->nikAwal)->update($data);
+
+        if ($update == 0 || $update == 1) {
+            return $request->nik;
+        } else {
+            return "k";
+        }
+    }
+
+    public function batalkan(Request $request) {
+        $hapus = DB::table('siswa')->where('nikSiswa', $request->nik)->delete();
+        
+        if ($hapus == 1 ) {
+            return "1";
+        } else {
+            return "2";
+        }
     }
 
     function get_kabupaten(Request $request) {
