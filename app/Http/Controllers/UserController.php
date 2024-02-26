@@ -20,7 +20,7 @@ class UserController extends Controller
         
     }
 
-    public function dataTables() {
+    public function dataUser() {
         return DataTables::of(User::query())->make(true);
     }
 

@@ -84,7 +84,7 @@ class StudyProgramController extends Controller
      * @param  \App\Models\StudyProgram  $studyProgram
      * @return \Illuminate\Http\Response
      */
-    public function destroy(StudyProgram $idProdi)
+    public function destroy($idProdi)
     {
         // StudyProgram::query()->findOrFail($id)->delete();
         $delProdi = StudyProgram::find($idProdi);
