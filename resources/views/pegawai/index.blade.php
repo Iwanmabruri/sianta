@@ -13,7 +13,7 @@
                     <button id="tambah" class="btn btn-primary">Tambah Data</button>
                 </div>
                 <div class="card-body">
-                    <table id="table" class="table table-bordered data-table">
+                    <table id="mytable" class="table table-bordered data-table">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -37,11 +37,9 @@
         //     $('#table').DataTable()
         // })
         $(document).ready(function() {
-            var table = $('.data-table').DataTable({
+            var table = $('#mytable').DataTable({
                 processing: true,
                 serverSide: true,
-                paging: true,
-                searchable: true,
                 ajax: {
                     type: "post",
                     url: '{{ route('employee.pegawai_data') }}',

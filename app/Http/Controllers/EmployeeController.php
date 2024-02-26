@@ -15,6 +15,17 @@ class EmployeeController extends Controller
         $datatable =  DataTables::of($data);
         return $datatable
             ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+                $bt = '
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button id="' . $row->nikPeg . '" class="edit btn btn-info btn-xs" type="button">edit</button>
+                <button id="' . $row->nikPeg . '" class=" btn btn-primary btn-xs"  type="button">Right</button>
+                <button id="' . $row->nikPeg . '" class="upload btn btn-warning btn-xs"  type="button">upload</button>
+            </div>
+                
+                ';
+                return $bt . "";
+            })
             ->addColumn('nik', function ($row) {
                 $a = $row->nikPeg;
                 return $a . "";
@@ -36,18 +47,7 @@ class EmployeeController extends Controller
 
                 return $fts . "";
             })
-            ->addColumn('action', function ($row) {
-                $bt = '
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button id="' . $row->nikPeg . '" class="edit btn btn-info btn-xs" type="button">edit</button>
-                    <button id="' . $row->nikPeg . '" class=" btn btn-primary btn-xs"  type="button">Right</button>
-                    <button id="' . $row->nikPeg . '" class="upload btn btn-warning btn-xs"  type="button">upload</button>
-                </div>
-                    
-                    ';
-                return $bt . "";
-            })
-            ->rawColumns(['nik', 'nama', 'alamat', 'berkas', 'action'])
+            ->rawColumns(['action', 'nik', 'nama', 'alamat', 'berkas'])
             ->make(true);
     }
 

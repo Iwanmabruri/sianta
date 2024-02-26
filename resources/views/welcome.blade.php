@@ -33,18 +33,29 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link class="js-stylesheet" href="{{ asset('css/light.css') }}" rel="stylesheet">
-    {{-- <link href="{{ asset('DataTable/datatables.min.css') }}" rel="stylesheet"> --}}
-    <link rel="stylesheet" href="{{ asset('dataTables/css/dataTables.dataTables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('parsleyjs/parsley.css') }}">
     <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('cropimage-master/cropimage.css') }}" />
+
+    <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}} ">
+
+    <script src=" {{asset('plugins/jquery/jquery.min.js')}}"></script>
+    <!-- Bootstrap -->
+    <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+
+
+    {{-- <script src="{{ asset('js/jquery.min.js') }}"></script> --}}
+    <script src="{{ asset('js/settings.js') }}"></script>
     <script src="{{ asset('select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('sweetalert2/sweetalert2.all.min.js') }}"></script>
     <script src="{{ asset('parsleyjs/parsley.js') }}"></script>
     <script src="{{ asset('parsleyjs/i18n/id.js') }}"></script>
     <script src="{{ asset('parsleyjs/i18n/id.extra.js') }}"></script>
     <script src="{{ asset('cropimage-master/cropimage.js') }} "></script>
-    <script src="{{ asset('js/settings.js') }}"></script>
 
     <!-- END SETTINGS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3ZYEKLQ68"></script>
