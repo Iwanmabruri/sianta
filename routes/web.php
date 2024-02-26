@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\StudyProgramController;
@@ -38,6 +39,13 @@ Route::post('getDesa', [StudentController::class, 'get_desa'])->name('getDesa');
 Route::controller(EmployeeController::class)->group(function () {
     Route::get('/employee', 'index')->name('employee.index');
     Route::get('/form_data', 'form_data')->name('employee.form_data');
+    Route::get('/form_data2/{id}', 'form_data2')->name('employee.form_data2');
+    Route::get('/form_upload/{id}', 'form_upload')->name('employee.form_upload');
     Route::post('/pegawai_data', 'pegawai_data')->name('employee.pegawai_data');
     Route::post('/insert_data', 'store')->name('employee.insert_data');
+    Route::post('/pegawai_data', 'pegawai_data')->name('employee.pegawai_data');
+    Route::post('/update_data', 'update')->name('employee.update_data');
 });
+
+Route::get('/user', [UserController::class, 'index'])->name('index');
+Route::post('/data', [UserController::class, 'dataTables'])->name('dataUser');
