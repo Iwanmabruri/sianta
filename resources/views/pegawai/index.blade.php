@@ -61,7 +61,6 @@
                     {
                         data: 'nama',
                         name: 'nama',
-                        // searchable: true
                     },
                     {
                         data: 'alamat',
