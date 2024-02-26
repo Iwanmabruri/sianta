@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
-use Yajra\DataTables\Services\DataTable;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
@@ -39,7 +38,12 @@ class EmployeeController extends Controller
             })
             ->addColumn('action', function ($row) {
                 $bt = '
+                <div class="btn-group" role="group" aria-label="Basic example">
                     <button id="' . $row->nikPeg . '" class="edit btn btn-info btn-xs" type="button">edit</button>
+                    <button id="' . $row->nikPeg . '" class=" btn btn-primary btn-xs"  type="button">Right</button>
+                    <button id="' . $row->nikPeg . '" class="upload btn btn-warning btn-xs"  type="button">upload</button>
+                </div>
+                    
                     ';
                 return $bt . "";
             })
@@ -61,6 +65,12 @@ class EmployeeController extends Controller
     {
 
         return view('pegawai.form_data2', compact("id"));
+    }
+
+    public function form_upload($id)
+    {
+
+        return view('pegawai.form_upload', compact("id"));
     }
 
     public function store(Request $req)
