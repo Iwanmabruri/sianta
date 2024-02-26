@@ -51,17 +51,17 @@
                     }
                 },
                 columns: [{
-                        data: 'DT-RowIndex',
+                        data: 'DT_RowIndex',
                         orderable: false,
                         searchable: false
                     },
                     {
-                        data: 'nikPeg',
-                        name: 'nikPeg'
+                        data: 'nama',
+                        name: 'nama'
                     },
                     {
-                        data: 'levelUser',
-                        name: 'levelUser'
+                        data: 'level',
+                        name: 'level'
                     },
                 ]
             });
