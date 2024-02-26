@@ -25,9 +25,11 @@ Route::delete('delete-program/{idProdi}', [StudyProgramController::class, 'destr
 Route::get('/student', [StudentController::class, 'index']);
 Route::get('step1/{nik}/{bt}', [StudentController::class, 'step1']);
 Route::get('/step2/{nik}/{bt}', [StudentController::class, 'step2']);
-Route::get('/step3', [StudentController::class, 'step3']);
+Route::get('/step3/{nik}/{bt}', [StudentController::class, 'step3']);
 Route::post('add-siswa', [StudentController::class, 'store'])->name('add-siswa');
 Route::post('simpanStep1', [StudentController::class, 'simpan1'])->name('simpanStep1');
+Route::post('simpanStep2', [StudentController::class, 'simpan2'])->name('simpanStep2');
+Route::post('simpanStep3', [StudentController::class, 'simpan3'])->name('simpanStep3');
 Route::post('batal', [StudentController::class, 'batalkan'])->name('batal');
 Route::post('getKabupaten', [StudentController::class, 'get_kabupaten'])->name('getKabupaten');
 Route::post('getKecamatan', [StudentController::class, 'get_kecamatan'])->name('getKecamatan');
