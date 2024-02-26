@@ -29,9 +29,9 @@ class StudentController extends Controller
         return view('siswa.inputStep2', compact("nik", "bt"));
     }
 
-    public function step3()
+    public function step3($nik, $bt)
     {
-        return view('siswa.inputStep3');
+        return view('siswa.inputStep3', compact("nik", "bt"));
     }
 
     /**
@@ -119,6 +119,54 @@ class StudentController extends Controller
 
         if ($update == 0 || $update == 1) {
             return $request->nik;
+        } else {
+            return "k";
+        }
+    }
+
+    public function simpan2(Request $request) {
+        $data = array();
+        $data['nikAyah'] = $request->nik_a;
+        $data['nmAyah'] = strtoupper($request->nm_a);
+        $data['tglLahirAyah'] = $request->thnLahirAyah.'-'.$request->blnLahirAyah.'-'.$request->tglLahirAyah;
+        $data['pendAyah'] = strtoupper($request->pkrjnAyah);
+        $data['pkrjnAyah'] = strtoupper($request->pndknAyah);
+        $data['penghAyah'] = strtoupper($request->pndptnAyah);
+        $data['nikIbu'] = $request->nik_i;
+        $data['nmIbu'] = strtoupper($request->nm_i);
+        $data['tglLahirIbu'] = $request->thnLahirIbu.'-'.$request->blnLahirIbu.'-'.$request->tglLahirIbu;
+        $data['pendIbu'] = strtoupper($request->pkrjnIbu);
+        $data['pkrjnIbu'] = strtoupper($request->pndknIbu);
+        $data['penghIbu'] = strtoupper($request->pndptnIbu);
+        
+        $update = DB::table('siswa')->where('nikSiswa', $request->nikAwal)->update($data);
+
+        if ($update == 0 || $update == 1) {
+            return $request->nikAwal;
+        } else {
+            return "k";
+        }
+    }
+
+    public function simpan3(Request $request) {
+        $data = array();
+        $data['nikWali'] = $request->nik_w;
+        $data['nmWali'] = strtoupper($request->nm_w);
+        $data['tglLahirWali'] = $request->thnLahirWali.'-'.$request->blnLahirWali.'-'.$request->tglLahirWali;
+        $data['pendWali'] = strtoupper($request->pkrjnWali);
+        $data['pkrjnWali'] = strtoupper($request->pndknWali);
+        $data['penghWali'] = strtoupper($request->pndptnWali);
+        $data['nikIbu'] = $request->nik_i;
+        $data['nmIbu'] = strtoupper($request->nm_i);
+        $data['tglLahirIbu'] = $request->thnLahirIbu.'-'.$request->blnLahirIbu.'-'.$request->tglLahirIbu;
+        $data['pendIbu'] = strtoupper($request->pkrjnIbu);
+        $data['pkrjnIbu'] = strtoupper($request->pndknIbu);
+        $data['penghIbu'] = strtoupper($request->pndptnIbu);
+        
+        $update = DB::table('siswa')->where('nikSiswa', $request->nikAwal)->update($data);
+
+        if ($update == 0 || $update == 1) {
+            return $request->nikAwal;
         } else {
             return "k";
         }

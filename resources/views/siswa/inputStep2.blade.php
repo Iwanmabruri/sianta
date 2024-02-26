@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('judul')
-    Data Siswa | Step 3
+    Data Siswa | Step 2
 @endsection
 
 @section('konten')
@@ -15,6 +15,7 @@
         <div class="col-12">
             <form id="formSiswa" data-parsley-validate method="post">
                 {{ csrf_field() }}
+                <input type="hidden" name="nikAwal" value="<?= $nik ?>">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -23,12 +24,12 @@
                                 <input type="number" class="form-control" id="input1" name="nik_a"
                                     placeholder="Isi dengan angka" data-parsley-length="[16,16]"
                                     data-parsley-length-message="harus diisi 16 angka" required autocomplete="off"
-                                    value="">
+                                    value="<?= $data->nikAyah ?>">
                             </div>
                             <div class="mb-2 col-md-9">
                                 <label class="form-label" for="input2">Nama Ayah</label>
-                                <input type="text" class="form-control" id="input2" name="nm_a"
-                                    placeholder="Nama Ayah" required autocomplete="off" value="">
+                                <input type="text" class="form-control text-uppercase" id="input2" name="nm_a"
+                                    placeholder="Nama Ayah" required autocomplete="off" value="<?= $data->nmAyah ?>">
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input3">Tanggal Lahir</label>
@@ -139,21 +140,21 @@
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input6">Pekerjaan Ayah</label>
-                                <select class="form-control mb-3" id="input6" name="pkrjnAyah" required>
-                                    <option value="">Pilih Pekerjaan</option>
-                                </select>
+                                <input type="text" class="form-control mb-3 text-uppercase" id="input6" required
+                                    name="pkrjnAyah" placeholder="Pekerjaan Ayah" autocomplete="off"
+                                    value="<?= $data->pkrjnAyah ?>">
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input7">Pendidikan Ayah</label>
-                                <select class="form-control mb-3" id="input7" name="pndknAyah" required>
-                                    <option value="">Pilih Pendidikan</option>
-                                </select>
+                                <input type="text" class="form-control mb-3 text-uppercase" id="input7" required
+                                    name="pndknAyah" placeholder="Pendidikan Ayah" autocomplete="off"
+                                    value="<?= $data->pendAyah ?>">
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input8">Penghasilan Ayah</label>
-                                <select class="form-control mb-3" id="input8" name="pndptnAyah" required>
-                                    <option value="">Pilih Penghasilan</option>
-                                </select>
+                                <input type="text" class="form-control mb-3 text-uppercase" id="input8" required
+                                    name="pndptnAyah" placeholder="Penghasilan Ayah" autocomplete="off"
+                                    value="<?= $data->penghAyah ?>">
                             </div>
                         </div>
                     </div>
@@ -166,12 +167,12 @@
                                 <input type="number" class="form-control" id="input9" name="nik_i"
                                     placeholder="Isi dengan angka" data-parsley-length="[16,16]"
                                     data-parsley-length-message="harus diisi 16 angka" required autocomplete="off"
-                                    value="">
+                                    value="<?= $data->nikIbu ?>">
                             </div>
                             <div class="mb-2 col-md-9">
                                 <label class="form-label" for="input10">Nama Ibu</label>
-                                <input type="text" class="form-control" id="input10" name="nm_i"
-                                    placeholder="Nama Ibu" required autocomplete="off" value="">
+                                <input type="text" class="form-control text-uppercase" id="input10" name="nm_i"
+                                    placeholder="Nama Ibu" required autocomplete="off" value="<?= $data->nmIbu ?>">
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input11">Tanggal Lahir</label>
@@ -280,28 +281,28 @@
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input14">Pekerjaan Ibu</label>
-                                <select class="form-control mb-3" id="input14" name="pkrjnIbu" required>
-                                    <option value="">Pilih Pekerjaan</option>
-                                </select>
+                                <input type="text" class="form-control mb-3 text-uppercase" id="input14" required
+                                    name="pkrjnIbu" placeholder="Pekerjaan Ibu" autocomplete="off"
+                                    value="<?= $data->pkrjnIbu ?>">
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input15">Pendidikan Ibu</label>
-                                <select class="form-control mb-3" id="input15" name="pndknIbu" required>
-                                    <option value="">Pilih Pendidikan</option>
-                                </select>
+                                <input type="text" class="form-control mb-3 text-uppercase" id="input15" required
+                                    name="pndknIbu" placeholder="Pendidikan Ibu" autocomplete="off"
+                                    value="<?= $data->pendIbu ?>">
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input16">Penghasilan Ibu</label>
-                                <select class="form-control mb-3" id="input16" name="pndptnIbu" required>
-                                    <option value="">Pilih Penghasilan</option>
-                                </select>
+                                <input type="text" class="form-control mb-3 text-uppercase" id="input16" required
+                                    name="pndptnIbu" placeholder="Penghasilan Ibu" autocomplete="off"
+                                    value="<?= $data->penghIbu ?>">
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-md-12">
-                                <button type="button" class="btn btn-danger">Batal</button>
+                                <button type="button" id="batalkan" class="btn btn-danger">Batal</button>
                                 <a href="" class="btn btn-warning">Refresh</a>
                                 <div class="float-end">
                                     <button type="button" id="formSebelumnya" class="btn btn-primary">Kembali</button>
@@ -317,7 +318,78 @@
     <script>
         $(function() {
             $('#formSebelumnya').click(function() {
+                $("#loading").css("display", "block")
                 window.location.href = "{{ url('/step1') }}/<?= $nik ?>/<?= $bt ?>"
+            })
+
+            $('#batalkan').click(function() {
+                var nik = $('#nik').val()
+                swal.fire({
+                    title: "Anda Yakin?",
+                    text: 'Anda tidak dapat mengmbalikan ini',
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Tidak'
+                }).then((result) => {
+                    $("#loading").css("display", "block")
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '{{ route('batal') }}',
+                            data: {
+                                "_token": '{{ csrf_token() }}',
+                                "nik": nik
+                            },
+                            success: function(hasil) {
+                                $("#loading").css("display", "none")
+                                if (hasil == 1) {
+                                    swal.fire({
+                                        title: 'Dibatalkan',
+                                        text: 'Anda Berhasil membatalkan data ini',
+                                        icon: 'success',
+                                        confirmButtonColor: '#3085d6',
+                                    }).then(() => {
+                                        window.location.href =
+                                            "{{ url('/student') }}"
+                                    })
+                                }
+                            }
+                        })
+                    }
+                })
+            })
+
+            $("#formSiswa").on('submit', function(e) {
+                e.preventDefault()
+                var data = $(this).serialize()
+                var form = $(this)
+                form.parsley().validate()
+                if (form.parsley().isValid()) {
+                    $('#loading').css("display", "block")
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ route('simpanStep2') }}',
+                        data: data,
+                        success: function(hasil) {
+                            // $('#loading').css("display", "none")
+                            console.log(hasil)
+                            if (hasil == 'k') {
+                                swal.fire({
+                                    title: 'Error',
+                                    text: 'Gagal dalam menyimpan data',
+                                    icon: 'error',
+                                    confirmButtonColor: '#3085d6'
+                                })
+                            } else {
+                                window.location.href = "{{ url('/step3') }}/" + hasil +
+                                    "/<?= $bt ?>"
+                            }
+                        }
+                    })
+                }
             })
         })
     </script>
