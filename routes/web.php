@@ -45,4 +45,5 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::post('/update_data', 'update')->name('employee.update_data');
 });
 
-Route::get('/user', [UserController::class, 'index'])->name('dataUser');
+Route::get('/user', [UserController::class, 'index'])->name('index');
+Route::post('/data', [UserController::class, 'dataTables'])->name('dataUser');

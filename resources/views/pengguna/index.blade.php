@@ -43,7 +43,13 @@
             $('#table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('dataUser') !!}',
+                ajax: {
+                    type: "post",
+                    url: "{{ route('dataUser') }}",
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    }
+                },
                 columns: [{
                         data: 'DT-RowIndex',
                         orderable: false,

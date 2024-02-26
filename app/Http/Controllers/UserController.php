@@ -15,8 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view ('pengguna.index', compact('users'));
+        // $users = User::all();
+        return view ('pengguna.index');
+        
+    }
+
+    public function dataTables() {
         return DataTables::of(User::query())->make(true);
     }
 
