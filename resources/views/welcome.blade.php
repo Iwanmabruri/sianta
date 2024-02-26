@@ -195,7 +195,7 @@
                         </ul> --}}
                     </li>
                     <li class="sidebar-item">
-                        <a class='sidebar-link' href="{{ url('/') }}">
+                        <a class='sidebar-link' href="{{ url('/user') }}">
                             <i class="align-middle" data-feather="users"></i> <span
                                 class="align-middle">Pengguna</span>
                         </a>
