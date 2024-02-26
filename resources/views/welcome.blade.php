@@ -28,11 +28,13 @@
 
     <!-- BEGIN SETTINGS -->
     <!-- Remove this after purchasing -->
-    <link class="js-stylesheet" href="{{ asset('css/light.css') }}" rel="stylesheet">
-    <link href="{{ asset('DataTable/datatables.min.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('DataTable/datatables.min.js') }}"></script>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link class="js-stylesheet" href="{{ asset('css/light.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('DataTable/datatables.min.css') }}" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="{{ asset('dataTables/css/dataTables.dataTables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('parsleyjs/parsley.css') }}">
     <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('cropimage-master/cropimage.css') }}" />
@@ -183,7 +185,8 @@
                     </li>
                     <li class="sidebar-item">
                         <a class='sidebar-link' href="{{ url('/') }}">
-                            <i class="align-middle" data-feather="users"></i> <span class="align-middle">Pengguna</span>
+                            <i class="align-middle" data-feather="users"></i> <span
+                                class="align-middle">Pengguna</span>
                         </a>
                     </li>
                 </ul>

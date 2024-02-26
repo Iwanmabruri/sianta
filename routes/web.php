@@ -40,5 +40,6 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::get('/form_upload/{id}', 'form_upload')->name('employee.form_upload');
     Route::post('/pegawai_data', 'pegawai_data')->name('employee.pegawai_data');
     Route::post('/insert_data', 'store')->name('employee.insert_data');
+    Route::post('/pegawai_data', 'pegawai_data')->name('employee.pegawai_data');
     Route::post('/update_data', 'update')->name('employee.update_data');
 });

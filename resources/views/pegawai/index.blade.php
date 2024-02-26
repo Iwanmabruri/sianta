@@ -61,7 +61,6 @@
                     {
                         data: 'nama',
                         name: 'nama',
-                        // searchable: true
                     },
                     {
                         data: 'alamat',
@@ -81,18 +80,13 @@
             })
 
 
-            $('#tambah').on('click', function () {
-                window.location.href="{{route('employee.form_data')}}"
+            $('#tambah').on('click', function() {
+                window.location.href = "{{ route('employee.form_data') }}"
             })
 
             $('.data-table').on("click", ".edit", function () {
                 var id=$(this).attr("id")
                 window.location.href=`{{url('form_data2')}}/`+id
-            })
-
-            $('.data-table').on("click", ".upload", function () {
-                var id=$(this).attr("id")
-                window.location.href=`{{url('form_upload')}}/`+id
             });
         })
     </script>
