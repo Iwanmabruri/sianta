@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\StudyProgramController;
@@ -41,3 +42,5 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::post('/pegawai_data', 'pegawai_data')->name('employee.pegawai_data');
     Route::post('/update_data', 'update')->name('employee.update_data');
 });
+
+Route::get('/user', [UserController::class, 'index'])->name('dataUser');
