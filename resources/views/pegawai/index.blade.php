@@ -88,6 +88,11 @@
             $('.data-table').on("click", ".edit", function () {
                 var id=$(this).attr("id")
                 window.location.href=`{{url('form_data2')}}/`+id
+            })
+
+            $('.data-table').on("click", ".upload", function () {
+                var id=$(this).attr("id")
+                window.location.href=`{{url('form_upload')}}/`+id
             });
         })
     </script>
