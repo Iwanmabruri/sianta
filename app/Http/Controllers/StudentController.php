@@ -156,17 +156,20 @@ class StudentController extends Controller
         $data['pendWali'] = strtoupper($request->pkrjnWali);
         $data['pkrjnWali'] = strtoupper($request->pndknWali);
         $data['penghWali'] = strtoupper($request->pndptnWali);
-        $data['nikIbu'] = $request->nik_i;
-        $data['nmIbu'] = strtoupper($request->nm_i);
-        $data['tglLahirIbu'] = $request->thnLahirIbu.'-'.$request->blnLahirIbu.'-'.$request->tglLahirIbu;
-        $data['pendIbu'] = strtoupper($request->pkrjnIbu);
-        $data['pkrjnIbu'] = strtoupper($request->pndknIbu);
-        $data['penghIbu'] = strtoupper($request->pndptnIbu);
-        
+        $data['jnsTempTinggal'] = strtoupper($request->tmpTinggal);
+        $data['statusAnak'] = $request->statusAnak;
+        $data['anakKe'] = $request->anakKe;
+        $data['jmlSaudara'] = $request->jmlSaudara;
+        $data['nohp'] = $request->noHp;
+        $data['sklAsal'] = strtoupper($request->sekolahAsal);
+        $data['noIjazah'] = $request->noIjazah;
+        $data['idProdi'] = $request->prodi;
+        $data['agama'] = strtoupper($request->agama);
+        $data['tglDiterima'] = $request->tglDiterima;
         $update = DB::table('siswa')->where('nikSiswa', $request->nikAwal)->update($data);
 
         if ($update == 0 || $update == 1) {
-            return $request->nikAwal;
+            return 1;
         } else {
             return "k";
         }

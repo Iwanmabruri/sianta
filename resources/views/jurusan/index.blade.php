@@ -38,18 +38,12 @@
                                     <td class="d-none d-md-table-cell">{{ $item->konsKeahlian }}</td>
                                     <td>{{ $item->thnBuat }}</td>
                                     <td>{{ $item->status }}</td>
-                                    <form action="{{ route('delete-program', $item->idProdi) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <td class="table-action">
-                                            <a href="#"><i class="align-middle" data-feather="edit-2"></i></a>
-                                            <button type="submit">
-                                                <a href="#"
-                                                    onclick="return confirm('Apa anda yakin ingin menghapus data?')"><i
-                                                        class="align-middle" data-feather="trash"></i></a>
-                                            </button>
-                                        </td>
-                                    </form>
+                                    <td class="table-action">
+                                        <a href="#"><i class="align-middle" data-feather="edit-2"></i></a>
+                                        <a href="delete-program/{{ $item->idProdi }}"
+                                            onclick="return confirm('Apa anda yakin ingin menghapus data?')"><i
+                                                class="align-middle" data-feather="trash"></i></a>
+                                    </td>
                                 </tr>
                             </tbody>
                         @empty

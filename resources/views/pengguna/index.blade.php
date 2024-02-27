@@ -16,9 +16,9 @@
                     <table id="table" class="table table-striped">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Level</th>
+                                <th>nik</th>
+                                <th>nikPeg</th>
+                                <th>levelUser</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,9 +51,10 @@
                     }
                 },
                 columns: [{
-                        data: 'DT-RowIndex',
-                        orderable: false,
-                        searchable: false
+                        data: 'idUser',
+                        name: 'idUser'
+                        // orderable: false,
+                        // searchable: false
                     },
                     {
                         data: 'nikPeg',

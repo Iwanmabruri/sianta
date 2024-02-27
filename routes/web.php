@@ -49,4 +49,4 @@ Route::controller(EmployeeController::class)->group(function () {
 });
 
 Route::get('/user', [UserController::class, 'index'])->name('index');
-Route::post('/data', [UserController::class, 'dataTables'])->name('dataUser');
+Route::post('/data', [UserController::class, 'dataUser'])->name('dataUser');
