@@ -17,7 +17,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <input type="hidden" name="nik_p" value="<?= $data->nikPeg?>" required>
+                            <input type="hidden" name="nik_p" value="<?= $data->nikPeg?>" >
+                            <input type="hidden" name="ft_ijazah_lama" value="<?= $data->ijazah?>">
         
                             
                             <div class="col-md-4">
@@ -64,24 +65,6 @@
         </div>
     </div>
 
-    <div class="modal" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div id="infoContainer"></div>
-                <div id="cropContainer"></div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
 
     <script type="text/javascript">
 
@@ -90,36 +73,19 @@
             $("#batal1").css("display", "none");
 
             $("#ft_ijazah").change(function(){
-                $(".modal").modal('show')
-                
-                console.log(this.files);
-                var c = this.files[0].name
-                $('#cropContainer').cropimage({
-                    image: "../  ../Screenshot (1).png",
-                    btnDoneAttr: '.resize-done'
-                }, function( imgResized ){
-                    $('#infoContainer').html( '<img src="'+ imgResized +'">' )
-                })
-            // if (this.files && this.files[0]) {
-            //     var reader = new FileReader();
-            //     reader.onload = function (e) {
-            //     };
-            //     reader.readAsDataURL(this.files[0]);
-            // }
-
-            // if (this.files && this.files[0]) {
-            //     var reader = new FileReader();
-            //     reader.onload = function (e) {
-            //         $("#ed_priview1").css("display", "none");
-            //         $("#priview1").css("display", "block");
-            //         $("#batal1").css("display", "block");
-            //         $("#pr_img1").css('background-image', 'url(' + e.target.result + ')');
-            //         $("#pr_img1").css("background-position", "left");
-            //         $("#pr_img1").css("background-size", "contain");
-            //         $("#pr_img1").css("background-repeat", "no-repeat");
-            //     };
-            //     reader.readAsDataURL(this.files[0]);
-            // }
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#ed_priview1").css("display", "none");
+                    $("#priview1").css("display", "block");
+                    $("#batal1").css("display", "block");
+                    $("#pr_img1").css('background-image', 'url(' + e.target.result + ')');
+                    $("#pr_img1").css("background-position", "left");
+                    $("#pr_img1").css("background-size", "contain");
+                    $("#pr_img1").css("background-repeat", "no-repeat");
+                };
+                reader.readAsDataURL(this.files[0]);
+            }
         });
         $("#batal1").click(function(){
             $("#ft_ijazah").val("");
@@ -131,40 +97,35 @@
 
             $("#formPegawai").on('submit', function(e) {
                 e.preventDefault()
-                var data = $(this).serialize()
                 var form =  $(this)
+                var data = new FormData(this)
                 form.parsley().validate()
                 if (form.parsley().isValid()) {
                     $('#loading').css("display", "block")
                     $.ajax({
                         type: 'POST',
-                        url:"{{route('employee.update_data')}}",
+                        url:"{{route('employee.upload_data')}}",
                         data:data,
+                        contentType: false,
+                        cache: false,
+                        processData: false,
                         success: function(hasil) {
                             $('#loading').css("display", "none")
-                            if (hasil == 'N') {
-                                Swal.fire({
-                                    title: "Oops .....",
-                                    text: "NIK sudah ada",
-                                    icon: "error"
-                                }).then((result) => {
-                                    $("#input1").focus()
-                                })
-                            } else if(hasil == 'Y') {
-                                Swal.fire({
-                                    title: "Oops .....",
-                                    text: "NIY sudah ada",
-                                    icon: "error"
-                                }).then((result) => {
-                                    $("#input2").focus()
-                                })
-                            } else if (hasil == "S") {
+                            if (hasil == '1') {
                                 Swal.fire({
                                     title: "Good job",
                                     text: "data berhasil disimpan",
                                     icon: "success"
                                 }).then((result) => {
-                                    window.location.href="{{route('employee.index')}}";
+                                    window.location.href="{{route('employee.index')}}"
+                                })
+                            }  else  {
+                                Swal.fire({
+                                    title: "salahhhhhhhhhh",
+                                    text: "data berhasil disimpan",
+                                    icon: "success"
+                                }).then((result) => {
+                                
                                 })
                             }
                         }

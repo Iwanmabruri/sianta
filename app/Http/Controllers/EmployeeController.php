@@ -6,6 +6,9 @@ use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
+use Intervention\Image\Facades\Image;
+
+
 
 class EmployeeController extends Controller
 {
@@ -19,7 +22,7 @@ class EmployeeController extends Controller
                 $bt = '
             <div class="btn-group" role="group" aria-label="Basic example">
                 <button id="' . $row->nikPeg . '" class="edit btn btn-info btn-xs" type="button">edit</button>
-                <button id="' . $row->nikPeg . '" class=" btn btn-primary btn-xs"  type="button">Right</button>
+                <button id="' . $row->nikPeg . '" class="detail btn btn-primary btn-xs"  type="button">Right</button>
                 <button id="' . $row->nikPeg . '" class="upload btn btn-warning btn-xs"  type="button">upload</button>
             </div>
                 
@@ -34,7 +37,7 @@ class EmployeeController extends Controller
                 $a = $row->nmPeg;
                 return $a . "";
             })
-            ->addColumn('alamat', function ($row) {
+            ->addColumn('almt', function ($row) {
                 $a = $row->alamat;
                 return $a . "";
             })
@@ -47,7 +50,7 @@ class EmployeeController extends Controller
 
                 return $fts . "";
             })
-            ->rawColumns(['action', 'nik', 'nama', 'alamat', 'berkas'])
+            ->rawColumns(['action', 'nik', 'nama', 'almt', 'berkas'])
             ->make(true);
     }
 
@@ -105,12 +108,6 @@ class EmployeeController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
     public function show(Employee $employee)
     {
         //
@@ -137,12 +134,47 @@ class EmployeeController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
+    public function upload_data(Request $req)
+    {
+        $data = array();
+        function acakangkahuruf($panjang)
+        {
+            $karakter = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            $string = "";
+            for ($i = 0; $i <= $panjang; $i++) {
+                $pos = rand(0, strlen($karakter) - 1);
+                $string .= $karakter[$pos];
+            }
+            return $string;
+        }
+
+        $filename1 = rand(00000, 99999) . acakangkahuruf(1) . ".jpg";
+
+        if ($req->file("ft_ijazah") != "") {
+            $ft_ijazah = Image::make($req->file("ft_ijazah"));
+            $ft_ijazah->resize(500, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            if (file_exists($req->ft_ijazah_lama)) {
+                unlink($req->ft_ijazah_lama);
+            }
+            $ft_ijazah->save("../gambar/pegawai/ijazah" . $filename1, 100);
+            $data["ijazah"] = "gambar/pegawai/ijazah" . $filename1;
+        } else {
+            $data["ijazah"] = $req->ft_ijazah_lama;
+        }
+
+
+        $simpan = DB::table("pegawai")
+            ->where("nikPeg", "=", $req->nik_p)
+            ->update($data);
+        if ($simpan) {
+            return "1";
+        } else {
+            return "2";
+        }
+    }
+
     public function destroy(Employee $employee)
     {
         //

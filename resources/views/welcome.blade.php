@@ -44,7 +44,6 @@
     <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
     {{-- <script src="{{ asset('js/jquery.min.js') }}"></script> --}}
     <script src="{{ asset('js/settings.js') }}"></script>
     <script src="{{ asset('select2/js/select2.full.min.js') }}"></script>
