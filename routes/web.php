@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\StudyProgramController;
 
 /*
@@ -50,3 +51,9 @@ Route::controller(EmployeeController::class)->group(function () {
 
 Route::get('/user', [UserController::class, 'index'])->name('index');
 Route::post('/data', [UserController::class, 'dataUser'])->name('dataUser');
+
+//Route Kelas
+Route::get('/classroom', [ClassroomController::class, 'index'])->name('classroom');
+Route::get('/create-class', [ClassroomController::class, 'create'])->name('create-class');
+Route::post('add-class', [ClassroomController::class, 'store'])->name('add-class');
+Route::get('edit-class', [ClassroomController::class, 'edit'])->name('edit-class');

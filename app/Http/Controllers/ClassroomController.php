@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classroom;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class ClassroomController extends Controller
@@ -14,7 +15,8 @@ class ClassroomController extends Controller
      */
     public function index()
     {
-        //
+        $classrooms = Classroom::all();
+        return view('kelas.index', compact('classrooms'));
     }
 
     /**
@@ -24,7 +26,8 @@ class ClassroomController extends Controller
      */
     public function create()
     {
-        //
+        // $employees = Employee::all();
+        return view('kelas.create');
     }
 
     /**
@@ -35,7 +38,13 @@ class ClassroomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Classroom::create([
+        //     'nama_kelas=>$request->nama_kelas',
+        //     'nik_peg=>$request->nik_peg'
+        // ]);
+        $classrooms = Classroom::all();
+        Classroom::query()->create($request->all());
+        return view('kelas.index', compact('classrooms'));
     }
 
     /**
@@ -57,7 +66,7 @@ class ClassroomController extends Controller
      */
     public function edit(Classroom $classroom)
     {
-        //
+        return view('kelas.edit');
     }
 
     /**
