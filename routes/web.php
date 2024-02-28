@@ -24,6 +24,7 @@ Route::get('/program', [StudyProgramController::class, 'index']);
 Route::post('add-program', [StudyProgramController::class, 'store'])->name('add-program');
 Route::delete('delete-program/{idProdi}', [StudyProgramController::class, 'destroy'])->name('delete-program');
 Route::get('/student', [StudentController::class, 'index']);
+Route::post('siswaData', [StudentController::class, 'siswa_data'])->name('siswaData');
 Route::get('step1/{nik}/{bt}', [StudentController::class, 'step1']);
 Route::get('/step2/{nik}/{bt}', [StudentController::class, 'step2']);
 Route::get('/step3/{nik}/{bt}', [StudentController::class, 'step3']);

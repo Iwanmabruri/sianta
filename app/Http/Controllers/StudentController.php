@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class StudentController extends Controller
 {
@@ -17,6 +18,95 @@ class StudentController extends Controller
     public function index()
     {
         return view('siswa.index');
+    }
+
+    public function siswa_data() {
+        $data = DB::table('siswa')->where('status', 'Aktif');
+        $datatable = DataTables::of($data);
+        return $datatable
+            ->addIndexColumn()
+            ->addColumn('aksi', function ($row) {
+                $bt = '
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Aksi
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><button class="dropdown-item detail" data="'.$row->nikSiswa.'" type="button">Detail</button></li>
+                            <li><button class="dropdown-item edit" data="'.$row->nikSiswa.'" type="button">Edit</button></li>
+                            <li><button class="dropdown-item upload" data="'.$row->nikSiswa.'" type="button">Upload</button></li>
+                            <li><button class="dropdown-item print" data="'.$row->nikSiswa.'" type="button">Print</button></li>
+                        </ul>
+                    </div>
+                ';
+
+                return $bt . "";
+            })
+            ->addColumn('nik', function ($row) {
+                $n = $row->nikSiswa;
+                return $n . "";
+            })
+            ->addColumn('nama', function ($row) {
+                $c = $row->namaSiswa;
+                return $c . "";
+            })
+            ->addColumn('nipd', function ($row) {
+                $b = $row->nipdSiswa;
+                return $b . "";
+            })
+            ->addColumn('berkas', function ($row) {
+                if ($row->fotoMasuk == '') {
+                    $ftm = "<span class='text-danger'>Tidak Ada</span>";
+                }else{
+                    $ftm = "<span>Ada</span>";
+                }
+
+                if ($row->fotoIjazah == '') {
+                    $fti = "<span class='text-danger'>Tidak Ada</span>";
+                }else{
+                    $fti = "<span>Ada</span>";
+                }
+
+                if ($row->fotoKK == '') {
+                    $ftk = "<span class='text-danger'>Tidak Ada</span>";
+                }else{
+                    $ftk = "<span>Ada</span>";
+                }
+
+                if ($row->fotoAkta == '') {
+                    $fta = "<span class='text-danger'>Tidak Ada</span>";
+                }else{
+                    $fta = "<span>Ada</span>";
+                }
+
+                if ($row->fotoKeluar == '') {
+                    $ftl = "<span class='text-danger'>Tidak Ada</span>";
+                }else{
+                    $ftl = "<span>Ada</span>";
+                }
+
+                $tb = "<table style='border:0px;'>"
+                        . "<tr class='py-2'>"
+                        . "<td><b>Foto Masuk</b></td><td>&nbsp;:&nbsp;</td><td>" . $ftm . "</td>"
+                        . "</tr>"
+                        . "<tr class='py-2'>"
+                        . "<td><b>Scan Ijazah</b></td><td>&nbsp;:&nbsp;</td><td>" . $fti . "</td>"
+                        . "</tr>"
+                        . "<tr class='py-2'>"
+                        . "<td><b>Scan KK</b></td><td>&nbsp;:&nbsp;</td><td>" . $ftk . "</td>"
+                        . "</tr>"
+                        . "<tr class='py-2'>"
+                        . "<td><b>Scan Akta</b></td><td>&nbsp;:&nbsp;</td><td>" . $fta . "</td>"
+                        . "</tr>"
+                        . "<tr class='py-2'>"
+                        . "<td><b>Foto Lulus</b></td><td>&nbsp;:&nbsp;</td><td>" . $ftl . "</td>"
+                        . "</tr>"
+                    ."</table>";
+                    return $tb . "";
+            })
+            ->rawColumns(['aksi', 'nik', 'nama', 'nipd', 'berkas'])
+            ->make(true);
     }
 
     public function step1($nik, $bt)
@@ -166,6 +256,7 @@ class StudentController extends Controller
         $data['idProdi'] = $request->prodi;
         $data['agama'] = strtoupper($request->agama);
         $data['tglDiterima'] = $request->tglDiterima;
+        $data['status'] = 'Aktif';
         $update = DB::table('siswa')->where('nikSiswa', $request->nikAwal)->update($data);
 
         if ($update == 0 || $update == 1) {

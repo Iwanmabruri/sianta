@@ -13,39 +13,19 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="myTable">
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>NIK</th>
                                     <th>Nama</th>
                                     <th>NIPD</th>
-                                    <th>Alamat</th>
                                     <th>Berkas</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Fulan Bin</td>
-                                    <td>00000000</td>
-                                    <td>Jl. Gajah Mada 009</td>
-                                    <td>Actions</td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                Aksi
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><button class="dropdown-item" type="button">Detail</button></li>
-                                                <li><button class="dropdown-item" type="button">Edit</button></li>
-                                                <li><button class="dropdown-item" type="button">Upload</button></li>
-                                                <li><button class="dropdown-item" type="button">Print</button></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -54,7 +34,47 @@
         </div>
     </div>
     <script>
-        $(function() {
+        $(document).ready(function() {
+            var table = $('#myTable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    type: "post",
+                    url: '{{ route('siswaData') }}',
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    }
+                },
+                columns: [{
+                        data: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'nikSiswa',
+                        name: 'nikSiswa'
+                    },
+                    {
+                        data: 'namaSiswa',
+                        name: 'namaSiswa',
+                    },
+                    {
+                        data: 'nipdSiswa',
+                        name: 'nipdSiswa'
+                    },
+                    {
+                        data: 'berkas',
+                        name: 'berkas'
+                    },
+                    {
+                        data: 'aksi',
+                        name: 'aksi',
+                        orderable: false,
+                        searchable: false
+                    },
+                ]
+            })
+
             $('#tambah').on('click', function() {
                 $("#loading").css("display", "block")
                 $.ajax({
