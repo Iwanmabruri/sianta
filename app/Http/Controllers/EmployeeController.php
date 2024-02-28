@@ -22,7 +22,7 @@ class EmployeeController extends Controller
                 $bt = '
             <div class="btn-group" role="group" aria-label="Basic example">
                 <button id="' . $row->nikPeg . '" class="edit btn btn-info btn-xs" type="button">edit</button>
-                <button id="' . $row->nikPeg . '" class="detail btn btn-primary btn-xs"  type="button">Right</button>
+                <button id="' . $row->nikPeg . '" class="detail btn btn-primary btn-xs"  type="button">detail</button>
                 <button id="' . $row->nikPeg . '" class="upload btn btn-warning btn-xs"  type="button">upload</button>
             </div>
                 
@@ -108,9 +108,9 @@ class EmployeeController extends Controller
         }
     }
 
-    public function show(Employee $employee)
+    public function show($id)
     {
-        //
+        return view('pegawai.form_detail', compact("id"));
     }
 
     public function update(Request $req)
@@ -158,8 +158,8 @@ class EmployeeController extends Controller
             if (file_exists($req->ft_ijazah_lama)) {
                 unlink($req->ft_ijazah_lama);
             }
-            $ft_ijazah->save("../gambar/pegawai/ijazah" . $filename1, 100);
-            $data["ijazah"] = "gambar/pegawai/ijazah" . $filename1;
+            $ft_ijazah->save("../gambar/pegawai/ijazah/" . $filename1, 100);
+            $data["ijazah"] = "gambar/pegawai/ijazah/" . $filename1;
         } else {
             $data["ijazah"] = $req->ft_ijazah_lama;
         }
