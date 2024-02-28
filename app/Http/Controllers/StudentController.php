@@ -33,8 +33,8 @@ class StudentController extends Controller
                             Aksi
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><button class="dropdown-item detail" data="'.$row->nikSiswa.'" type="button">Detail</button></li>
                             <li><button class="dropdown-item edit" data="'.$row->nikSiswa.'" type="button">Edit</button></li>
+                            <li><button class="dropdown-item detail" data="'.$row->nikSiswa.'" type="button">Detail</button></li>
                             <li><button class="dropdown-item upload" data="'.$row->nikSiswa.'" type="button">Upload</button></li>
                             <li><button class="dropdown-item print" data="'.$row->nikSiswa.'" type="button">Print</button></li>
                         </ul>
@@ -122,6 +122,10 @@ class StudentController extends Controller
     public function step3($nik, $bt)
     {
         return view('siswa.inputStep3', compact("nik", "bt"));
+    }
+
+    public function detail_siswa($nik) {
+        return view('siswa.detailSiswa', compact("nik"));
     }
 
     /**

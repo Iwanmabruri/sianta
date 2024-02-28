@@ -75,6 +75,16 @@
                 ]
             })
 
+            $('#myTable').on("click", ".edit", function() {
+                var data = $(this).attr("data")
+                window.location.href = "{{ url('/step1') }}/" + data + "/se"
+            })
+
+            $('#myTable').on("click", ".detail", function() {
+                var data = $(this).attr("data")
+                window.location.href = "{{ url('/detailSiswa') }}/" + data
+            })
+
             $('#tambah').on('click', function() {
                 $("#loading").css("display", "block")
                 $.ajax({
