@@ -9,65 +9,23 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    {{-- <a href="{{ url('/step1') }}" class="btn btn-primary">Tambah Data</a> --}}
                     <button id="tambah" class="btn btn-primary">Tambah Data</button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="myTable">
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>NIK</th>
                                     <th>Nama</th>
                                     <th>NIPD</th>
-                                    <th>Alamat</th>
                                     <th>Berkas</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Fulan Bin</td>
-                                    <td>00000000</td>
-                                    <td>Jl. Gajah Mada 009</td>
-                                    <td>Actions</td>
-                                    <td>
-                                        <div class="btn-group btn-group-sm">
-                                            <button type="button" class="btn btn-secondary dropdown-toggle"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Aksi
-                                            </button>
-                                            <div class="dropdown-menu z-50">
-                                                <a class="dropdown-item" href="#">Detail Data</a>
-                                                <a class="dropdown-item" href="#">Edit Data</a>
-                                                <a class="dropdown-item" href="#">Upload Berkas</a>
-                                                <a class="dropdown-item" href="#">Print Formulir</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Fulan Bin</td>
-                                    <td>00000000</td>
-                                    <td>Jl. Gajah Mada 009</td>
-                                    <td>Actions</td>
-                                    <td>
-                                        <div class="btn-group btn-group-sm">
-                                            <button type="button" class="btn btn-secondary dropdown-toggle"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Aksi
-                                            </button>
-                                            <div class="dropdown-menu z-50">
-                                                <a class="dropdown-item" href="#">Detail Data</a>
-                                                <a class="dropdown-item" href="#">Edit Data</a>
-                                                <a class="dropdown-item" href="#">Upload Berkas</a>
-                                                <a class="dropdown-item" href="#">Print Formulir</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -76,7 +34,47 @@
         </div>
     </div>
     <script>
-        $(function() {
+        $(document).ready(function() {
+            var table = $('#myTable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    type: "post",
+                    url: '{{ route('siswaData') }}',
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    }
+                },
+                columns: [{
+                        data: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'nikSiswa',
+                        name: 'nikSiswa'
+                    },
+                    {
+                        data: 'namaSiswa',
+                        name: 'namaSiswa',
+                    },
+                    {
+                        data: 'nipdSiswa',
+                        name: 'nipdSiswa'
+                    },
+                    {
+                        data: 'berkas',
+                        name: 'berkas'
+                    },
+                    {
+                        data: 'aksi',
+                        name: 'aksi',
+                        orderable: false,
+                        searchable: false
+                    },
+                ]
+            })
+
             $('#tambah').on('click', function() {
                 $("#loading").css("display", "block")
                 $.ajax({
