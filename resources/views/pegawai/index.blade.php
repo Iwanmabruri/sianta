@@ -33,9 +33,6 @@
     </div>
 
     <script type="text/javascript">
-        // $(function() {
-        //     $('#table').DataTable()
-        // })
         $(document).ready(function() {
             var table = $('#mytable').DataTable({
                 processing: true,
@@ -53,12 +50,12 @@
                         searchable: false
                     },
                     {
-                        data: 'nik',
-                        name: 'nik'
+                        data: 'nikPeg',
+                        name: 'nikPeg'
                     },
                     {
-                        data: 'nama',
-                        name: 'nama',
+                        data: 'nmPeg',
+                        name: 'nmPeg',
                     },
                     {
                         data: 'alamat',
@@ -85,7 +82,17 @@
             $('.data-table').on("click", ".edit", function () {
                 var id=$(this).attr("id")
                 window.location.href=`{{url('form_data2')}}/`+id
-            });
+            })
+
+            $('.data-table').on("click", ".upload", function () {
+                var id=$(this).attr("id")
+                window.location.href=`{{url('form_upload')}}/`+id
+            })
+
+            $('.data-table').on("click", ".detail", function () {
+                var id=$(this).attr("id")
+                window.location.href=`{{url('form_detail')}}/`+id
+            })
         })
     </script>
 @endsection
