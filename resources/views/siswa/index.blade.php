@@ -9,7 +9,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    {{-- <a href="{{ url('/step1') }}" class="btn btn-primary">Tambah Data</a> --}}
                     <button id="tambah" class="btn btn-primary">Tambah Data</button>
                 </div>
                 <div class="card-body">
@@ -33,38 +32,17 @@
                                     <td>Jl. Gajah Mada 009</td>
                                     <td>Actions</td>
                                     <td>
-                                        <div class="btn-group btn-group-sm">
-                                            <button type="button" class="btn btn-secondary dropdown-toggle"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="dropdown">
+                                            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
                                                 Aksi
                                             </button>
-                                            <div class="dropdown-menu z-50">
-                                                <a class="dropdown-item" href="#">Detail Data</a>
-                                                <a class="dropdown-item" href="#">Edit Data</a>
-                                                <a class="dropdown-item" href="#">Upload Berkas</a>
-                                                <a class="dropdown-item" href="#">Print Formulir</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Fulan Bin</td>
-                                    <td>00000000</td>
-                                    <td>Jl. Gajah Mada 009</td>
-                                    <td>Actions</td>
-                                    <td>
-                                        <div class="btn-group btn-group-sm">
-                                            <button type="button" class="btn btn-secondary dropdown-toggle"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Aksi
-                                            </button>
-                                            <div class="dropdown-menu z-50">
-                                                <a class="dropdown-item" href="#">Detail Data</a>
-                                                <a class="dropdown-item" href="#">Edit Data</a>
-                                                <a class="dropdown-item" href="#">Upload Berkas</a>
-                                                <a class="dropdown-item" href="#">Print Formulir</a>
-                                            </div>
+                                            <ul class="dropdown-menu">
+                                                <li><button class="dropdown-item" type="button">Detail</button></li>
+                                                <li><button class="dropdown-item" type="button">Edit</button></li>
+                                                <li><button class="dropdown-item" type="button">Upload</button></li>
+                                                <li><button class="dropdown-item" type="button">Print</button></li>
+                                            </ul>
                                         </div>
                                     </td>
                                 </tr>
