@@ -37,13 +37,13 @@
     <link rel="stylesheet" href="{{ asset('select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('cropimage-master/cropimage.css') }}" />
 
-    <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}} ">
-    <script src=" {{asset('plugins/jquery/jquery.min.js')}}"></script>
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }} ">
+    <script src=" {{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap -->
-    <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-    <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     {{-- <script src="{{ asset('js/jquery.min.js') }}"></script> --}}
     <script src="{{ asset('js/settings.js') }}"></script>
     <script src="{{ asset('select2/js/select2.full.min.js') }}"></script>
@@ -136,12 +136,13 @@
                                 class="align-middle">Dashboard</span>
                         </a>
                     </li>
-                    <li class="sidebar-item active">
-                        <a data-bs-target="#dashboards" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                    <li class="sidebar-item">
+                        <a data-bs-target="#dashboards" data-bs-toggle="collapse" class="sidebar-link  collapsed">
                             <i class="align-middle" data-feather="list"></i> <span class="align-middle">Data
                                 Induk</span>
                         </a>
-                        <ul id="dashboards" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                        <ul id="dashboards" class="sidebar-dropdown list-unstyled collapse show"
+                            data-bs-parent="#sidebar">
                             <li class="sidebar-item"><a class="sidebar-link" href="{{ url('/program') }}">Data
                                     Jurusan</a>
                             </li>
@@ -153,43 +154,19 @@
                         </ul>
                     </li>
                     <li class="sidebar-item">
-                        <a data-bs-target="#pages" data-bs-toggle="collapse" class="sidebar-link">
+                        <a data-bs-target="#pages" data-bs-toggle="collapse" class="sidebar-link collapsed">
                             <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Data
                                 Sekolah</span>
                         </a>
-                        {{-- <ul id="pages" class="sidebar-dropdown list-unstyled collapse show"
-                            data-bs-parent="#sidebar">
-                            <li class="sidebar-item"><a class='sidebar-link' href='pages-profile.html'>Profile</a>
+                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class='sidebar-link' href='#'>Kelas</a>
                             </li>
-                            <li class="sidebar-item"><a class='sidebar-link' href='pages-settings.html'>Settings</a>
+                            <li class="sidebar-item"><a class='sidebar-link' href='#'>Siswa
+                                    Perkelas</a>
                             </li>
-                            <li class="sidebar-item"><a class='sidebar-link' href='pages-clients.html'>Clients</a>
+                            <li class="sidebar-item"><a class='sidebar-link' href='#'>Mutasi</a>
                             </li>
-                            <li class="sidebar-item">
-                                <a data-bs-target="#projects" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                                    Projects
-                                </a>
-                                <ul id="projects" class="sidebar-dropdown list-unstyled collapse ">
-                                    <li class="sidebar-item">
-                                        <a class='sidebar-link' href='pages-projects-list.html'>List</a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a class='sidebar-link' href='pages-projects-detail.html'>Detail <span
-                                                class="badge badge-sidebar-primary">New</span></a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="sidebar-item"><a class='sidebar-link' href='pages-invoice.html'>Invoice</a>
-                            </li>
-                            <li class="sidebar-item"><a class='sidebar-link' href='pages-pricing.html'>Pricing</a>
-                            </li>
-                            <li class="sidebar-item"><a class='sidebar-link' href='pages-tasks.html'>Tasks</a></li>
-                            <li class="sidebar-item"><a class='sidebar-link' href='pages-chat.html'>Chat <span
-                                        class="badge badge-sidebar-primary">New</span></a></li>
-                            <li class="sidebar-item active"><a class='sidebar-link' href='pages-blank.html'>Blank
-                                    Page</a></li>
-                        </ul> --}}
-                    </li>
+                        </ul>
                     <li class="sidebar-item">
                         <a class='sidebar-link' href="{{ url('/user') }}">
                             <i class="align-middle" data-feather="users"></i> <span
