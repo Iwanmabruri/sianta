@@ -206,9 +206,10 @@
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input13">Nomor HP</label>
-                                <input type="number" class="form-control" id="input13" name="noHp"
-                                    placeholder="Isi dengan angka" required autocomplete="off"
-                                    value="<?= strlen($data->nohp) == 1 ? '' : $data->nohp ?>">
+                                <input type="number" data-parsley-length="[11,13]"
+                                    data-parsley-length-message="harus diisi 11 atau 13 angka" class="form-control"
+                                    id="input13" name="noHp" placeholder="Isi dengan angka" required
+                                    autocomplete="off" value="<?= strlen($data->nohp) == 1 ? '' : $data->nohp ?>">
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input14">Sekolah Asal</label>
@@ -248,7 +249,18 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-md-12">
+                                <?php
+                                if ($bt == 'st') {
+                                ?>
                                 <button type="button" id="batalkan" class="btn btn-danger">Batal</button>
+                                <?php
+                                } else {
+                                ?>
+                                <a href="{{ url('/student') }}" class="btn btn-danger">Kembali Ke data
+                                    siswa</a>
+                                <?php
+                                }
+                                ?>
                                 <a href="" class="btn btn-warning">Refresh</a>
                                 <div class="float-end">
                                     <button type="button" id="formSebelumnya" class="btn btn-primary">Kembali</button>

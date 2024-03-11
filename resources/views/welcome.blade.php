@@ -159,7 +159,7 @@
                                 Sekolah</span>
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item"><a class='sidebar-link' href='#'>Kelas</a>
+                            <li class="sidebar-item"><a class='sidebar-link' href='{{ url('/classroom') }}'>Kelas</a>
                             </li>
                             <li class="sidebar-item"><a class='sidebar-link' href='{{route('classroomStudent.index')}}'>Siswa
                                     Perkelas</a>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\StudyProgramController;
 use App\Http\Controllers\ClassroomStudentController;
 
@@ -25,9 +26,11 @@ Route::get('/program', [StudyProgramController::class, 'index']);
 Route::post('add-program', [StudyProgramController::class, 'store'])->name('add-program');
 Route::delete('delete-program/{idProdi}', [StudyProgramController::class, 'destroy'])->name('delete-program');
 Route::get('/student', [StudentController::class, 'index']);
+Route::post('siswaData', [StudentController::class, 'siswa_data'])->name('siswaData');
 Route::get('step1/{nik}/{bt}', [StudentController::class, 'step1']);
 Route::get('/step2/{nik}/{bt}', [StudentController::class, 'step2']);
 Route::get('/step3/{nik}/{bt}', [StudentController::class, 'step3']);
+Route::get('/detailSiswa/{nik}', [StudentController::class, 'detail_siswa']);
 Route::post('add-siswa', [StudentController::class, 'store'])->name('add-siswa');
 Route::post('simpanStep1', [StudentController::class, 'simpan1'])->name('simpanStep1');
 Route::post('simpanStep2', [StudentController::class, 'simpan2'])->name('simpanStep2');
@@ -60,3 +63,9 @@ Route::controller(ClassroomStudentController::class)->group(function () {
 
 Route::get('/user', [UserController::class, 'index'])->name('index');
 Route::post('/data', [UserController::class, 'dataUser'])->name('dataUser');
+
+//Route Kelas
+Route::get('/classroom', [ClassroomController::class, 'index'])->name('classroom');
+Route::get('/create-class', [ClassroomController::class, 'create'])->name('create-class');
+Route::post('add-class', [ClassroomController::class, 'store'])->name('add-class');
+Route::get('edit-class', [ClassroomController::class, 'edit'])->name('edit-class');

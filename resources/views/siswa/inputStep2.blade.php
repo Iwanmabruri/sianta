@@ -302,7 +302,18 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-md-12">
+                                <?php
+                                if ($bt == 'st') {
+                                ?>
                                 <button type="button" id="batalkan" class="btn btn-danger">Batal</button>
+                                <?php
+                                } else {
+                                ?>
+                                <a href="{{ url('/student') }}" class="btn btn-danger">Kembali Ke data
+                                    siswa</a>
+                                <?php
+                                }
+                                ?>
                                 <a href="" class="btn btn-warning">Refresh</a>
                                 <div class="float-end">
                                     <button type="button" id="formSebelumnya" class="btn btn-primary">Kembali</button>
