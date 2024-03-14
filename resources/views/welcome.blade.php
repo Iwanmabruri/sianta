@@ -161,7 +161,7 @@
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item"><a class='sidebar-link' href='{{ url('/classroom') }}'>Kelas</a>
                             </li>
-                            <li class="sidebar-item"><a class='sidebar-link' href='#'>Siswa
+                            <li class="sidebar-item"><a class='sidebar-link' href='{{route('classroomStudent.index')}}'>Siswa
                                     Perkelas</a>
                             </li>
                             <li class="sidebar-item"><a class='sidebar-link' href='#'>Mutasi</a>

@@ -6,6 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\StudyProgramController;
+use App\Http\Controllers\ClassroomStudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,15 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::post('/insert_data', 'store')->name('employee.insert_data');
     Route::post('/update_data', 'update')->name('employee.update_data');
     Route::post('/upload_data', 'upload_data')->name('employee.upload_data');
+});
+
+Route::controller(ClassroomStudentController::class)->group(function () {
+    Route::get('/classroomStudent', 'index')->name('classroomStudent.index');
+    Route::get('/form_data', 'form_data')->name('classroomStudent.form_data');
+    Route::get('/autocomplete', 'autocomplete')->name('classroomStudent.autocomplete');
+    Route::post('/loopSiswa', 'loopSiswa')->name('classroomStudent.loopSiswa');
+    Route::post('/kelasSiswaData', 'kelasSiswaData')->name('classroomStudent.kelasSiswaData');
+    Route::post('/insert_data', 'store')->name('classroomStudent.insert_data');
 });
 
 Route::get('/user', [UserController::class, 'index'])->name('index');
