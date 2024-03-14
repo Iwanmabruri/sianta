@@ -85,6 +85,16 @@
                 window.location.href = "{{ url('/detailSiswa') }}/" + data
             })
 
+            $('#myTable').on("click", ".upload", function() {
+                var data = $(this).attr("data")
+                window.location.href = "{{ url('/uploadBerkas') }}/" + data
+            })
+
+            $('#myTable').on("click", ".print", function() {
+                var data = $(this).attr("data")
+                window.location.href = "{{ url('/printData') }}/" + data
+            })
+
             $('#tambah').on('click', function() {
                 $("#loading").css("display", "block")
                 $.ajax({

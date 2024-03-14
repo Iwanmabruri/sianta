@@ -275,7 +275,7 @@
     </div>
     <script>
         $(function() {
-            $('#tglDiterima').val('<?= date('Y-m-d h:i:s') ?>')
+            $('#tglDiterima').val('<?= date('Y-m-d') ?>')
 
             $('#formSebelumnya').click(function() {
                 $("#loading").css("display", "block")
