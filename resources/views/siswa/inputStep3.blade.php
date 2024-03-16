@@ -18,7 +18,7 @@
         <div class="col-12">
             <form id="formSiswa" data-parsley-validate method="post">
                 {{ csrf_field() }}
-                <input type="hidden" name="nikAwal" value="<?= $nik ?>">
+                <input type="hidden" name="nikAwal" id="nik" value="<?= $nik ?>">
                 <div class="card">
                     <div class="card-header p-2">
                         <div class="row">
@@ -274,7 +274,7 @@
         </div>
     </div>
     <script>
-        $(function() {
+        $(document).ready(function() {
             $('#tglDiterima').val('<?= date('Y-m-d') ?>')
 
             $('#formSebelumnya').click(function() {
@@ -294,8 +294,8 @@
                     confirmButtonText: 'Ya',
                     cancelButtonText: 'Tidak'
                 }).then((result) => {
-                    $("#loading").css("display", "block")
                     if (result.isConfirmed) {
+                        $("#loading").css("display", "block")
                         $.ajax({
                             type: 'POST',
                             url: '{{ route('batal') }}',
@@ -383,9 +383,18 @@
                                 url: '{{ route('simpanStep3') }}',
                                 data: data,
                                 success: function(hasil) {
-                                    // $('#loading').css("display", "none")
-                                    window.location.href =
-                                        "{{ url('/student') }}"
+                                    $("#loading").css("display", "none")
+                                    if (hasil == 1) {
+                                        swal.fire({
+                                            title: 'Tersimpan',
+                                            text: 'Data berhasil tersimpan',
+                                            icon: 'success',
+                                            confirmButtonColor: '#3085d6',
+                                        }).then(() => {
+                                            window.location.href =
+                                                "{{ url('/student') }}"
+                                        })
+                                    }
                                 }
                             })
                         }

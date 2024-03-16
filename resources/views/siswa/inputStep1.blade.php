@@ -393,7 +393,7 @@
         </div>
     </div>
     <script>
-        $(function() {
+        $(document).ready(function() {
             $('#input5').change(function() {
                 var nm = $('#input5').val()
                 document.getElementById("namaSiswa").innerHTML = nm
@@ -420,8 +420,8 @@
                     confirmButtonText: 'Ya',
                     cancelButtonText: 'Tidak'
                 }).then((result) => {
-                    $("#loading").css("display", "block")
                     if (result.isConfirmed) {
+                        $("#loading").css("display", "block")
                         $.ajax({
                             type: 'POST',
                             url: '{{ route('batal') }}',

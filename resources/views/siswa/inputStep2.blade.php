@@ -15,7 +15,7 @@
         <div class="col-12">
             <form id="formSiswa" data-parsley-validate method="post">
                 {{ csrf_field() }}
-                <input type="hidden" name="nikAwal" value="<?= $nik ?>">
+                <input type="hidden" name="nikAwal" id="nik" value="<?= $nik ?>">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -327,7 +327,7 @@
         </div>
     </div>
     <script>
-        $(function() {
+        $(document).ready(function() {
             $('#formSebelumnya').click(function() {
                 $("#loading").css("display", "block")
                 window.location.href = "{{ url('/step1') }}/<?= $nik ?>/<?= $bt ?>"
@@ -345,8 +345,8 @@
                     confirmButtonText: 'Ya',
                     cancelButtonText: 'Tidak'
                 }).then((result) => {
-                    $("#loading").css("display", "block")
                     if (result.isConfirmed) {
+                        $("#loading").css("display", "block")
                         $.ajax({
                             type: 'POST',
                             url: '{{ route('batal') }}',

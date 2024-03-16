@@ -214,6 +214,10 @@ class StudentController extends Controller
 
     public function simpan1(Request $request)
     {
+        // $validasi = DB::table('siswa')->where('niksiswa', $request->nik)->count();
+        // if ($validasi > 0) {
+        //     return 'M';
+        // } else {
         $data = array();
         $data['nikSiswa'] = $request->nik;
         $data['nisnSiswa'] = $request->nisn;
@@ -235,6 +239,7 @@ class StudentController extends Controller
         } else {
             return "k";
         }
+        // }
     }
 
     public function simpan2(Request $request)
@@ -406,18 +411,19 @@ class StudentController extends Controller
             }
             $foto_keluar->save("../gambar/siswa/fotoKeluar/foto_keluar" . $fileName, 100);
             $data["fotoKeluar"] = "gambar/siswa/fotoKeluar/foto_keluar" . $fileName;
-        } else {
-            $data["fotoKeluar"] = $request->fotoKeluarLama;
         }
+        // else {
+        //     $data["fotoKeluar"] = $request->fotoKeluarLama;
+        // }
 
         $update = DB::table("siswa")
             ->where("nikSiswa", $request->nik)
             ->update($data);
 
-        if ($update) {
-            return "1";
+        if ($update == 0 || $update == 1) {
+            return 1;
         } else {
-            return "2";
+            return "k";
         }
     }
 
