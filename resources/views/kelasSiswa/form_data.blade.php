@@ -24,11 +24,11 @@
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="form-label" for="input1">Tahun Ajaran</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="form-select" aria-label="Default select example" name="TA">
+                                    <option selected>-- pilih --</option>
+                                    <option value="2223">2022-2023</option>
+                                    <option value="2324">2023-2024</option>
+                                    <option value="2425">2024-2025</option>
                                 </select>
                             </div>
                         </div>
@@ -80,11 +80,10 @@
 
 
   <div class="modal fade" id="my-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">cari data</h5>
-          {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
         </div>
         <div class="modal-body">
             <div class="card">
@@ -106,7 +105,6 @@
                     </table>
                 </div>
             </div>
-           
         </div>
       </div>
     </div>
@@ -204,12 +202,13 @@
                 } else {
                     var i = r.map(function (e,key) {
                         var t =  key+1
-                        return "<tr id="+t+'tabel'+">"+"<td>"+t+"</td>"+"<td>"+e.nama+"</td>"+"<td>"+e.alamat+"</td></tr>"
+                        return "<tr>"+"<td>"+t+"</td>"+"<td>"+"<input type='text' name='nik[]' value="+e.nik+">"+ e.nama+"</td>"+"<td>"+e.alamat+"</td></tr>"
                     })
                     $('#my-modal').modal('hide') 
                     $("#mytablebody").html('`' +i+ '`')
                 }
                 checked = []
+
             })
 
             $("#formKelasSiswa").on('submit', function(e) {

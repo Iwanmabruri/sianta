@@ -11,17 +11,14 @@ class ClassroomStudentController extends Controller
 {
     public function kelasSiswaData(Request $req)
     {
-        $data = DB::table("kelas")
-            ->join("pegawai", "kelas.nik_peg", "=", "pegawai.nikPeg");
+        $data = DB::table("kelas");
         $datatable =  DataTables::of($data);
         return $datatable
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $bt = '
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button id="' . $row->id_kelas . '" class="edit btn btn-info btn-xs" type="button">edit</button>
-                <button id="' . $row->id_kelas . '" class="detail btn btn-primary btn-xs"  type="button">detail</button>
-                <button id="' . $row->id_kelas . '" class="upload btn btn-warning btn-xs"  type="button">upload</button>
+                <button id="' . $row->id_kelas . '" class="setting btn btn-info btn-xs" type="button">setting</button>
             </div>
                 
                 ';
@@ -31,11 +28,7 @@ class ClassroomStudentController extends Controller
                 $a = $row->nama_kelas;
                 return $a . "";
             })
-            ->addColumn('wali', function ($row) {
-                $a = $row->nmPeg;
-                return $a . "";
-            })
-            ->rawColumns(['action', 'nama', 'wali'])
+            ->rawColumns(['action', 'nama'])
             ->make(true);
     }
 
@@ -92,8 +85,13 @@ class ClassroomStudentController extends Controller
         return view('kelasSiswa.form_data');
     }
 
-    public function store(Request $request)
+    public function store(Request $req)
     {
+        $data = array();
+        $no =  $req->nik;
+        for ($i = 0; $i < $no; $i++) {
+            dd($i);
+        }
     }
 
     /**
