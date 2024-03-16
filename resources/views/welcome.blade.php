@@ -159,12 +159,15 @@
                                 Sekolah</span>
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item"><a class='sidebar-link' href='{{ url('/classroom') }}'>Kelas</a>
+                            <li class="sidebar-item"><a class='sidebar-link'
+                                    href='{{ url('/classroom') }}'>Kelas</a>
                             </li>
-                            <li class="sidebar-item"><a class='sidebar-link' href='{{route('classroomStudent.index')}}'>Siswa
+                            <li class="sidebar-item"><a class='sidebar-link'
+                                    href='{{ route('classroomStudent.index') }}'>Siswa
                                     Perkelas</a>
                             </li>
-                            <li class="sidebar-item"><a class='sidebar-link' href='#'>Mutasi</a>
+                            <li class="sidebar-item"><a class='sidebar-link'
+                                    href='{{ url('/mutation') }}'>Mutasi</a>
                             </li>
                         </ul>
                     <li class="sidebar-item">

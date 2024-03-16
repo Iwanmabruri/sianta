@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\StudyProgramController;
 use App\Http\Controllers\ClassroomStudentController;
+use App\Http\Controllers\MutationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,24 +26,27 @@ Route::get('/', function () {
 Route::get('/program', [StudyProgramController::class, 'index']);
 Route::post('add-program', [StudyProgramController::class, 'store'])->name('add-program');
 Route::delete('delete-program/{idProdi}', [StudyProgramController::class, 'destroy'])->name('delete-program');
-Route::get('/student', [StudentController::class, 'index']);
-Route::post('siswaData', [StudentController::class, 'siswa_data'])->name('siswaData');
-Route::get('step1/{nik}/{bt}', [StudentController::class, 'step1']);
-Route::get('/step2/{nik}/{bt}', [StudentController::class, 'step2']);
-Route::get('/step3/{nik}/{bt}', [StudentController::class, 'step3']);
-Route::get('/detailSiswa/{nik}', [StudentController::class, 'detail_siswa']);
-Route::get('/uploadBerkas/{nik}', [StudentController::class, 'upload_berkas']);
-Route::get('/printData/{nik}', [StudentController::class, 'print_data']);
-Route::get('/printFormulir/{nik}', [StudentController::class, 'print_formulir']);
-Route::post('add-siswa', [StudentController::class, 'store'])->name('add-siswa');
-Route::post('simpanStep1', [StudentController::class, 'simpan1'])->name('simpanStep1');
-Route::post('simpanStep2', [StudentController::class, 'simpan2'])->name('simpanStep2');
-Route::post('simpanStep3', [StudentController::class, 'simpan3'])->name('simpanStep3');
-Route::post('upload-berkas', [StudentController::class, 'simpanBerkas'])->name('upload-berkas');
-Route::post('batal', [StudentController::class, 'batalkan'])->name('batal');
-Route::post('getKabupaten', [StudentController::class, 'get_kabupaten'])->name('getKabupaten');
-Route::post('getKecamatan', [StudentController::class, 'get_kecamatan'])->name('getKecamatan');
-Route::post('getDesa', [StudentController::class, 'get_desa'])->name('getDesa');
+
+Route::controller(StudentController::class)->group(function () {
+    Route::get('/student', [StudentController::class, 'index']);
+    Route::post('siswaData', [StudentController::class, 'siswa_data'])->name('siswaData');
+    Route::get('step1/{nik}/{bt}', [StudentController::class, 'step1']);
+    Route::get('/step2/{nik}/{bt}', [StudentController::class, 'step2']);
+    Route::get('/step3/{nik}/{bt}', [StudentController::class, 'step3']);
+    Route::get('/detailSiswa/{nik}', [StudentController::class, 'detail_siswa']);
+    Route::get('/uploadBerkas/{nik}', [StudentController::class, 'upload_berkas']);
+    Route::get('/printData/{nik}', [StudentController::class, 'print_data']);
+    Route::get('/printFormulir/{nik}', [StudentController::class, 'print_formulir']);
+    Route::post('add-siswa', [StudentController::class, 'store'])->name('add-siswa');
+    Route::post('simpanStep1', [StudentController::class, 'simpan1'])->name('simpanStep1');
+    Route::post('simpanStep2', [StudentController::class, 'simpan2'])->name('simpanStep2');
+    Route::post('simpanStep3', [StudentController::class, 'simpan3'])->name('simpanStep3');
+    Route::post('upload-berkas', [StudentController::class, 'simpanBerkas'])->name('upload-berkas');
+    Route::post('batal', [StudentController::class, 'batalkan'])->name('batal');
+    Route::post('getKabupaten', [StudentController::class, 'get_kabupaten'])->name('getKabupaten');
+    Route::post('getKecamatan', [StudentController::class, 'get_kecamatan'])->name('getKecamatan');
+    Route::post('getDesa', [StudentController::class, 'get_desa'])->name('getDesa');
+});
 
 Route::controller(EmployeeController::class)->group(function () {
     Route::get('/employee', 'index')->name('employee.index');
@@ -73,3 +77,7 @@ Route::get('/classroom', [ClassroomController::class, 'index'])->name('classroom
 Route::get('/create-class', [ClassroomController::class, 'create'])->name('create-class');
 Route::post('add-class', [ClassroomController::class, 'store'])->name('add-class');
 Route::get('edit-class', [ClassroomController::class, 'edit'])->name('edit-class');
+
+Route::controller(MutationController::class)->group(function () {
+    Route::get('/mutation', [MutationController::class, 'index']);
+});

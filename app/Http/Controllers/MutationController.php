@@ -14,7 +14,7 @@ class MutationController extends Controller
      */
     public function index()
     {
-        //
+        return view('mutasi.index');
     }
 
     /**
