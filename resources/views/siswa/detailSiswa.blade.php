@@ -311,10 +311,147 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card mb-3 shadow">
+                                <div class="card-header border-bottom py-2">
+                                    <h3 class="card-title">Detail Berkas</h3>
+                                </div>
+                                <div class="card-body py-1">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-2">
+                                            <label class="form-label">Foto Diri</label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <a href="<?= $data->fotoMasuk ?>" download=""
+                                                        class="btn btn-primary mb-2 w-100 <?= $data->fotoMasuk == '' ? 'disabled' : '' ?>">
+                                                        <i class="align-middle" data-feather="download"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button
+                                                        class="preview btn btn-primary mb-2 w-100 <?= $data->fotoMasuk == '' ? 'disabled' : '' ?>"
+                                                        data="<?= $data->fotoMasuk ?>"><i class="align-middle"
+                                                            data-feather="zoom-in"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="border mb-2" style="width: 100%; height: 151.1811023622px;">
+                                                <div
+                                                    style="background-repeat: no-repeat;background-size: 100%;background-image: url('<?= asset($data->fotoMasuk != '' ? $data->fotoMasuk : 'img/avatars/no.svg') ?>');width:100%;height:100%;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="form-label">Scan KK</label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <a href="<?= $data->fotoKK ?>" download=""
+                                                        class="btn btn-primary mb-2 w-100 <?= $data->fotoKK == '' ? 'disabled' : '' ?>">
+                                                        <i class="align-middle" data-feather="download"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button
+                                                        class="preview btn btn-primary mb-2 w-100 <?= $data->fotoKK == '' ? 'disabled' : '' ?>"
+                                                        data="<?= $data->fotoKK ?>"><i class="align-middle"
+                                                            data-feather="zoom-in"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="border mb-2" style="width: 100%; height: 151.1811023622px;">
+                                                <div
+                                                    style="background-repeat: no-repeat;background-size: 100%;background-image: url('<?= asset($data->fotoKK != '' ? $data->fotoKK : 'img/avatars/no.svg') ?>');width:100%;height:100%;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="form-label">Scan Akta</label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <a href="<?= $data->fotoAkta ?>" download=""
+                                                        class="btn btn-primary mb-2 w-100 <?= $data->fotoAkta == '' ? 'disabled' : '' ?>">
+                                                        <i class="align-middle" data-feather="download"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button
+                                                        class="preview btn btn-primary mb-2 w-100 <?= $data->fotoAkta == '' ? 'disabled' : '' ?>"
+                                                        data="<?= $data->fotoAkta ?>"><i class="align-middle"
+                                                            data-feather="zoom-in"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="border mb-2" style="width: 100%; height: 151.1811023622px;">
+                                                <div
+                                                    style="background-repeat: no-repeat;background-size: 100%;background-image: url('<?= asset($data->fotoAkta != '' ? $data->fotoAkta : 'img/avatars/no.svg') ?>');width:100%;height:100%;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="form-label">Scan Ijazah</label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <a href="<?= $data->fotoIjazah ?>" download=""
+                                                        class="btn btn-primary mb-2 w-100 <?= $data->fotoIjazah == '' ? 'disabled' : '' ?>">
+                                                        <i class="align-middle" data-feather="download"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button
+                                                        class="preview btn btn-primary mb-2 w-100 <?= $data->fotoIjazah == '' ? 'disabled' : '' ?>"
+                                                        data="<?= $data->fotoIjazah ?>"><i class="align-middle"
+                                                            data-feather="zoom-in"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="border mb-2" style="width: 100%; height: 151.1811023622px;">
+                                                <div
+                                                    style="background-repeat: no-repeat;background-size: 100%;background-image: url('<?= asset($data->fotoIjazah != '' ? $data->fotoIjazah : 'img/avatars/no.svg') ?>');width:100%;height:100%;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="form-label">Foto Lulus</label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <a href="<?= $data->fotoKeluar ?>" download=""
+                                                        class="btn btn-primary mb-2 w-100 <?= $data->fotoKeluar == '' ? 'disabled' : '' ?>">
+                                                        <i class="align-middle" data-feather="download"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button
+                                                        class="preview btn btn-primary mb-2 w-100 <?= $data->fotoKeluar == '' ? 'disabled' : '' ?>"
+                                                        data="<?= $data->fotoKeluar ?>"><i class="align-middle"
+                                                            data-feather="zoom-in"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="border mb-2" style="width: 100%; height: 151.1811023622px;">
+                                                <div
+                                                    style="background-repeat: no-repeat;background-size: 100%;background-image: url('<?= asset($data->fotoKeluar != '' ? $data->fotoKeluar : 'img/avatars/no.svg') ?>');width:100%;height:100%;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="modal fade" id="modale" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-0 d-flex justify-content-center" style="background: rgba(0,0,0,0.5) !important;">
+                    <img id="gambarnya" src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            $('.preview').on('click', function() {
+                var gambar = $(this).attr("data")
+                $('#gambarnya').attr('src', gambar)
+                $('#modale').modal('show')
+            })
+        })
+    </script>
 @endsection

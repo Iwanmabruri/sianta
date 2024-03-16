@@ -13,7 +13,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped" id="myTable">
+                        <table class="table table-striped w-100" id="myTable">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -83,6 +83,16 @@
             $('#myTable').on("click", ".detail", function() {
                 var data = $(this).attr("data")
                 window.location.href = "{{ url('/detailSiswa') }}/" + data
+            })
+
+            $('#myTable').on("click", ".upload", function() {
+                var data = $(this).attr("data")
+                window.location.href = "{{ url('/uploadBerkas') }}/" + data
+            })
+
+            $('#myTable').on("click", ".print", function() {
+                var data = $(this).attr("data")
+                window.location.href = "{{ url('/printData') }}/" + data
             })
 
             $('#tambah').on('click', function() {
