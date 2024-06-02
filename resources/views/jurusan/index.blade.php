@@ -23,8 +23,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Prog. Keahlian</th>
-                                <th class="d-none d-md-table-cell">Bid. Keahlian</th>
+                                <th>Bid. Keahlian</th>
+                                <th class="d-none d-md-table-cell">Prog. Keahlian</th>
                                 <th>Pembuatan</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -34,9 +34,9 @@
                             <tbody>
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $item->nmProdi }}</td>
-                                    <td class="d-none d-md-table-cell">{{ $item->konsKeahlian }}</td>
-                                    <td>{{ $item->thnBuat }}</td>
+                                    <td>{{ $item->bidang_keahlian }}</td>
+                                    <td class="d-none d-md-table-cell">{{ $item->program_keahlian }}</td>
+                                    <td>{{ $item->tahun_dibuat }}</td>
                                     <td>{{ $item->status }}</td>
                                     <td class="table-action">
                                         <a href="#"><i class="align-middle" data-feather="edit-2"></i></a>
@@ -62,10 +62,10 @@
                                     @csrf
                                     @method('POST')
                                     <div class="modal-body m-3">
-                                        <label class="form-label" for="nmJurusan">Prog. Keahlian</label>
+                                        <label class="form-label" for="nmJurusan">Bid. Keahlian</label>
                                         <input type="text" class="form-control" id="nmJurusan"
                                             placeholder="Isi Program Keahlian" name="nmProdi">
-                                        <label class="form-label mt-2" for="konsKeahlian">Bid. Keahlian</label>
+                                        <label class="form-label mt-2" for="konsKeahlian">Prog. Keahlian</label>
                                         <input type="text" class="form-control" id="konsKeahlian"
                                             placeholder="Isi Bidang Keahlian" name="konsKeahlian">
                                         <label class="form-label mt-2" for="thnBuat">Thn Pembuatan</label>
