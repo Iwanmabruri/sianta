@@ -5,7 +5,12 @@
 
 @section('konten')
     <h1 class="h3 mb-3">Form tahun Ajaran</h1>
-
+<?php
+    $data =  DB::table('tahun_ajaran')->where('id_tahun_ajaran', '=', $id)->first();
+    $waktu1 =  substr($data->tahun_ajaran, 0,4);
+    $waktu2 =  substr($data->tahun_ajaran, 5,8);
+    echo $waktu1;
+?>
     <div class="row">
         <div class="col-12">
             <form id="simpan" data-parsley-validate method="post">
@@ -19,8 +24,17 @@
                                     <label class="form-label" for="input4">Nama Tahun Ajaran</label>
                                     <select class="form-control mb-3" id="input4" name="nm_thn_ajr" required>
                                         <option value="" hidden>Pilih Nama Tahun Ajaran</option>
-                                        <option value="genap" >Genap</option>
-                                        <option value="ganjil" >Ganjil</option>
+                                        <?php
+                                            if ($data->nama_tahun_ajaran === "genap") {
+                                                $t = "selected";
+                                                $i = "";
+                                            } elseif ($data->nama_tahun_ajaran === "ganjil") {
+                                                $i = "selected";
+                                                $t = "";
+                                            } 
+                                        ?>
+                                        <option <?= $t;?>  value="genap" >Genap</option>
+                                        <option <?= $i;?> value="ganjil"  >Ganjil</option>
                                     </select>
                                 </div>
             
@@ -31,10 +45,12 @@
                                             <select class="form-control mb-3" id="input4" name="thn_ajr1" required>
                                                 <option value="" hidden>Pilih Tahun Ajaran</option>
                                                 <?php
+
                                                     for ($i = 2020; $i < date('Y')+4; $i++) {
                                                         $thn = $i;
+                                                        
                                                         ?>
-                                                        <option value="<?= $thn ?>"><?= $thn ?></option>
+                                                        <option  value="<?= $thn ?>"><?= $thn ?></option>
                                                     <?php
                                                         }
                                                     ?>
