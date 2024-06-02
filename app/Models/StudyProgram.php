@@ -13,7 +13,7 @@ class StudyProgram extends Model
     protected $fillable = [
         'bidang_keahlian',
         'program_keahlian',
-        'tahun_buat',
+        'tahun_dibuat',
         'status'
     ];
 }
