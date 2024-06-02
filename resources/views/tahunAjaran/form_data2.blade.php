@@ -9,15 +9,14 @@
     $data =  DB::table('tahun_ajaran')->where('id_tahun_ajaran', '=', $id)->first();
     $waktu1 =  substr($data->tahun_ajaran, 0,4);
     $waktu2 =  substr($data->tahun_ajaran, 5,8);
-    echo $waktu1;
 ?>
     <div class="row">
         <div class="col-12">
-            <form id="simpan" data-parsley-validate method="post">
+            <form id="edit" data-parsley-validate method="post">
                 <div class="card">
                     <div class="card-body">
                             {{ csrf_field() }}
-
+                        <input type="hidden" name="id" value="<?= $id?>">
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="mb-2 col-md-6">
@@ -44,14 +43,18 @@
                                         <div class="col-md-5">
                                             <select class="form-control mb-3" id="input4" name="thn_ajr1" required>
                                                 <option value="" hidden>Pilih Tahun Ajaran</option>
-                                                <?php
-
-                                                    for ($i = 2020; $i < date('Y')+4; $i++) {
-                                                        $thn = $i;
-                                                        
-                                                        ?>
-                                                        <option  value="<?= $thn ?>"><?= $thn ?></option>
                                                     <?php
+                                                        for ($i = 2020; $i < date('Y')+5; $i++) {
+                                                                $thn = $i;
+                                                            if ($waktu1 == $thn) {
+                                                        ?>
+                                                    <option selected value="<?= $thn ?>"><?= $thn ?></option>
+                                                    <?php
+                                                            }else{
+                                                        ?>
+                                                    <option value="<?= $thn ?>"><?= $thn ?></option>
+                                                    <?php
+                                                    }
                                                         }
                                                     ?>
                                             </select>
@@ -64,10 +67,16 @@
                                                 <option value="" hidden>Pilih Tahun Ajaran</option>
                                                 <?php
                                                     for ($i = 2021; $i < date('Y')+5; $i++) {
-                                                        $thn = $i;
+                                                                $thn = $i;
+                                                            if ($waktu2 == $thn) {
                                                         ?>
-                                                        <option value="<?= $thn ?>"><?= $thn ?></option>
+                                                    <option selected value="<?= $thn ?>"><?= $thn ?></option>
                                                     <?php
+                                                            }else{
+                                                        ?>
+                                                    <option value="<?= $thn ?>"><?= $thn ?></option>
+                                                    <?php
+                                                    }
                                                         }
                                                     ?>
                                             </select>
@@ -91,7 +100,7 @@
     </div>
     <script>
         $(document).ready(function () {
-            $("#simpan").on('submit', function(e) {
+            $("#edit").on('submit', function(e) {
                 e.preventDefault()
                 var data = $(this).serialize()
                 var form = $(this)
@@ -100,7 +109,7 @@
                     $('#loading').css("display", "block")
                     $.ajax({
                         type: 'POST',
-                        url: '{{ route('tahunAjaran.simpan') }}',
+                        url: '{{ route('tahunAjaran.edit') }}',
                         data: data,
                         success: function(hasil) {
                             $('#loading').css("display", "none")

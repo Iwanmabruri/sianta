@@ -79,9 +79,45 @@
                 window.location.href=`{{url('form_data_thn2')}}/`+id
             })
 
-            $('.data-table').on("click", ".upload", function () {
+            $('.data-table').on("click", ".hapus", function () {
                 var id=$(this).attr("id")
-                window.location.href=`{{url('form_upload')}}/`+id
+                swal.fire({
+                    title: "Anda Yakin?",
+                    text: 'Anda tidak dapat mengmbalikan ini',
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Tidak'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $("#loading").css("display", "block")
+                        $.ajax({
+                            type: "post",
+                            url: '{{ route('tahunAjaran.hapus') }}',
+                            data: {
+                                "_token": "{{ csrf_token() }}",
+                                "id" : id
+                            },
+                            success: function(hasil) {
+                                $('#loading').css("display", "none")
+                                    if (hasil == 'S') {
+                                        swal.fire({
+                                            title: 'success',
+                                            text: 'Berhasil menyimpan data',
+                                            icon: 'success',
+                                            confirmButtonColor: '#3085d6',
+                                        }).then(function () {
+                                            window.location.href = "{{ route('tahunAjaran.index') }}" 
+                                            
+                                        })
+                                    }
+                            }
+                        })
+                    }
+                })
+
             })
 
             $('.data-table').on("click", ".detail", function () {

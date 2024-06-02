@@ -32,6 +32,8 @@ Route::controller(TahunAjaranController::class)->group(function () {
     Route::get('/form_data_thn2/{id}', 'form_data_thn2')->name('tahunAjaran.form_data_thn2');
     Route::post('dataTahunAjaran', 'dataTahunAjaran')->name('tahunAjaran.dataTahunAjaran');
     Route::post('simpan', 'simpan')->name('tahunAjaran.simpan');
+    Route::post('edit', 'edit')->name('tahunAjaran.edit');
+    Route::post('hapus', 'hapus')->name('tahunAjaran.hapus');
 });
 
 

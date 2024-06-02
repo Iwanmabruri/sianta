@@ -16,7 +16,7 @@ class TahunAjaranController extends Controller
 
     public function dataTahunAjaran(Request $req)
     {
-        $data = DB::table("tahun_ajaran");
+        $data = DB::table("tahun_ajaran")->where('status','=','aktif');
         $datatable =  DataTables::of($data);
         return $datatable
             ->addIndexColumn()
@@ -24,6 +24,7 @@ class TahunAjaranController extends Controller
                 $bt = '
             <div class="btn-group" role="group" aria-label="Basic example">
                 <button id="' . $row->id_tahun_ajaran .'" class="edit btn btn-info btn-xs" type="button">edit</button>
+                <button id="' . $row->id_tahun_ajaran .'" class="hapus btn btn-warning btn-xs" type="button">hapus</button>
             </div>
                 
                 ';
@@ -65,5 +66,27 @@ class TahunAjaranController extends Controller
         } else {
             return "k";
         }
+    }
+
+    public function edit(Request $req) {
+        $data = array();
+        $data["nama_tahun_ajaran"] = $req->nm_thn_ajr;
+        $data["tahun_ajaran"] = $req->thn_ajr1."-".$req->thn_ajr2;
+        $data["status"] = "aktif";
+        $tambah = DB::table("tahun_ajaran")->where('id_tahun_ajaran','=',$req->id)->update($data);
+        if ($tambah) {
+            return "S";
+        } else {
+            return "k";
+        }
+    }
+
+    public function hapus(Request $req) {
+        $data = array();
+        $data["status"] = "tidak";
+        $tambah = DB::table("tahun_ajaran")->where('id_tahun_ajaran','=',$req->id)->update($data);
+        if ($tambah) {
+            return "S";
+        } 
     }
 }
