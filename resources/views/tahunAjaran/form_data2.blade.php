@@ -19,24 +19,6 @@
                         <input type="hidden" name="id" value="<?= $id?>">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="mb-2 col-md-6">
-                                    <label class="form-label" for="input4">Nama Tahun Ajaran</label>
-                                    <select class="form-control mb-3" id="input4" name="nm_thn_ajr" required>
-                                        <option value="" hidden>Pilih Nama Tahun Ajaran</option>
-                                        <?php
-                                            if ($data->nama_tahun_ajaran === "genap") {
-                                                $t = "selected";
-                                                $i = "";
-                                            } elseif ($data->nama_tahun_ajaran === "ganjil") {
-                                                $i = "selected";
-                                                $t = "";
-                                            } 
-                                        ?>
-                                        <option <?= $t;?>  value="genap" >Genap</option>
-                                        <option <?= $i;?> value="ganjil"  >Ganjil</option>
-                                    </select>
-                                </div>
-            
                                 <div class="mb-2 col-md-5">
                                     <label class="form-label" for="input4">Tahun Ajaran</label>
                                     <div class="row">
@@ -83,6 +65,12 @@
 
                                         </div>
                                     </div>
+                                </div>
+                                <div class="mb-2 col-md-6">
+                                    <label class="form-label" for="input4">Keterangan</label>
+                                    <textarea  class="form-control mb-3" name="ket" id="" required>
+                                        <?= $data->keterangan?>
+                                    </textarea>
                                 </div>
                             </div>
                     </div>

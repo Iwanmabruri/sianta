@@ -146,6 +146,9 @@
                             <li class="sidebar-item"><a class="sidebar-link" href="{{ url('/tahunAjaran') }}">Data
                                     Tahun Ajaran</a>
                             </li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="{{ url('/semester') }}">Data
+                                    Semester</a>
+                            </li>
                             <li class="sidebar-item"><a class="sidebar-link" href="{{ url('/program') }}">Data
                                     Jurusan</a>
                             </li>

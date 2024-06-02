@@ -17,8 +17,9 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Semester</th>
+                                <th>Nama Semester</th>
                                 <th>Tahun Ajaran</th>
-                                <th>keterangan</th>
                                 <th>Status</th>
                                 <th width="100px">Action</th>
                             </tr>
@@ -38,7 +39,7 @@
                 serverSide: true,
                 ajax: {
                     type: "post",
-                    url: '{{ route('tahunAjaran.dataTahunAjaran') }}',
+                    url: '{{ route('semester.dataSemester') }}',
                     data: {
                         "_token": "{{ csrf_token() }}"
                     }
@@ -49,12 +50,16 @@
                         searchable: false
                     },
                     {
-                        data: 'tahunAjaran',
-                        name: 'tahunAjaran'
+                        data: 'semester',
+                        name: 'semester'
                     },
                     {
-                        data: 'keterangan',
-                        name: 'keterangan',
+                        data: 'namaSemester',
+                        name: 'namaSemester'
+                    },
+                    {
+                        data: 'tahunAjaran',
+                        name: 'tahunAjaran',
                     },
                     {
                         data: 'status',
@@ -71,14 +76,15 @@
 
 
             $('#tambah').on('click', function() {
-                window.location.href = "{{ url('form_data_thn') }}"
+                window.location.href = "{{ url('form_data_smt') }}"
             })
 
             $('.data-table').on("click", ".edit", function () {
                 var id=$(this).attr("id")
-                window.location.href=`{{url('form_data_thn2')}}/`+id
+                window.location.href=`{{url('form_data_smt2')}}/`+id
             })
 
+            
             $('.data-table').on("click", ".hapus", function () {
                 var id=$(this).attr("id")
                 swal.fire({
@@ -95,7 +101,7 @@
                         $("#loading").css("display", "block")
                         $.ajax({
                             type: "post",
-                            url: '{{ route('tahunAjaran.hapus') }}',
+                            url: '{{ route('semester.hapus') }}',
                             data: {
                                 "_token": "{{ csrf_token() }}",
                                 "id" : id
@@ -109,7 +115,7 @@
                                             icon: 'success',
                                             confirmButtonColor: '#3085d6',
                                         }).then(function () {
-                                            window.location.href = "{{ route('tahunAjaran.index') }}" 
+                                            window.location.href = "{{ route('semester.index') }}" 
                                             
                                         })
                                     }
@@ -120,10 +126,6 @@
 
             })
 
-            $('.data-table').on("click", ".detail", function () {
-                var id=$(this).attr("id")
-                window.location.href=`{{url('form_detail')}}/`+id
-            })
         })
     </script>
 @endsection

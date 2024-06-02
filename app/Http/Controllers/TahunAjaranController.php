@@ -34,8 +34,8 @@ class TahunAjaranController extends Controller
                 $a = $row->tahun_ajaran;
                 return $a . "";
             })
-            ->addColumn('namaTahunAjaran', function ($row) {
-                $a = $row->nama_tahun_ajaran;
+            ->addColumn('keterangan', function ($row) {
+                $a = $row->keterangan;
                 return $a . "";
             })
             ->addColumn('status', function ($row) {
@@ -44,7 +44,7 @@ class TahunAjaranController extends Controller
                 ';
                 return $a . "";
             })
-            ->rawColumns(['action', 'tahunAjaran','namaTahunAjaran','status'])
+            ->rawColumns(['action', 'tahunAjaran','keterangan','status'])
             ->make(true);
     }
 
@@ -57,7 +57,7 @@ class TahunAjaranController extends Controller
 
     public function simpan(Request $req) {
         $data = array();
-        $data["nama_tahun_ajaran"] = $req->nm_thn_ajr;
+        $data["keterangan"] = $req->ket;
         $data["tahun_ajaran"] = $req->thn_ajr1."-".$req->thn_ajr2;
         $data["status"] = "aktif";
         $tambah = DB::table("tahun_ajaran")->insert($data);
@@ -70,7 +70,7 @@ class TahunAjaranController extends Controller
 
     public function edit(Request $req) {
         $data = array();
-        $data["nama_tahun_ajaran"] = $req->nm_thn_ajr;
+        $data["keterangan"] = $req->ket;
         $data["tahun_ajaran"] = $req->thn_ajr1."-".$req->thn_ajr2;
         $data["status"] = "aktif";
         $tambah = DB::table("tahun_ajaran")->where('id_tahun_ajaran','=',$req->id)->update($data);

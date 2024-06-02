@@ -9,6 +9,7 @@ use App\Http\Controllers\StudyProgramController;
 use App\Http\Controllers\ClassroomStudentController;
 use App\Http\Controllers\MutationController;
 use App\Http\Controllers\TahunAjaranController;
+use App\Http\Controllers\SemesterController;
 
 
 /*
@@ -34,6 +35,17 @@ Route::controller(TahunAjaranController::class)->group(function () {
     Route::post('simpan', 'simpan')->name('tahunAjaran.simpan');
     Route::post('edit', 'edit')->name('tahunAjaran.edit');
     Route::post('hapus', 'hapus')->name('tahunAjaran.hapus');
+});
+
+
+Route::controller(SemesterController::class)->group(function () {
+    Route::get('/semester', 'index')->name('semester.index');
+    Route::get('/form_data_smt', 'form_data_smt')->name('semester.form_data_smt');
+    Route::get('/form_data_smt2/{id}', 'form_data_smt2')->name('tahunAjaran.form_data_smt2');
+    Route::post('dataSemester', 'dataSemester')->name('semester.dataSemester');
+    Route::post('simpan', 'simpan')->name('semester.simpan');
+    Route::post('edit', 'edit')->name('semester.edit');
+    Route::post('hapus', 'hapus')->name('semester.hapus');
 });
 
 
