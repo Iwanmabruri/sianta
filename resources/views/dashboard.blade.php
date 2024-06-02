@@ -5,7 +5,6 @@
 
 @section('konten')
     <h1 class="h3 mb-3">Dashboard | Halaman Utama</h1>
-
     <div class="row">
         <div class="col-12">
             <div class="card">

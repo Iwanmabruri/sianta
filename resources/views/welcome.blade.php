@@ -143,6 +143,9 @@
                         </a>
                         <ul id="dashboards" class="sidebar-dropdown list-unstyled collapse show"
                             data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link" href="{{ url('/tahunAjaran') }}">Data
+                                    Tahun Ajaran</a>
+                            </li>
                             <li class="sidebar-item"><a class="sidebar-link" href="{{ url('/program') }}">Data
                                     Jurusan</a>
                             </li>

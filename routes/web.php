@@ -8,6 +8,8 @@ use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\StudyProgramController;
 use App\Http\Controllers\ClassroomStudentController;
 use App\Http\Controllers\MutationController;
+use App\Http\Controllers\TahunAjaranController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,16 @@ use App\Http\Controllers\MutationController;
 Route::get('/', function () {
     return view('dashboard');
 });
+
+Route::controller(TahunAjaranController::class)->group(function () {
+    Route::get('/tahunAjaran', 'index')->name('tahunAjaran.index');
+    Route::get('/form_data_thn', 'form_data_thn')->name('tahunAjaran.form_data_thn');
+    Route::get('/form_data_thn2/{id}', 'form_data_thn2')->name('tahunAjaran.form_data_thn2');
+    Route::post('dataTahunAjaran', 'dataTahunAjaran')->name('tahunAjaran.dataTahunAjaran');
+    Route::post('simpan', 'simpan')->name('tahunAjaran.simpan');
+});
+
+
 Route::get('/program', [StudyProgramController::class, 'index']);
 Route::post('add-program', [StudyProgramController::class, 'store'])->name('add-program');
 Route::delete('delete-program/{idProdi}', [StudyProgramController::class, 'destroy'])->name('delete-program');
@@ -62,7 +74,7 @@ Route::controller(EmployeeController::class)->group(function () {
 
 Route::controller(ClassroomStudentController::class)->group(function () {
     Route::get('/classroomStudent', 'index')->name('classroomStudent.index');
-    Route::get('/form_data', 'form_data')->name('classroomStudent.form_data');
+    Route::get('/form_data/{id}/{nikPeg}', 'form_data')->name('classroomStudent.form_data');
     Route::get('/autocomplete', 'autocomplete')->name('classroomStudent.autocomplete');
     Route::post('/loopSiswa', 'loopSiswa')->name('classroomStudent.loopSiswa');
     Route::post('/kelasSiswaData', 'kelasSiswaData')->name('classroomStudent.kelasSiswaData');
