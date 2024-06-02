@@ -48,10 +48,16 @@ Route::controller(SemesterController::class)->group(function () {
     Route::post('hapus', 'hapus')->name('semester.hapus');
 });
 
+Route::controller(StudyProgramController::class)->group(function () {
+    Route::get('/program', 'index')->name('program.index');
+    Route::get('/form_data_progKeh', 'form_data_progKeh')->name('program.form_data_progKeh');
+    Route::get('/form_data_progKeh2/{id}', 'form_data_progKeh2')->name('program.form_data_progKeh2');
+    Route::post('dataProgram', 'dataProgram')->name('program.dataProgram');
+    Route::post('simpan', 'simpan')->name('program.simpan');
+    Route::post('edit', 'edit')->name('program.edit');
+    Route::post('hapus', 'hapus')->name('program.hapus');
+});
 
-Route::get('/program', [StudyProgramController::class, 'index']);
-Route::post('add-program', [StudyProgramController::class, 'store'])->name('add-program');
-Route::delete('delete-program/{idProdi}', [StudyProgramController::class, 'destroy'])->name('delete-program');
 
 Route::controller(StudentController::class)->group(function () {
     Route::get('/student', [StudentController::class, 'index']);

@@ -4,93 +4,102 @@ namespace App\Http\Controllers;
 
 use App\Models\StudyProgram;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
 
 class StudyProgramController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $study = StudyProgram::all();
-        return view('jurusan.index', compact('study'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        // StudyProgram::create([
-        //     'nmProdi=>$request->nmProdi',
-        //     'konsKeahlian=>$request->konsKeahlian'
-        // ]);
-        StudyProgram::query()->create($request->all());
         return view('jurusan.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\StudyProgram  $studyProgram
-     * @return \Illuminate\Http\Response
-     */
-    public function show(StudyProgram $studyProgram)
+    public function dataProgram(Request $req)
     {
-        //
+        $data = DB::table("program_keahlian")->where('status','=','aktif');
+        $datatable =  DataTables::of($data);
+        return $datatable
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+                $bt = '
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button id="' . $row->id_program_keahlian .'" class="edit btn btn-info btn-xs" type="button">edit</button>
+                <button id="' . $row->id_program_keahlian .'" class="hapus btn btn-warning btn-xs" type="button">hapus</button>
+            </div>
+                
+                ';
+                return $bt . "";
+            })
+            ->addColumn('bidangKeahlian', function ($row) {
+                $a = $row->bidang_keahlian;
+                return $a . "";
+            })
+            ->addColumn('programKeahlian', function ($row) {
+                $a = $row->program_keahlian;
+                return $a . "";
+            })
+            ->addColumn('tahunDibuat', function ($row) {
+                $a = $row->tahun_dibuat;
+                return $a . "";
+            })
+            ->addColumn('status', function ($row) {
+                $a = '
+                <span>'.  $row->status.' </span>
+                ';
+                return $a . "";
+            })
+            ->rawColumns(['action', 'bidangKeahlian','programKeahlian','tahunDibuat','status'])
+            ->make(true);
+    }
+    
+    public function form_data_progKeh()
+    {
+        return view('jurusan.form_data');
+    }
+    public function form_data_progKeh2($id)
+    {
+        return view('jurusan.form_data2', compact("id"));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\StudyProgram  $studyProgram
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(StudyProgram $studyProgram)
+    public function simpan(Request $req)
     {
-        //
+        $data = array();
+        $data["bidang_keahlian"] = $req->bidKeh;
+        $data["program_keahlian"] = $req->progKeh;
+        $data["tahun_dibuat"] = $req->thn;
+        $data["status"] = "aktif";
+        $tambah = DB::table("program_keahlian")->insert($data);
+        if ($tambah) {
+            return "S";
+        } else {
+            return "k";
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\StudyProgram  $studyProgram
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, StudyProgram $studyProgram)
+    public function edit(Request $req)
     {
-        //
+        $data = array();
+        $data["bidang_keahlian"] = $req->bidKeh;
+        $data["program_keahlian"] = $req->progKeh;
+        $data["tahun_dibuat"] = $req->thn;
+        $tambah = DB::table("program_keahlian")->where('id_program_keahlian','=',$req->id)->update($data);
+        if ($tambah) {
+            return "S";
+        } else {
+            return "k";
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\StudyProgram  $studyProgram
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($idProdi)
+    public function hapus(Request $req)
     {
-        // StudyProgram::query()->findOrFail($id)->delete();
-        $delProdi = StudyProgram::find($idProdi);
-        $delProdi->delete();
-
-        return back();
-        
+        $data = array();
+        $data["status"] = "tidak";
+        $tambah = DB::table("program_keahlian")->where('id_program_keahlian','=',$req->id)->update($data);
+        if ($tambah) {
+            return "S";
+        } else {
+            return "k";
+        }
     }
+
 }

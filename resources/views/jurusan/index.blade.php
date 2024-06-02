@@ -10,16 +10,12 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#centeredModalPrimary">
+                    <button type="button" class="btn btn-primary" id="tambah">
                         Tambah Data
                     </button>
                 </div>
                 <div class="card-body">
-                    @php
-                        $no = 1;
-                    @endphp
-                    <table class="table table-striped">
+                    <table class="table table-striped data-table" id="mytable">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -30,59 +26,103 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        @forelse ($study as $item)
-                            <tbody>
-                                <tr>
-                                    <td>{{ $no++ }}</td>
-                                    <td>{{ $item->bidang_keahlian }}</td>
-                                    <td class="d-none d-md-table-cell">{{ $item->program_keahlian }}</td>
-                                    <td>{{ $item->tahun_dibuat }}</td>
-                                    <td>{{ $item->status }}</td>
-                                    <td class="table-action">
-                                        <a href="#"><i class="align-middle" data-feather="edit-2"></i></a>
-                                        <a href="delete-program/{{ $item->idProdi }}"
-                                            onclick="return confirm('Apa anda yakin ingin menghapus data?')"><i
-                                                class="align-middle" data-feather="trash"></i></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        @empty
-                        @endforelse
                     </table>
 
-                    <div class="modal fade" id="centeredModalPrimary" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Tambah Data Jurusan</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <form action="add-program" method="POST">
-                                    @csrf
-                                    @method('POST')
-                                    <div class="modal-body m-3">
-                                        <label class="form-label" for="nmJurusan">Bid. Keahlian</label>
-                                        <input type="text" class="form-control" id="nmJurusan"
-                                            placeholder="Isi Program Keahlian" name="nmProdi">
-                                        <label class="form-label mt-2" for="konsKeahlian">Prog. Keahlian</label>
-                                        <input type="text" class="form-control" id="konsKeahlian"
-                                            placeholder="Isi Bidang Keahlian" name="konsKeahlian">
-                                        <label class="form-label mt-2" for="thnBuat">Thn Pembuatan</label>
-                                        <input type="text" class="form-control" id="thnBuat"
-                                            placeholder="Isi Tahun Pembuatan Keahlian" name="thnBuat">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var table = $('#mytable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    type: "post",
+                    url: '{{ route('program.dataProgram') }}',
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    }
+                },
+                columns: [{
+                        data: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'bidangKeahlian',
+                        name: 'bidangKeahlian'
+                    },
+                    {
+                        data: 'programKeahlian',
+                        name: 'programKeahlian',
+                    },
+                    {
+                        data: 'tahunDibuat',
+                        name: 'tahunDibuat',
+                    },
+                    {
+                        data: 'status',
+                        name: 'status'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
+                    },
+                ]
+            })
+
+
+            $('#tambah').on('click', function() {
+                window.location.href = "{{ url('form_data_progKeh') }}"
+            })
+
+            $('.data-table').on("click", ".edit", function () {
+                var id=$(this).attr("id")
+                window.location.href=`{{url('form_data_progKeh2')}}/`+id
+            })
+
+            $('.data-table').on("click", ".hapus", function () {
+                var id=$(this).attr("id")
+                swal.fire({
+                    title: "Anda Yakin?",
+                    text: 'Anda tidak dapat mengmbalikan ini',
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Tidak'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $("#loading").css("display", "block")
+                        $.ajax({
+                            type: "post",
+                            url: '{{ route('program.hapus') }}',
+                            data: {
+                                "_token": "{{ csrf_token() }}",
+                                "id" : id
+                            },
+                            success: function(hasil) {
+                                $('#loading').css("display", "none")
+                                    if (hasil == 'S') {
+                                        swal.fire({
+                                            title: 'success',
+                                            text: 'Berhasil menyimpan data',
+                                            icon: 'success',
+                                            confirmButtonColor: '#3085d6',
+                                        }).then(function () {
+                                            window.location.href = "{{ route('program.index') }}" 
+                                            
+                                        })
+                                    }
+                            }
+                        })
+                    }
+                })
+            })
+        })
+    </script>
 @endsection
