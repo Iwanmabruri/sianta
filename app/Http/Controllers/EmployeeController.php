@@ -14,16 +14,17 @@ class EmployeeController extends Controller
 {
     function pegawai_data()
     {
-        $data = DB::table("pegawai");
+        $data = DB::table("pegawai")->where('status','=','aktif');
         $datatable =  DataTables::of($data);
         return $datatable
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $bt = '
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button id="' . $row->nikPeg . '" class="edit btn btn-info btn-xs" type="button">edit</button>
-                <button id="' . $row->nikPeg . '" class="detail btn btn-primary btn-xs"  type="button">detail</button>
-                <button id="' . $row->nikPeg . '" class="upload btn btn-warning btn-xs"  type="button">upload</button>
+                <button id="' . $row->id_pegawai . '" class="edit btn btn-info btn-xs" type="button">edit</button>
+                <button id="' . $row->id_pegawai . '" class="detail btn btn-primary btn-xs"  type="button">detail</button>
+                <button id="' . $row->id_pegawai . '" class="upload btn btn-warning btn-xs"  type="button">upload</button>
+                <button id="' . $row->id_pegawai . '" class="hapus btn btn-danger btn-xs"  type="button">hapus</button>
             </div>
                 
                 ';
@@ -50,7 +51,11 @@ class EmployeeController extends Controller
 
                 return $fts . "";
             })
-            ->rawColumns(['action', 'nik', 'nama', 'almt', 'berkas'])
+            ->addColumn('sts', function ($row) {
+                $a = $row->status;
+                return $a . "";
+            })
+            ->rawColumns(['action', 'nik', 'nama', 'almt', 'berkas','status'])
             ->make(true);
     }
 
@@ -101,6 +106,9 @@ class EmployeeController extends Controller
             $data["PtkGtk"] = $req->ptkgtk;
             $data["tmt"] = $req->tmt;
             $data["ijazah"] = "";
+            $data["tahun_masuk"] = $req->thn_masuk;
+            $data["tahun_keluar"] = "";
+            $data["status"] = "aktif";
             $tambah = DB::table("pegawai")->insert($data);
             if ($tambah) {
                 return "S";
@@ -125,9 +133,9 @@ class EmployeeController extends Controller
         $data["tugTambahan"] = $req->tug_t;
         $data["PtkGtk"] = $req->ptkgtk;
         $data["tmt"] = $req->tmt;
-        $data["ijazah"] = "";
+        $data["tahun_masuk"] = $req->thn_masuk;
         $tambah = DB::table("pegawai")
-            ->where('nikPeg', '=', $req->nik_p)
+            ->where('id_pegawai', '=', $req->id)
             ->update($data);
         if ($tambah) {
             return "S";
@@ -175,8 +183,12 @@ class EmployeeController extends Controller
         }
     }
 
-    public function destroy(Employee $employee)
-    {
-        //
+    public function hapusPeg(Request $req) {
+        $data = array();
+        $data["status"] = "tidak";
+        $tambah = DB::table("pegawai")->where('id_pegawai','=',$req->id)->update($data);
+        if ($tambah) {
+            return "S";
+        } 
     }
 }

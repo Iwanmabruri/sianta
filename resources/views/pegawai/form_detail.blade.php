@@ -3,7 +3,7 @@
     Data Pegawai
 @endsection
 <?php  
-    $data = DB::table('pegawai')->where("nikPeg","=",$id)->first();
+    $data = DB::table('pegawai')->where("id_pegawai","=",$id)->first();
     $waktu = explode("-", $data->ttl);
 ?>
 
