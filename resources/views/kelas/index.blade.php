@@ -91,7 +91,7 @@
 
             $('.data-table').on("click", ".edit", function () {
                 var id=$(this).attr("id")
-                window.location.href=`{{url('form_data_thn2')}}/`+id
+                window.location.href=`{{url('form_data_kls2')}}/`+id
             })
 
             $('.data-table').on("click", ".hapus", function () {

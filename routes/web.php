@@ -110,7 +110,9 @@ Route::post('/data', [UserController::class, 'dataUser'])->name('dataUser');
 Route::controller(ClassroomController::class)->group(function () {
     Route::get('/classroom', 'index')->name('classroom.index');
     Route::get('/form_data_kls', 'form_data_kls')->name('kelas.form_data_kls');
+    Route::get('/form_data_kls2/{id}', 'form_data_kls2')->name('kelas.form_data_kls2');
     Route::post('dataKelas', 'dataKelas')->name('kelas.dataKelas');
+    Route::post('simpanKls', 'simpanKls')->name('kelas.simpanKls');
 
 
 });

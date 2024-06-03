@@ -1,10 +1,10 @@
 @extends('welcome')
 @section('judul')
-    Data tahun Ajaran
+    Data Semester
 @endsection
 
 @section('konten')
-    <h1 class="h3 mb-3">Form tahun Ajaran</h1>
+    <h1 class="h3 mb-3">Form Semester</h1>
     <?php
         $data = DB::table('tahun_ajaran')->where('status','=','aktif')->get()
     ?>

@@ -77,12 +77,27 @@ class ClassroomController extends Controller
         return view('kelas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function form_data_kls2($id)
+    {
+        return view('kelas.edit', compact("id"));
+    }
+
+    public function simpanKls(Request $req) {
+        $data = array();
+        $data["id_pegawai"] = $req->walikls;
+        $data["id_tahun_ajaran"] = $req->thn_ajr;
+        $data["id_program_keahlian"] = $req->prog_keah;
+        $data["kelas"] = $req->kls;
+        $data["ruang"] = $req->ruang;
+        $data["status"] = "aktif";
+        $tambah = DB::table("kelas")->insert($data);
+        if ($tambah) {
+            return "S";
+        } else {
+            return "k";
+        }
+    }
+
     public function store(Request $request)
     {
         // Classroom::create([

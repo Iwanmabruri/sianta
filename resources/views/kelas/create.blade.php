@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="mb-2 col-md-6">
                                     <label class="form-label" for="input4">Program Keahlian</label>
-                                    <select class="form-control mb-3" name="thn_ajr" required>
+                                    <select class="form-control mb-3" name="prog_keah" required>
                                         <option value="" hidden>Pilih Program Keahlian</option>
                                         <?php
                                             foreach ($dataProg as  $val) {
@@ -69,8 +69,8 @@
                                 </div>
                                 <div class="mb-2 col-md-6">
                                 <label class="form-label" for="input1">Ruang</label>
-                                <input type="text" class="form-control" id="input1" name="nama_kelas"
-                                    placeholder="Isi Nama Kelas" value="" required>
+                                <input type="text" class="form-control" id="input1" name="ruang"
+                                    placeholder="Isi Nama Ruang" value="" required>
                             </div>
                             </div>
                     </div>
@@ -108,6 +108,7 @@
                     $.ajax({
                         type: 'POST',
                         data: data,
+                        url: '{{ route('kelas.simpanKls') }}',
                         success: function(hasil) {
                             $('#loading').css("display", "none")
                             if (hasil == 'k') {
@@ -124,7 +125,7 @@
                                     icon: 'success',
                                     confirmButtonColor: '#3085d6',
                                 }).then(function () {
-                                    window.location.href = "{{ route('semester.index') }}" 
+                                    window.location.href = "{{ route('classroom.index') }}" 
                                     
                                 })
                             }
