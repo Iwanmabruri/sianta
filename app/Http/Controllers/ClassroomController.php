@@ -37,6 +37,7 @@ class ClassroomController extends Controller
             <div class="btn-group" role="group" aria-label="Basic example">
                 <button id="' . $row->idK .'" class="edit btn btn-info btn-xs" type="button">edit</button>
                 <button id="' . $row->idK .'" class="hapus btn btn-warning btn-xs" type="button">hapus</button>
+                <button id="' . $row->idK .'" class="detail btn btn-success btn-xs" type="button">detail</button>
             </div>
                 
                 ';
@@ -82,6 +83,11 @@ class ClassroomController extends Controller
         return view('kelas.edit', compact("id"));
     }
 
+    public function detail_kls($id)
+    {
+        return view('kelas.detailKelas', compact("id"));
+    }
+
     public function simpanKls(Request $req) {
         $data = array();
         $data["id_pegawai"] = $req->walikls;
@@ -98,59 +104,36 @@ class ClassroomController extends Controller
         }
     }
 
-    public function store(Request $request)
-    {
-        // Classroom::create([
-        //     'nama_kelas=>$request->nama_kelas',
-        //     'nik_peg=>$request->nik_peg'
-        // ]);
-        $classrooms = Classroom::all();
-        Classroom::query()->create($request->all());
-        return view('kelas.index', compact('classrooms'));
+    public function editKls(Request $req) {
+        $data = array();
+        $data["id_pegawai"] = $req->walikls;
+        $data["id_tahun_ajaran"] = $req->thn_ajr;
+        $data["id_program_keahlian"] = $req->prog_keah;
+        $data["kelas"] = $req->kls;
+        $data["ruang"] = $req->ruang;
+        $tambah = DB::table("kelas")
+        ->where('id_kelas', '=', $req->id)
+        ->update($data);
+        if ($tambah) {
+            return "S";
+        } else {
+            return "k";
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Classroom  $classroom
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Classroom $classroom)
-    {
-        //
+
+    public function hapusKls(Request $req) {
+        $data = array();
+        $data["status"] = "tidak";
+        $tambah = DB::table("kelas")
+        ->where('id_kelas', '=', $req->id)
+        ->update($data);
+        if ($tambah) {
+            return "S";
+        } else {
+            return "k";
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Classroom  $classroom
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Classroom $classroom)
-    {
-        return view('kelas.edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Classroom  $classroom
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Classroom $classroom)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Classroom  $classroom
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Classroom $classroom)
-    {
-        //
-    }
+    
 }

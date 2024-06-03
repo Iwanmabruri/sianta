@@ -1,10 +1,10 @@
 @extends('welcome')
 @section('judul')
-    Data tahun Ajaran
+    Data Kelas
 @endsection
 
 @section('konten')
-    <h1 class="h3 mb-3">Form tahun Ajaran</h1>
+    <h1 class="h3 mb-3">Form Kelas</h1>
     <?php
         $dataThn = DB::table('tahun_ajaran')->where('status','=','aktif')->get();
         $dataPeg = DB::table('pegawai')->where('status','=','aktif')->get();

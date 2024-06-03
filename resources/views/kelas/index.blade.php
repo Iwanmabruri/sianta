@@ -1,10 +1,10 @@
 @extends('welcome')
 @section('judul')
-    Data Tahun Ajaran
+    Data Kelas
 @endsection
 
 @section('konten')
-    <h1 class="h3 mb-3">Data Tahun Ajaran</h1>
+    <h1 class="h3 mb-3">Data Kelas</h1>
 
     <div class="row">
         <div class="col-12">
@@ -110,7 +110,7 @@
                         $("#loading").css("display", "block")
                         $.ajax({
                             type: "post",
-                            url: '{{ route('tahunAjaran.hapusThn') }}',
+                            url: '{{ route('kelas.hapusKls') }}',
                             data: {
                                 "_token": "{{ csrf_token() }}",
                                 "id" : id
@@ -124,7 +124,7 @@
                                             icon: 'success',
                                             confirmButtonColor: '#3085d6',
                                         }).then(function () {
-                                            window.location.href = "{{ route('tahunAjaran.index') }}" 
+                                            window.location.href = "{{ route('classroom.index') }}" 
                                             
                                         })
                                     }
@@ -137,7 +137,7 @@
 
             $('.data-table').on("click", ".detail", function () {
                 var id=$(this).attr("id")
-                window.location.href=`{{url('form_detail')}}/`+id
+                window.location.href=`{{url('detail_kls')}}/`+id
             })
         })
     </script>

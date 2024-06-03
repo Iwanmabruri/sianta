@@ -106,13 +106,15 @@ Route::controller(ClassroomStudentController::class)->group(function () {
 Route::get('/user', [UserController::class, 'index'])->name('index');
 Route::post('/data', [UserController::class, 'dataUser'])->name('dataUser');
 
-//Route Kelas
 Route::controller(ClassroomController::class)->group(function () {
     Route::get('/classroom', 'index')->name('classroom.index');
     Route::get('/form_data_kls', 'form_data_kls')->name('kelas.form_data_kls');
     Route::get('/form_data_kls2/{id}', 'form_data_kls2')->name('kelas.form_data_kls2');
+    Route::get('/detail_kls/{id}', 'detail_kls')->name('kelas.detail_kls');
     Route::post('dataKelas', 'dataKelas')->name('kelas.dataKelas');
     Route::post('simpanKls', 'simpanKls')->name('kelas.simpanKls');
+    Route::post('editKls', 'editKls')->name('kelas.editKls');
+    Route::post('hapusKls', 'hapusKls')->name('kelas.hapusKls');
 
 
 });
