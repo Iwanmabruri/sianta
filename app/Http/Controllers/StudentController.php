@@ -39,6 +39,7 @@ class StudentController extends Controller
                             <li><button class="dropdown-item detail" data="' . $row->id_siswa . '" type="button">Detail</button></li>
                             <li><button class="dropdown-item upload" data="' . $row->id_siswa . '" type="button">Upload</button></li>
                             <li><button class="dropdown-item print" data="' . $row->id_siswa . '" type="button">Print</button></li>
+                            <li><button class="dropdown-item mutasi" data="' . $row->id_siswa . '" type="button">mutasi</button></li>
                         </ul>
                     </div>
                 ';
