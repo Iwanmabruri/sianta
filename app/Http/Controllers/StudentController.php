@@ -35,10 +35,10 @@ class StudentController extends Controller
                             Aksi
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><button class="dropdown-item edit" data="' . $row->nikSiswa . '" type="button">Edit</button></li>
-                            <li><button class="dropdown-item detail" data="' . $row->nikSiswa . '" type="button">Detail</button></li>
-                            <li><button class="dropdown-item upload" data="' . $row->nikSiswa . '" type="button">Upload</button></li>
-                            <li><button class="dropdown-item print" data="' . $row->nikSiswa . '" type="button">Print</button></li>
+                            <li><button class="dropdown-item edit" data="' . $row->id_siswa . '" type="button">Edit</button></li>
+                            <li><button class="dropdown-item detail" data="' . $row->id_siswa . '" type="button">Detail</button></li>
+                            <li><button class="dropdown-item upload" data="' . $row->id_siswa . '" type="button">Upload</button></li>
+                            <li><button class="dropdown-item print" data="' . $row->id_siswa . '" type="button">Print</button></li>
                         </ul>
                     </div>
                 ';
@@ -111,39 +111,39 @@ class StudentController extends Controller
             ->make(true);
     }
 
-    public function step1($nik, $bt)
+    public function step1($id, $bt)
     {
-        return view('siswa.inputStep1', compact("nik", "bt"));
+        return view('siswa.inputStep1', compact("id", "bt"));
     }
 
-    public function step2($nik, $bt)
+    public function step2($id, $bt)
     {
-        return view('siswa.inputStep2', compact("nik", "bt"));
+        return view('siswa.inputStep2', compact("id", "bt"));
     }
 
-    public function step3($nik, $bt)
+    public function step3($id, $bt)
     {
-        return view('siswa.inputStep3', compact("nik", "bt"));
+        return view('siswa.inputStep3', compact("id", "bt"));
     }
 
-    public function detail_siswa($nik)
+    public function detail_siswa($id)
     {
-        return view('siswa.detailSiswa', compact("nik"));
+        return view('siswa.detailSiswa', compact("id"));
     }
 
-    public function upload_berkas($nik)
+    public function upload_berkas($id)
     {
-        return view('siswa.upload', compact("nik"));
+        return view('siswa.upload', compact("id"));
     }
 
-    public function print_data($nik)
+    public function print_data($id)
     {
-        return view('siswa.pilihPrint', compact("nik"));
+        return view('siswa.pilihPrint', compact("id"));
     }
 
-    public function print_formulir($nik)
+    public function print_formulir($id)
     {
-        return view('siswa.formulir', compact("nik"));
+        return view('siswa.formulir', compact("id"));
     }
 
     /**
@@ -164,9 +164,9 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $count = DB::table("siswa")->count() + 1;
+        // $count = DB::table("siswa")->count() + 1;
         $data = array();
-        $data['nikSiswa'] = $count; //nik tidak valid
+        $data['nikSiswa'] = ""; //nik tidak valid
         $data['namaSiswa'] = '';
         $data['nisnSiswa'] = 1;
         $data['tglLahir'] = '';
@@ -199,7 +199,7 @@ class StudentController extends Controller
         $data['pendIbu'] = '';
         $data['pkrjnIbu'] = '';
         $data['penghIbu'] = '';
-        $data['idProdi'] = '';
+        $data['id_program_keahlian'] = '';
         $data['tglDiterima'] = '';
         $data['thLulus'] = 1; //thLulus tidak valid
         $data['fotoIjazah'] = '';
@@ -208,8 +208,8 @@ class StudentController extends Controller
         $data['fotoMasuk'] = '';
         $data['fotoKeluar'] = '';
         $data['status'] = '0';
-        DB::table("siswa")->insert($data);
-        return $count;
+        $id = DB::table("siswa")->insertGetId($data);
+        return $id;
     }
 
     public function simpan1(Request $request)
@@ -232,10 +232,10 @@ class StudentController extends Controller
         $data['kabKota'] = $request->kabupaten;
         $data['kecamatan'] = $request->kecamatan;
         $data['desa'] = $request->desa;
-        $update = DB::table('siswa')->where('nikSiswa', $request->nikAwal)->update($data);
+        $update = DB::table('siswa')->where('id_siswa', $request->id)->update($data);
 
         if ($update == 0 || $update == 1) {
-            return $request->nik;
+            return $request->id;
         } else {
             return "k";
         }
@@ -258,10 +258,10 @@ class StudentController extends Controller
         $data['pkrjnIbu'] = strtoupper($request->pndknIbu);
         $data['penghIbu'] = strtoupper($request->pndptnIbu);
 
-        $update = DB::table('siswa')->where('nikSiswa', $request->nikAwal)->update($data);
+        $update = DB::table('siswa')->where('id_siswa', $request->id)->update($data);
 
         if ($update == 0 || $update == 1) {
-            return $request->nikAwal;
+            return $request->id;
         } else {
             return "k";
         }
@@ -283,11 +283,11 @@ class StudentController extends Controller
         $data['nohp'] = $request->noHp;
         $data['sklAsal'] = strtoupper($request->sekolahAsal);
         $data['noIjazah'] = $request->noIjazah;
-        $data['idProdi'] = $request->prodi;
+        $data['id_program_keahlian'] = $request->program_keahlian;
         $data['agama'] = strtoupper($request->agama);
         $data['tglDiterima'] = $request->tglDiterima;
         $data['status'] = 'Aktif';
-        $update = DB::table('siswa')->where('nikSiswa', $request->nikAwal)->update($data);
+        $update = DB::table('siswa')->where('id_siswa', $request->id)->update($data);
 
         if ($update == 0 || $update == 1) {
             return 1;
@@ -298,7 +298,7 @@ class StudentController extends Controller
 
     public function batalkan(Request $request)
     {
-        $hapus = DB::table('siswa')->where('nikSiswa', $request->nik)->delete();
+        $hapus = DB::table('siswa')->where('id_siswa', $request->id)->delete();
 
         if ($hapus == 1) {
             return "1";
@@ -417,7 +417,7 @@ class StudentController extends Controller
         // }
 
         $update = DB::table("siswa")
-            ->where("nikSiswa", $request->nik)
+            ->where("id_siswa", $request->id)
             ->update($data);
 
         if ($update == 0 || $update == 1) {

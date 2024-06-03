@@ -56,7 +56,7 @@
 
 <body>
     <?php
-    $data = DB::table('siswa')->where('nikSiswa', $nik)->first();
+    $data = DB::table('siswa')->where('id_siswa', $id)->first();
     
     $desa = DB::table('desa')
         ->where('id', $data->desa)
@@ -70,30 +70,30 @@
         ->where('id', $data->kabKota)
         ->first();
     
-    $prodi = DB::table('prodi')
-        ->where('idProdi', $data->idProdi)
+    $prodi = DB::table('program_keahlian')
+        ->where('id_program_keahlian', $data->id_program_keahlian)
         ->first();
     
-    function tgl_indo($tanggal)
-    {
-        $bulan = [
-            1 => 'JANUARI',
-            'FEBRUARI',
-            'MARET',
-            'APRIL',
-            'MEI',
-            'JUNI',
-            'JULI',
-            'AGUSTUS',
-            'SEPTEMBER',
-            'OKTOBER',
-            'NOVEMBER',
-            'DESEMBER',
-        ];
-        $pecahkan = explode('-', $tanggal);
+    // function tgl_indo($tanggal)
+    // {
+    //     $bulan = [
+    //         1 => 'JANUARI',
+    //         'FEBRUARI',
+    //         'MARET',
+    //         'APRIL',
+    //         'MEI',
+    //         'JUNI',
+    //         'JULI',
+    //         'AGUSTUS',
+    //         'SEPTEMBER',
+    //         'OKTOBER',
+    //         'NOVEMBER',
+    //         'DESEMBER',
+    //     ];
+    //     $pecahkan = explode('-', $tanggal);
     
-        return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
-    }
+    //     return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
+    // }
     
     ?>
     <div class="konten">
@@ -136,7 +136,7 @@
                     <tr>
                         <td width="33%" class="kolom">4. TANGGAL LAHIR</td>
                         <td width="50%">:&nbsp;
-                            <?= tgl_indo($data->tglLahir) ?>
+                            <?= $data->tglLahir ?>
                         </td>
                     </tr>
                     <tr>
@@ -231,11 +231,11 @@
                     </tr>
                     <tr>
                         <td width="33%" class="column">B. KOMPETENSI KEAHLIAN</td>
-                        <td width="50%">:&nbsp;<?= strtoupper($prodi->nmProdi) ?></td>
+                        <td width="50%">:&nbsp;<?= strtoupper($prodi->program_keahlian) ?></td>
                     </tr>
                     <tr>
                         <td width="33%" class="column">C. TANGGAL</td>
-                        <td width="50%">:&nbsp;<?= tgl_indo($data->tglDiterima) ?></td>
+                        <td width="50%">:&nbsp;<?= $data->tglDiterima ?></td>
                     </tr>
                     <tr>
                         <td colspan="3">
@@ -249,7 +249,7 @@
                     </tr>
                     <tr>
                         <td width="33%" class="kolom">17. TEMPAT DAN TGL LAHIR</td>
-                        <td width="50%">:&nbsp;<?= tgl_indo($data->tglLahirAyah) ?></td>
+                        <td width="50%">:&nbsp;<?= $data->tglLahirAyah ?></td>
                         <td></td>
                     </tr>
                     <tr>
@@ -281,7 +281,7 @@
                     </tr>
                     <tr>
                         <td width="33%" class="kolom">22. TEMPAT DAN TGL LAHIR</td>
-                        <td width="50%">:&nbsp;<?= tgl_indo($data->tglLahirIbu) ?></td>
+                        <td width="50%">:&nbsp;<?= $data->tglLahirIbu ?></td>
                         <td></td>
                     </tr>
                     <tr>
@@ -317,7 +317,7 @@
                     </tr>
                     <tr>
                         <td width="33%" class="kolom">27. TEMPAT DAN TGL LAHIR</td>
-                        <td width="50%">:&nbsp;<?= tgl_indo($data->tglLahirWali) ?></td>
+                        <td width="50%">:&nbsp;<?= $data->tglLahirWali ?></td>
                     </tr>
                     <tr>
                         <td width="33%" class="kolom">28. AGAMA</td>

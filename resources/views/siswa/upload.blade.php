@@ -5,14 +5,14 @@
 
 @section('konten')
     <?php
-    $data = DB::table('siswa')->where('nikSiswa', $nik)->first();
+    $data = DB::table('siswa')->where('id_siswa', $id)->first();
     ?>
     <h1 class="h3 mb-3">Upload Berkas <?= $data->namaSiswa ?></h1>
     <div class="row">
         <div class="col-12">
             <form id="formUpload" data-parsley-validate>
                 {{ csrf_field() }}
-                <input type="hidden" name="nik" value="<?= $nik ?>">
+                <input type="hidden" name="id" value="<?= $id ?>">
                 <input type="hidden" name="fotoMasukLama" value="<?= $data->fotoMasuk ?>">
                 <input type="hidden" name="fotoKKLama" value="<?= $data->fotoKK ?>">
                 <input type="hidden" name="fotoAktaLama" value="<?= $data->fotoAkta ?>">

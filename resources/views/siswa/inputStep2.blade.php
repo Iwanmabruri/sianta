@@ -5,7 +5,7 @@
 
 @section('konten')
     <?php
-    $data = DB::table('siswa')->where('nikSiswa', $nik)->first();
+    $data = DB::table('siswa')->where('id_siswa', $id)->first();
     $namaBulan = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
     $waktuAyah = explode('-', $data->tglLahirAyah);
     $waktuIbu = explode('-', $data->tglLahirIbu);
@@ -15,7 +15,7 @@
         <div class="col-12">
             <form id="formSiswa" data-parsley-validate method="post">
                 {{ csrf_field() }}
-                <input type="hidden" name="nikAwal" id="nik" value="<?= $nik ?>">
+                <input type="hidden" name="id" id="id" value="<?= $id ?>">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -330,11 +330,11 @@
         $(document).ready(function() {
             $('#formSebelumnya').click(function() {
                 $("#loading").css("display", "block")
-                window.location.href = "{{ url('/step1') }}/<?= $nik ?>/<?= $bt ?>"
+                window.location.href = "{{ url('/step1') }}/<?= $id ?>/<?= $bt ?>"
             })
 
             $('#batalkan').click(function() {
-                var nik = $('#nik').val()
+                var id = $('#id').val()
                 swal.fire({
                     title: "Anda Yakin?",
                     text: 'Anda tidak dapat mengmbalikan ini',
@@ -352,7 +352,7 @@
                             url: '{{ route('batal') }}',
                             data: {
                                 "_token": '{{ csrf_token() }}',
-                                "nik": nik
+                                "id": id
                             },
                             success: function(hasil) {
                                 $("#loading").css("display", "none")

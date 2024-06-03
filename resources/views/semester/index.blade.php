@@ -101,7 +101,7 @@
                         $("#loading").css("display", "block")
                         $.ajax({
                             type: "post",
-                            url: '{{ route('semester.hapus') }}',
+                            url: '{{ route('semester.hapusSmt') }}',
                             data: {
                                 "_token": "{{ csrf_token() }}",
                                 "id" : id

@@ -95,7 +95,7 @@
                         $("#loading").css("display", "block")
                         $.ajax({
                             type: "post",
-                            url: '{{ route('tahunAjaran.hapus') }}',
+                            url: '{{ route('tahunAjaran.hapusThn') }}',
                             data: {
                                 "_token": "{{ csrf_token() }}",
                                 "id" : id

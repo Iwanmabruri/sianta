@@ -34,7 +34,7 @@ Route::controller(TahunAjaranController::class)->group(function () {
     Route::post('dataTahunAjaran', 'dataTahunAjaran')->name('tahunAjaran.dataTahunAjaran');
     Route::post('simpan', 'simpan')->name('tahunAjaran.simpan');
     Route::post('edit', 'edit')->name('tahunAjaran.edit');
-    Route::post('hapus', 'hapus')->name('tahunAjaran.hapus');
+    Route::post('hapusThn', 'hapusThn')->name('tahunAjaran.hapusThn');
 });
 
 
@@ -45,7 +45,7 @@ Route::controller(SemesterController::class)->group(function () {
     Route::post('dataSemester', 'dataSemester')->name('semester.dataSemester');
     Route::post('simpan', 'simpan')->name('semester.simpan');
     Route::post('edit', 'edit')->name('semester.edit');
-    Route::post('hapus', 'hapus')->name('semester.hapus');
+    Route::post('hapusSmt', 'hapusSmt')->name('semester.hapusSmt');
 });
 
 Route::controller(StudyProgramController::class)->group(function () {
@@ -62,13 +62,13 @@ Route::controller(StudyProgramController::class)->group(function () {
 Route::controller(StudentController::class)->group(function () {
     Route::get('/student', [StudentController::class, 'index']);
     Route::post('siswaData', [StudentController::class, 'siswa_data'])->name('siswaData');
-    Route::get('step1/{nik}/{bt}', [StudentController::class, 'step1']);
-    Route::get('/step2/{nik}/{bt}', [StudentController::class, 'step2']);
-    Route::get('/step3/{nik}/{bt}', [StudentController::class, 'step3']);
-    Route::get('/detailSiswa/{nik}', [StudentController::class, 'detail_siswa']);
-    Route::get('/uploadBerkas/{nik}', [StudentController::class, 'upload_berkas']);
-    Route::get('/printData/{nik}', [StudentController::class, 'print_data']);
-    Route::get('/printFormulir/{nik}', [StudentController::class, 'print_formulir']);
+    Route::get('step1/{id}/{bt}', [StudentController::class, 'step1']);
+    Route::get('/step2/{id}/{bt}', [StudentController::class, 'step2']);
+    Route::get('/step3/{id}/{bt}', [StudentController::class, 'step3']);
+    Route::get('/detailSiswa/{id}', [StudentController::class, 'detail_siswa']);
+    Route::get('/uploadBerkas/{id}', [StudentController::class, 'upload_berkas']);
+    Route::get('/printData/{id}', [StudentController::class, 'print_data']);
+    Route::get('/printFormulir/{id}', [StudentController::class, 'print_formulir']);
     Route::post('add-siswa', [StudentController::class, 'store'])->name('add-siswa');
     Route::post('simpanStep1', [StudentController::class, 'simpan1'])->name('simpanStep1');
     Route::post('simpanStep2', [StudentController::class, 'simpan2'])->name('simpanStep2');

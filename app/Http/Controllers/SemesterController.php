@@ -91,7 +91,7 @@ class SemesterController extends Controller
         }
     }
 
-    public function hapus(Request $req) {
+    public function hapusSmt(Request $req) {
         $data = array();
         $data["status"] = "tidak";
         $tambah = DB::table("semester")->where('id_semester','=',$req->id)->update($data);

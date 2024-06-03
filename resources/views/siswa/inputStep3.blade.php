@@ -5,20 +5,20 @@
 
 @section('konten')
     <?php
-    $data = DB::table('siswa')->where('nikSiswa', $nik)->first();
+    $data = DB::table('siswa')->where('id_siswa', $id)->first();
     $namaBulan = ['', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
     $waktuWali = explode('-', $data->tglLahirWali);
     $waktuAyah = explode('-', $data->tglLahirAyah);
     $waktuIbu = explode('-', $data->tglLahirIbu);
     
-    $prodi = DB::table('prodi')->where('status', 'aktif')->get();
+    $prodi = DB::table('program_keahlian')->where('status', 'aktif')->get();
     ?>
     <h1 class="h3 mb-3">Detail Wali Dari Ananda <span class="text-danger text-uppercase"><?= $data->namaSiswa ?></span></h1>
     <div class="row">
         <div class="col-12">
             <form id="formSiswa" data-parsley-validate method="post">
                 {{ csrf_field() }}
-                <input type="hidden" name="nikAwal" id="nik" value="<?= $nik ?>">
+                <input type="hidden" name="id" id="id" value="<?= $id ?>">
                 <div class="card">
                     <div class="card-header p-2">
                         <div class="row">
@@ -229,14 +229,14 @@
                                     placeholder="agama" required autocomplete="off" value="<?= $data->agama ?>">
                             </div>
                             <div class="mb-2 col-md-6">
-                                <label class="form-label" for="input17">Prodi</label>
-                                <select class="form-control mb-3" id="input17" name="prodi" required>
+                                <label class="form-label" for="input17">Program Keahlian</label>
+                                <select class="form-control mb-3" id="input17" name="program_keahlian" required>
                                     <option value="">Pilih Prodi</option>
                                     <?php
                                     foreach ($prodi as $prd) {
                                     ?>
-                                    <option <?= $prd->idProdi == $data->idProdi ? 'selected' : '' ?>
-                                        value="<?= $prd->idProdi ?>"><?= $prd->nmProdi ?></option>
+                                    <option <?= $prd->id_program_keahlian == $data->id_program_keahlian ? 'selected' : '' ?>
+                                        value="<?= $prd->id_program_keahlian ?>"><?= $prd->bidang_keahlian ?></option>
                                     <?php
                                     }
                                     ?>
@@ -279,11 +279,11 @@
 
             $('#formSebelumnya').click(function() {
                 $("#loading").css("display", "block")
-                window.location.href = "{{ url('/step2') }}/<?= $nik ?>/<?= $bt ?>"
+                window.location.href = "{{ url('/step2') }}/<?= $id ?>/<?= $bt ?>"
             })
 
             $('#batalkan').click(function() {
-                var nik = $('#nik').val()
+                var id = $('#id').val()
                 swal.fire({
                     title: "Anda Yakin?",
                     text: 'Anda tidak dapat mengmbalikan ini',
@@ -301,7 +301,7 @@
                             url: '{{ route('batal') }}',
                             data: {
                                 "_token": '{{ csrf_token() }}',
-                                "nik": nik
+                                "id": id
                             },
                             success: function(hasil) {
                                 $("#loading").css("display", "none")

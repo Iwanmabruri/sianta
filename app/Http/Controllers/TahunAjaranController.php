@@ -81,7 +81,7 @@ class TahunAjaranController extends Controller
         }
     }
 
-    public function hapus(Request $req) {
+    public function hapusThn(Request $req) {
         $data = array();
         $data["status"] = "tidak";
         $tambah = DB::table("tahun_ajaran")->where('id_tahun_ajaran','=',$req->id)->update($data);
