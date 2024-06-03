@@ -2,9 +2,7 @@
 <html lang="en">
 
 
-<!-- Mirrored from appstack.bootlab.io/pages-blank by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 13 Feb 2024 03:05:19 GMT -->
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
 <head>
     <meta charset="utf-8">
@@ -252,8 +250,4 @@
     <script src="{{ asset('js/app.js') }}"></script>
 
 </body>
-
-
-<!-- Mirrored from appstack.bootlab.io/pages-blank by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 13 Feb 2024 03:05:19 GMT -->
-
 </html>

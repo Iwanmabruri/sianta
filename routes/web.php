@@ -27,6 +27,10 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
+Route::get('/login', function () {
+    return view('login');
+});
+
 Route::controller(TahunAjaranController::class)->group(function () {
     Route::get('/tahunAjaran', 'index')->name('tahunAjaran.index');
     Route::get('/form_data_thn', 'form_data_thn')->name('tahunAjaran.form_data_thn');
