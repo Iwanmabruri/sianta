@@ -56,7 +56,7 @@
                     $('#loading').css("display", "block")
                     $.ajax({
                         type: 'POST',
-                        url: '{{ route('program.simpan') }}',
+                        url: '{{ route('program.simpanProgKeh') }}',
                         data: data,
                         success: function(hasil) {
                             $('#loading').css("display", "none")

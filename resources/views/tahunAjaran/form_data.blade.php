@@ -80,7 +80,7 @@
                     $('#loading').css("display", "block")
                     $.ajax({
                         type: 'POST',
-                        url: '{{ route('tahunAjaran.simpan') }}',
+                        url: '{{ route('tahunAjaran.simpanThn') }}',
                         data: data,
                         success: function(hasil) {
                             $('#loading').css("display", "none")

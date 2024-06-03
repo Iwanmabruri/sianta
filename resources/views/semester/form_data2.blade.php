@@ -94,7 +94,7 @@
                     $('#loading').css("display", "block")
                     $.ajax({
                         type: 'POST',
-                        url: '{{ route('semester.edit') }}',
+                        url: '{{ route('semester.editSmt') }}',
                         data: data,
                         success: function(hasil) {
                             $('#loading').css("display", "none")

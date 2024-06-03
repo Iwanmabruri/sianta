@@ -1,51 +1,137 @@
 @extends('welcome')
 @section('judul')
-    Tambah Kelas
+    Data tahun Ajaran
 @endsection
 
 @section('konten')
+    <h1 class="h3 mb-3">Form tahun Ajaran</h1>
+    <?php
+        $dataThn = DB::table('tahun_ajaran')->where('status','=','aktif')->get();
+        $dataPeg = DB::table('pegawai')->where('status','=','aktif')->get();
+        $dataProg = DB::table('program_keahlian')->where('status','=','aktif')->get();
+    ?>
     <div class="row">
-        <div class="col">
-            <div class="card">
-                <form action="{{ url('add-class') }}" method="post">
-                    @method('POST')
-                    @csrf
-                    <div class="card-header">
-                        <h3>Tambah Data Kelas</h3>
-                    </div>
+        <div class="col-12">
+            <form id="simpan" data-parsley-validate method="post">
+                <div class="card">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="mb-2 col">
-                                <label class="form-label" for="input1">Nama Kelas</label>
+                            {{ csrf_field() }}
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="mb-2 col-md-4">
+                                    <label class="form-label" for="input4">Kelas</label>
+                                    <select class="form-control mb-3" id="kls" name="kls" required>
+                                        <option value="" hidden>Pilih Kelas</option>
+                                        <option value="11" >11</option>
+                                        <option value="12" >12</option>
+                                        <option value="13" >13</option>
+                                    </select>
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="form-label" for="input4">Wali Kelas</label>
+                                    <select class="form-control mb-3" id="walikls" name="walikls" required>
+                                        <option value="" hidden>Pilih wali Kelas</option>
+                                        <?php
+                                            foreach ($dataPeg as  $val) {
+                                                ?>
+                                                <option value="<?= $val->id_pegawai ?>"><?= $val->nmPeg ?></option>
+                                            <?php
+                                                }
+                                            ?>
+                                    </select>
+                                </div>
+                                <div class="mb-2 col-md-4">
+                                    <label class="form-label" for="input4">Tahun Ajaran</label>
+                                    <select class="form-control mb-3" name="thn_ajr" required>
+                                        <option value="" hidden>Pilih Tahun Ajaran</option>
+                                        <?php
+                                            foreach ($dataThn as  $val) {
+                                                ?>
+                                                <option value="<?= $val->id_tahun_ajaran ?>"><?= $val->tahun_ajaran ?></option>
+                                            <?php
+                                                }
+                                            ?>
+                                    </select>
+                                </div>
+                                <div class="mb-2 col-md-6">
+                                    <label class="form-label" for="input4">Program Keahlian</label>
+                                    <select class="form-control mb-3" name="thn_ajr" required>
+                                        <option value="" hidden>Pilih Program Keahlian</option>
+                                        <?php
+                                            foreach ($dataProg as  $val) {
+                                                ?>
+                                                <option value="<?= $val->id_program_keahlian ?>"><?= $val->bidang_keahlian ?></option>
+                                            <?php
+                                                }
+                                            ?>
+                                    </select>
+                                </div>
+                                <div class="mb-2 col-md-6">
+                                <label class="form-label" for="input1">Ruang</label>
                                 <input type="text" class="form-control" id="input1" name="nama_kelas"
-                                    placeholder="Isi Nama Kelas" required>
+                                    placeholder="Isi Nama Kelas" value="" required>
                             </div>
-                            <div class="mb-2 col">
-                                <label class="form-label" for="input1">Wali Kelas</label>
-                                {{-- <input type="text" class="form-control" id="input1" name="nik_peg"
-                                    placeholder="Isi Nama Wali Kelas" required> --}}
-                                <select name="nik_peg" class="form-select">
-                                    <option value="">Pilih Pegawai</option>
-                                    {{-- @foreach ($employees as $employee)
-                                        <option {{ old('nik_peg') == $category->id ? 'selected' : '' }}
-                                            value="{{ $employee->nik_peg }}">{{ $employee->name }}</option>
-                                    @endforeach --}}
-                                </select>
                             </div>
-                            <input type="hidden" class="form-control" id="input1" name="status" value="Aktif">
-                        </div>
                     </div>
                     <div class="card-footer">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-danger">Batal</button>
-                                <button type="submit" class="btn btn-primary float-end">simpan</button>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button id="batal" type="button" class="btn btn-danger">Batal</button>
+                                    <button class="btn btn-primary float-end">simpan</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            $('select#smt').change(function () {
+                var i = $(this).val()
+                if (i == "1") {
+                    $("#nmSmt").val("Ganjil")
+                } else {
+                    $("#nmSmt").val("Genap")
+                }
+            })
+
+
+            $("#simpan").on('submit', function(e) {
+                e.preventDefault()
+                var data = $(this).serialize()
+                var form = $(this)
+                form.parsley().validate()
+                if (form.parsley().isValid()) {
+                    $('#loading').css("display", "block")
+                    $.ajax({
+                        type: 'POST',
+                        data: data,
+                        success: function(hasil) {
+                            $('#loading').css("display", "none")
+                            if (hasil == 'k') {
+                                swal.fire({
+                                    title: 'Error',
+                                    text: 'Gagal dalam menyimpan data',
+                                    icon: 'error',
+                                    confirmButtonColor: '#3085d6'
+                                })
+                            } else if (hasil == "S") {
+                                swal.fire({
+                                    title: 'success',
+                                    text: 'Berhasil menyimpan data',
+                                    icon: 'success',
+                                    confirmButtonColor: '#3085d6',
+                                }).then(function () {
+                                    window.location.href = "{{ route('semester.index') }}" 
+                                    
+                                })
+                            }
+                        }
+                    })
+                }
+            })
+        })
+    </script>
 @endsection

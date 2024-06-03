@@ -77,7 +77,7 @@
                     $('#loading').css("display", "block")
                     $.ajax({
                         type: 'POST',
-                        url: '{{ route('semester.simpan') }}',
+                        url: '{{ route('semester.simpanSmt') }}',
                         data: data,
                         success: function(hasil) {
                             $('#loading').css("display", "none")

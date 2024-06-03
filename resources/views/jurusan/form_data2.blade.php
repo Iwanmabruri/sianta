@@ -73,7 +73,7 @@
                     $('#loading').css("display", "block")
                     $.ajax({
                         type: 'POST',
-                        url: '{{ route('program.edit') }}',
+                        url: '{{ route('program.editProgKeh') }}',
                         data: data,
                         success: function(hasil) {
                             $('#loading').css("display", "none")

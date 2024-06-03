@@ -100,7 +100,7 @@
                         $("#loading").css("display", "block")
                         $.ajax({
                             type: "post",
-                            url: '{{ route('program.hapus') }}',
+                            url: '{{ route('program.hapusProgKeh') }}',
                             data: {
                                 "_token": "{{ csrf_token() }}",
                                 "id" : id
