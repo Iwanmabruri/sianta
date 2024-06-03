@@ -1,10 +1,10 @@
 @extends('welcome')
 @section('judul')
-    Data Tahun Ajaran
+    Data Semester
 @endsection
 
 @section('konten')
-    <h1 class="h3 mb-3">Data Tahun Ajaran</h1>
+    <h1 class="h3 mb-3">Data Semester</h1>
 
     <div class="row">
         <div class="col-12">

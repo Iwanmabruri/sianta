@@ -63,7 +63,7 @@ class SemesterController extends Controller
         return view('Semester.form_data2', compact("id"));
     }
 
-    public function simpan(Request $req) {
+    public function simpanSmt(Request $req) {
         $data = array();
         $data["id_tahun_ajaran"] = $req->thn_ajr;
         $data["semester"] = $req->smt;
@@ -77,7 +77,7 @@ class SemesterController extends Controller
         }
     }
 
-    public function edit(Request $req) {
+    public function editSmt(Request $req) {
         $data = array();
         $data["id_tahun_ajaran"] = $req->thn_ajr;
         $data["semester"] = $req->smt;

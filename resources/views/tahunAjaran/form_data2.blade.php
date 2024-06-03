@@ -97,7 +97,7 @@
                     $('#loading').css("display", "block")
                     $.ajax({
                         type: 'POST',
-                        url: '{{ route('tahunAjaran.edit') }}',
+                        url: '{{ route('tahunAjaran.editThn') }}',
                         data: data,
                         success: function(hasil) {
                             $('#loading').css("display", "none")

@@ -61,7 +61,7 @@ class StudyProgramController extends Controller
         return view('jurusan.form_data2', compact("id"));
     }
 
-    public function simpan(Request $req)
+    public function simpanProgKeh(Request $req)
     {
         $data = array();
         $data["bidang_keahlian"] = $req->bidKeh;
@@ -76,7 +76,7 @@ class StudyProgramController extends Controller
         }
     }
 
-    public function edit(Request $req)
+    public function editProgKeh(Request $req)
     {
         $data = array();
         $data["bidang_keahlian"] = $req->bidKeh;
@@ -90,7 +90,7 @@ class StudyProgramController extends Controller
         }
     }
 
-    public function hapus(Request $req)
+    public function hapusProgKeh(Request $req)
     {
         $data = array();
         $data["status"] = "tidak";

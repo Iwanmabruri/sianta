@@ -1,10 +1,10 @@
 @extends('welcome')
 @section('judul')
-    Data tahun Ajaran
+    Data Program Keahlian
 @endsection
 
 @section('konten')
-    <h1 class="h3 mb-3">Form tahun Ajaran</h1>
+    <h1 class="h3 mb-3">Form Program Keahlian</h1>
     <?php
         $data =  DB::table('program_keahlian')->where('id_program_keahlian','=',$id)->first();
     ?>
@@ -73,7 +73,7 @@
                     $('#loading').css("display", "block")
                     $.ajax({
                         type: 'POST',
-                        url: '{{ route('program.edit') }}',
+                        url: '{{ route('program.editProgKeh') }}',
                         data: data,
                         success: function(hasil) {
                             $('#loading').css("display", "none")

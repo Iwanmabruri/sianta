@@ -55,7 +55,7 @@ class TahunAjaranController extends Controller
         return view('tahunAjaran.form_data2', compact("id"));
     }
 
-    public function simpan(Request $req) {
+    public function simpanThn(Request $req) {
         $data = array();
         $data["keterangan"] = $req->ket;
         $data["tahun_ajaran"] = $req->thn_ajr1."-".$req->thn_ajr2;
@@ -68,7 +68,7 @@ class TahunAjaranController extends Controller
         }
     }
 
-    public function edit(Request $req) {
+    public function editThn(Request $req) {
         $data = array();
         $data["keterangan"] = $req->ket;
         $data["tahun_ajaran"] = $req->thn_ajr1."-".$req->thn_ajr2;

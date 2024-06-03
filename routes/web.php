@@ -32,8 +32,8 @@ Route::controller(TahunAjaranController::class)->group(function () {
     Route::get('/form_data_thn', 'form_data_thn')->name('tahunAjaran.form_data_thn');
     Route::get('/form_data_thn2/{id}', 'form_data_thn2')->name('tahunAjaran.form_data_thn2');
     Route::post('dataTahunAjaran', 'dataTahunAjaran')->name('tahunAjaran.dataTahunAjaran');
-    Route::post('simpan', 'simpan')->name('tahunAjaran.simpan');
-    Route::post('edit', 'edit')->name('tahunAjaran.edit');
+    Route::post('simpanThn', 'simpanThn')->name('tahunAjaran.simpanThn');
+    Route::post('editThn', 'editThn')->name('tahunAjaran.editThn');
     Route::post('hapusThn', 'hapusThn')->name('tahunAjaran.hapusThn');
 });
 
@@ -43,8 +43,8 @@ Route::controller(SemesterController::class)->group(function () {
     Route::get('/form_data_smt', 'form_data_smt')->name('semester.form_data_smt');
     Route::get('/form_data_smt2/{id}', 'form_data_smt2')->name('tahunAjaran.form_data_smt2');
     Route::post('dataSemester', 'dataSemester')->name('semester.dataSemester');
-    Route::post('simpan', 'simpan')->name('semester.simpan');
-    Route::post('edit', 'edit')->name('semester.edit');
+    Route::post('simpanSmt', 'simpanSmt')->name('semester.simpanSmt');
+    Route::post('editSmt', 'editSmt')->name('semester.editSmt');
     Route::post('hapusSmt', 'hapusSmt')->name('semester.hapusSmt');
 });
 
@@ -53,9 +53,9 @@ Route::controller(StudyProgramController::class)->group(function () {
     Route::get('/form_data_progKeh', 'form_data_progKeh')->name('program.form_data_progKeh');
     Route::get('/form_data_progKeh2/{id}', 'form_data_progKeh2')->name('program.form_data_progKeh2');
     Route::post('dataProgram', 'dataProgram')->name('program.dataProgram');
-    Route::post('simpan', 'simpan')->name('program.simpan');
-    Route::post('edit', 'edit')->name('program.edit');
-    Route::post('hapus', 'hapus')->name('program.hapus');
+    Route::post('simpanProgKeh', 'simpanProgKeh')->name('program.simpanProgKeh');
+    Route::post('editProgKeh', 'editProgKeh')->name('program.editProgKeh');
+    Route::post('hapusProgKeh', 'hapusProgKeh')->name('program.hapusProgKeh');
 });
 
 
@@ -106,11 +106,22 @@ Route::controller(ClassroomStudentController::class)->group(function () {
 Route::get('/user', [UserController::class, 'index'])->name('index');
 Route::post('/data', [UserController::class, 'dataUser'])->name('dataUser');
 
-//Route Kelas
-Route::get('/classroom', [ClassroomController::class, 'index'])->name('classroom');
-Route::get('/create-class', [ClassroomController::class, 'create'])->name('create-class');
-Route::post('add-class', [ClassroomController::class, 'store'])->name('add-class');
-Route::get('edit-class', [ClassroomController::class, 'edit'])->name('edit-class');
+Route::controller(ClassroomController::class)->group(function () {
+    Route::get('/classroom', 'index')->name('classroom.index');
+    Route::get('/form_data_kls', 'form_data_kls')->name('kelas.form_data_kls');
+    Route::get('/form_data_kls2/{id}', 'form_data_kls2')->name('kelas.form_data_kls2');
+    Route::get('/detail_kls/{id}', 'detail_kls')->name('kelas.detail_kls');
+    Route::post('dataKelas', 'dataKelas')->name('kelas.dataKelas');
+    Route::post('simpanKls', 'simpanKls')->name('kelas.simpanKls');
+    Route::post('editKls', 'editKls')->name('kelas.editKls');
+    Route::post('hapusKls', 'hapusKls')->name('kelas.hapusKls');
+
+
+});
+// Route::get('/classroom', [ClassroomController::class, 'index'])->name('classroom');
+// Route::get('/create-class', [ClassroomController::class, 'create'])->name('create-class');
+// Route::post('add-class', [ClassroomController::class, 'store'])->name('add-class');
+// Route::get('edit-class', [ClassroomController::class, 'edit'])->name('edit-class');
 
 Route::controller(MutationController::class)->group(function () {
     Route::get('/mutation', [MutationController::class, 'index']);
