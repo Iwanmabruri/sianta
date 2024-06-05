@@ -25,24 +25,24 @@
                                     <select class="form-control mb-3" id="kls" name="kls" required>
                                         <option value="" hidden>Pilih Kelas</option>
                                         <?php
-                                        if ($data->kelas == "11") {
+                                        if ($data->kelas == "X") {
                                             $a = "selected";
                                             $b = "";
                                             $c = "";
-                                        } elseif ($data->kelas == "12") {
+                                        } elseif ($data->kelas == "XI") {
                                             $a = "";
                                             $b = "selected";
                                             $c = "";
                                         } else {
                                             $a = "";
-                                            $b = "selected";
-                                            $c = "";
+                                            $b = "";
+                                            $c = "selected";
                                         }
                                         ?>
                                         
-                                        <option <?= $a ?> value="11" >11</option>
-                                        <option <?= $b ?> value="12" >12</option>
-                                        <option <?= $c ?> value="13" >13</option>
+                                        <option <?= $a ?> value="X" >X</option>
+                                        <option <?= $b ?> value="XI" >XI</option>
+                                        <option <?= $c ?> value="XII" >XII</option>
                                     </select>
                                 </div>
                                 <div class="mb-2 col-md-4">
@@ -91,11 +91,11 @@
                                             foreach ($dataProg as $val) {
                                                 if ($data->id_program_keahlian == $val->id_program_keahlian) {
                                                 ?>
-                                                <option selected value="<?= $val->id_program_keahlian ?>"><?= $val->bidang_keahlian ?></option>
+                                                <option selected value="<?= $val->id_program_keahlian ?>"><?= $val->program_keahlian ?></option>
                                             <?php
                                                     }else{
                                                 ?>
-                                                <option value="<?= $val->id_program_keahlian ?>"><?= $val->bidang_keahlian ?></option>
+                                                <option value="<?= $val->id_program_keahlian ?>"><?= $val->program_keahlian ?></option>
                                             <?php
                                             }
                                                 }

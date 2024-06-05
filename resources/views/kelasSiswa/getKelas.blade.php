@@ -11,8 +11,10 @@ $data = DB:: table('kelas')
 if (count($data) == "0") {
 ?>
     <div class="col-12 float-4">
-        <div class="card text-center">
-            <h2>data kosong</h2>
+        <div class="card">
+            <div class="card-body text-center">
+                <h2>Data Kosong</h2>
+            </div>
         </div>
     </div>
 <?php
@@ -21,21 +23,25 @@ if (count($data) == "0") {
 <?php
 foreach ($data as $value) {
 ?>
-    <div class="col-12 col-md-6 col-lg-4">
+    <div class="col-12 col-md-6 col-lg-3">
         <div class="card text-center">
             <div class="card-header">
                 <h5 class="card-title mb-0">Kelas <?= $value->kls?></h5>
             </div>
             <div class="card-body">
-                <div class="d-flex align-items-center">
-                    <div class="flex-shrink-0 me-4 symbol symbol-65 symbol-circle me-5">
-                    </div>
-                    <p class="card-text">Kelas <?= $value->kls?><?= $value->rag?> <?= $value->progKeah?> (<?= $value->thnAjr?>)</p>
+                <div class="">
+                    {{-- <div class="flex-shrink-0 me-4 symbol symbol-65 symbol-circle me-5">
+                    </div> --}}
+                    <p class="card-text">Kelas <?= $value->kls?>&nbsp;<?= $value->rag?> <?= $value->progKeah?> (<?= $value->thnAjr?>)</p>
                 </div>
             </div>
             <div class="card-footer">
-                <a href="#"
-                    class="btn btn-outline-primary btn-sm text-uppercase font-weight-bolder mt-5 mt-sm-0 mr-auto mr-sm-0 ml-sm-auto float-start detail">Details</a>
+                <button
+                    type="button"
+                    data="<?= $value->idK ?>"
+                    class="btn btn-outline-primary btn-sm text-uppercase font-weight-bolder mt-5 mt-sm-0 mr-auto mr-sm-0 ml-sm-auto float-start detail">
+                    Details
+                </button>
                 <button
                 type="button"
                 id="<?= $value->idK?>" 

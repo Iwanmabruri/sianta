@@ -23,9 +23,9 @@
                                     <label class="form-label" for="input4">Kelas</label>
                                     <select class="form-control mb-3" id="kls" name="kls" required>
                                         <option value="" hidden>Pilih Kelas</option>
-                                        <option value="11" >11</option>
-                                        <option value="12" >12</option>
-                                        <option value="13" >13</option>
+                                        <option value="X" >X</option>
+                                        <option value="XI" >XI</option>
+                                        <option value="XII" >XII</option>
                                     </select>
                                 </div>
                                 <div class="mb-2 col-md-4">
@@ -61,7 +61,7 @@
                                         <?php
                                             foreach ($dataProg as  $val) {
                                                 ?>
-                                                <option value="<?= $val->id_program_keahlian ?>"><?= $val->bidang_keahlian ?></option>
+                                                <option value="<?= $val->id_program_keahlian ?>"><?= $val->program_keahlian ?></option>
                                             <?php
                                                 }
                                             ?>

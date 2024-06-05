@@ -110,6 +110,12 @@ class ClassroomStudentController extends Controller
         }
     }
 
+    // Tambahan Ridlo
+    public function detail_kelas($id) {
+        return view('kelasSiswa.detail_data', compact('id'));
+    }
+
+
     /**
      * Display the specified resource.
      *

@@ -101,6 +101,7 @@ Route::controller(EmployeeController::class)->group(function () {
 Route::controller(ClassroomStudentController::class)->group(function () {
     Route::get('/classroomStudent', 'index')->name('classroomStudent.index');
     Route::post('getKelas', 'getKelas')->name('classroomStudent.getKelas');
+    Route::get('/ClassDetail/{id}', 'detail_kelas')->name('classroomStudent.detail_kelas');
     // Route::get('/form_data/{id}/{nikPeg}', 'form_data')->name('classroomStudent.form_data');
     // Route::get('/autocomplete', 'autocomplete')->name('classroomStudent.autocomplete');
     // Route::post('/loopSiswa', 'loopSiswa')->name('classroomStudent.loopSiswa');
