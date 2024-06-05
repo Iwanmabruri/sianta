@@ -46,6 +46,10 @@ class MutationController extends Controller
             ->make(true);
     }
 
+    public function tambah_mutasi()
+    {
+        return view('mutasi.add_mutasi', compact("id"));
+    }
 
     /**
      * Show the form for creating a new resource.
