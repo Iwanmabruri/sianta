@@ -17,9 +17,9 @@ class MutationController extends Controller
         return view('mutasi.index');
     }
 
-    public function tambah_mutasi()
+    public function tambah_mutasi($id)
     {
-        return view('mutasi.add_mutasi');
+        return view('mutasi.add_mutasi', compact("id"));
     }
 
     /**

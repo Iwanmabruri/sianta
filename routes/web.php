@@ -129,5 +129,5 @@ Route::controller(ClassroomController::class)->group(function () {
 
 Route::controller(MutationController::class)->group(function () {
     Route::get('/mutation', [MutationController::class, 'index']);
-    Route::get('/mutation-add', [MutationController::class, 'tambah_mutasi']);
+    Route::get('/mutation-add/{id}', [MutationController::class, 'tambah_mutasi']);
 });
