@@ -19,6 +19,9 @@ $dataSiswa = DB::table('siswa_perkelas')->where('id_kelas', $id)
 <div class="row">
     <div class="col-12">
         <div class="card">
+            <div class="card-header">
+                <button id="batal" class="btn btn-sm btn-danger">Kembali</button>
+            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table" id="table">
@@ -63,6 +66,10 @@ $dataSiswa = DB::table('siswa_perkelas')->where('id_kelas', $id)
             "info": true,
             "autoWidth": false,
             "responsive": true,
+        })
+
+        $('#batal').click(function() {
+            window.location.href = "{{ url('/classroomStudent') }}"
         })
     })
 </script>
