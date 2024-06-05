@@ -7,14 +7,43 @@ use Illuminate\Http\Request;
 
 class MutationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('mutasi.index');
+    }
+
+    public function dataMutasi(Request $req)
+    {
+        $data = DB::table("mutasi")->where('status','=','aktif');
+        $datatable =  DataTables::of($data);
+        return $datatable
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+                $bt = '
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button id="' . $row->id_tahun_ajaran .'" class="edit btn btn-info btn-xs" type="button">edit</button>
+                <button id="' . $row->id_tahun_ajaran .'" class="hapus btn btn-warning btn-xs" type="button">hapus</button>
+            </div>
+                
+                ';
+                return $bt . "";
+            })
+            ->addColumn('tahunAjaran', function ($row) {
+                $a = $row->tahun_ajaran;
+                return $a . "";
+            })
+            ->addColumn('keterangan', function ($row) {
+                $a = $row->keterangan;
+                return $a . "";
+            })
+            ->addColumn('status', function ($row) {
+                $a = '
+                <span>'.  $row->status.' </span>
+                ';
+                return $a . "";
+            })
+            ->rawColumns(['action', 'tahunAjaran','keterangan','status'])
+            ->make(true);
     }
 
     public function tambah_mutasi()
