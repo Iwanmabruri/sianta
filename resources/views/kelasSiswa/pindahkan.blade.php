@@ -62,7 +62,7 @@ $dataProg = DB::table('program_keahlian')->where('status', '=', 'aktif')->get();
                 <div class="row">
                     <input type="hidden" id="idthn">
                     <input type="hidden" id="idprog">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label class="form-label" for="input4">tahun Ajaran</label>
                         <select class="form-control mb-3" id="thn" name="thn" required>
                             <option value="" hidden>Pilih Tahun Ajaran</option>
@@ -75,7 +75,7 @@ $dataProg = DB::table('program_keahlian')->where('status', '=', 'aktif')->get();
                                 ?>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label class="form-label" for="input4">Program Keahlian</label>
                         <select class="form-control mb-3" id="prog" name="prog" required>
                             <option value="" hidden>Pilih Program Keahlian</option>
@@ -90,8 +90,13 @@ $dataProg = DB::table('program_keahlian')->where('status', '=', 'aktif')->get();
                                 ?>
                         </select>
                     </div>
+                    <div class="col-md-4">
+                        <label class="form-label" for="input4">Kelas</label>
+                        <select class="data-kelas form-control" name="kelas" id="input13">
+                            <option value="">Kelas</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="row data-kelas mt-3" id="input13"></div>
             </div>
             <div class="card-footer">
                 <button id="batal" type="button" class="btn btn-sm btn-danger">Kembali</button>
@@ -123,25 +128,27 @@ $dataProg = DB::table('program_keahlian')->where('status', '=', 'aktif')->get();
         $('select#thn').change(function() {
                 var i = $(this).val()
                 $('#idthn').val(i)
+        })
+
+        $('select#prog').change(function() {
+            var b = $(this).val()
+            var t = $("#idthn").val()
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('classroomStudent.ambilKelas') }}',
+                data: {
+                    "_token": '{{ csrf_token() }}',
+                    "thn": t,
+                    "prog": b
+                },
+                success: function(data) {
+                    $('#loading').css("display", "none")
+                    $("#input13").html("")
+                    $("#input13").append(data)
+                }
             })
-            $('select#prog').change(function() {
-                var b = $(this).val()
-                var t = $("#idthn").val()
-                $.ajax({
-                    type: 'POST',
-                    url: '{{ route('classroomStudent.ambilKelas') }}',
-                    data: {
-                        "_token": '{{ csrf_token() }}',
-                        "thn": t,
-                        "prog": b
-                    },
-                    success: function(data) {
-                        $('#loading').css("display", "none")
-                        $("#input13").html("")
-                        $("#input13").append(data)
-                    }
-                })
-            })
+        })
+
     })
 </script>
 @endsection

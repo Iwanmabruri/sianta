@@ -10,21 +10,17 @@ $data = DB:: table('kelas')
 ->get();
 if (count($data) == "0") {
 ?>
-    <div class="col-12 float-4">
-        <div class="card">
-            <div class="card-body text-center">
-                <h2>Data Kosong</h2>
-            </div>
-        </div>
-    </div>
+    <option value="">Kelas</option>
 <?php
 }else {
 ?>
+    <option value="">Kelas</option>
 <?php
 foreach ($data as $value) {
 ?>
-    <div class="col-12 col-md-6 col-lg-3">
-        <div class="card text-center">
+<option value="<?= $value->idK ?>">Kelas <?= $value->kls?></option>
+    {{-- <div class="col-12 col-md-6 col-lg-3">
+        <div class="card text-center shadow-lg">
             <div class="card-header">
                 <h5 class="card-title mb-0">Kelas <?= $value->kls?></h5>
             </div>
@@ -37,12 +33,12 @@ foreach ($data as $value) {
                 <button
                     type="button"
                     data="<?= $value->idK ?>"
-                    class="btn btn-outline-primary btn-sm text-uppercase font-weight-bolder mt-5 mt-sm-0 mr-auto mr-sm-0 ml-sm-auto float-start detail">
+                    class="btn btn-outline-primary btn-sm text-uppercase font-weight-bolder mt-5 mt-sm-0 mr-auto mr-sm-0 ml-sm-auto float-start pilih">
                     Pilih
                 </button>
             </div>
         </div>
-    </div>
+    </div> --}}
 <?php
 }
 }
