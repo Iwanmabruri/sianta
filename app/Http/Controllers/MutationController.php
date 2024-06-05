@@ -17,6 +17,11 @@ class MutationController extends Controller
         return view('mutasi.index');
     }
 
+    public function tambah_mutasi()
+    {
+        return view('mutasi.add_mutasi');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
