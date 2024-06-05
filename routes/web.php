@@ -131,5 +131,9 @@ Route::controller(ClassroomController::class)->group(function () {
 
 Route::controller(MutationController::class)->group(function () {
     Route::get('/mutation', [MutationController::class, 'index']);
-    Route::get('/mutation-add/{id}', [MutationController::class, 'tambah_mutasi']);
+    Route::get('/updateMutasi/{id}', 'updateMutasi')->name('mutasi.updateMutasi');
+    Route::get('/mutation-add/{id}',  'addMutasi')->name('mutasi.addMutasi');
+    Route::post('dataMutasi', 'dataMutasi')->name('mutasi.dataMutasi');
+    Route::post('uploadBerkasMutasi', 'uploadBerkasMutasi')->name('mutasi.uploadBerkasMutasi');
+    Route::post('simpanMutasi', 'simpanMutasi')->name('mutasi.simpanMutasi');
 });
