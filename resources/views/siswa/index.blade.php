@@ -95,6 +95,11 @@
                 window.location.href = "{{ url('/printData') }}/" + data
             })
 
+            $('#myTable').on("click", ".mutasi", function() {
+                var data = $(this).attr("data")
+                window.location.href = "{{ url('/mutation-add') }}/" + data
+            })
+
             $('#tambah').on('click', function() {
                 $("#loading").css("display", "block")
                 $.ajax({
