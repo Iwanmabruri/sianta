@@ -96,6 +96,12 @@ class ClassroomStudentController extends Controller
         return view('kelasSiswa.getKelas', compact("idthn","idprog"));
     }
 
+    public function ambilKelas(Request $req) {
+        $idthn = $req->thn;
+        $idprog = $req->prog;
+        return view('kelasSiswa.ambilKelas', compact("idthn","idprog"));
+    }
+
     public function form_data()
     {
         return view('kelasSiswa.form_data');
@@ -109,6 +115,16 @@ class ClassroomStudentController extends Controller
             dd($i);
         }
     }
+
+    // Tambahan Ridlo
+    public function detail_kelas($id) {
+        return view('kelasSiswa.detail_data', compact('id'));
+    }
+
+    public function pindah_kelas($id) {
+        return view('kelasSiswa.pindahkan', compact('id'));
+    }
+
 
     /**
      * Display the specified resource.

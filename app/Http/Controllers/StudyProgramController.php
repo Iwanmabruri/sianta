@@ -64,8 +64,8 @@ class StudyProgramController extends Controller
     public function simpanProgKeh(Request $req)
     {
         $data = array();
-        $data["bidang_keahlian"] = $req->bidKeh;
-        $data["program_keahlian"] = $req->progKeh;
+        $data["bidang_keahlian"] = strtoupper($req->bidKeh);
+        $data["program_keahlian"] = strtoupper($req->progKeh);
         $data["tahun_dibuat"] = $req->thn;
         $data["status"] = "aktif";
         $tambah = DB::table("program_keahlian")->insert($data);
@@ -79,8 +79,8 @@ class StudyProgramController extends Controller
     public function editProgKeh(Request $req)
     {
         $data = array();
-        $data["bidang_keahlian"] = $req->bidKeh;
-        $data["program_keahlian"] = $req->progKeh;
+        $data["bidang_keahlian"] = strtoupper($req->bidKeh);
+        $data["program_keahlian"] = strtoupper($req->progKeh);
         $data["tahun_dibuat"] = $req->thn;
         $tambah = DB::table("program_keahlian")->where('id_program_keahlian','=',$req->id)->update($data);
         if ($tambah) {

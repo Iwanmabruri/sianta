@@ -16,15 +16,11 @@
                             <div class="row">
                                 <div class="mb-2 col-md-4">
                                     <label class="form-label" for="input4">Bidang Keahlian</label>
-                                    <input type="text" class="form-control mb-3"  name="bidKeh" required>
+                                    <input type="text" class="form-control mb-3 text-uppercase"  name="bidKeh" required>
                                 </div>
                                 <div class="mb-2 col-md-4">
-                                <label class="form-label" for="input4">Program Keahlian</label>
-                                    <select class="form-control mb-3" id="progKeh" name="progKeh" required>
-                                        <option value="" hidden>Pilih program keahlian</option>
-                                        <option value="rpl" >RPL</option>
-                                        <option value="akuntansi" >AKUNTANSI</option>
-                                    </select>
+                                    <label class="form-label" for="input4">Program Keahlian</label>
+                                    <input type="text" class="form-control mb-3 text-uppercase"  name="progKeh" required>
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="form-label" for="input4">Tahun Dibuat</label>
@@ -81,6 +77,10 @@
                         }
                     })
                 }
+            })
+
+            $('#batal').click(function() {
+                window.location.href = "{{ url('/program') }}"
             })
         })
     </script>

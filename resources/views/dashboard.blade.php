@@ -97,7 +97,7 @@
                 </div>
                 <div class="card-body d-flex w-100">
                     <div class="align-self-center chart chart-lg">
-                        <canvas id="chartjs-dashboard-bar"></canvas>
+                        <canvas id="myChart"></canvas>
                     </div>
                 </div>
             </div>
@@ -182,4 +182,34 @@
             </div>
         </div> --}}
     </div>
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+            ],
+            borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+            y: {
+                beginAtZero: true
+            }
+            }
+        }
+        });
+    </script>
 @endsection

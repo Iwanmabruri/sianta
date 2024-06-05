@@ -43,7 +43,8 @@
                                         <?php
                                             foreach ($dataProg as  $val) {
                                                 ?>
-                                        <option value="<?= $val->id_program_keahlian ?>"><?= $val->bidang_keahlian ?>
+                                        <option value="<?= $val->id_program_keahlian ?>">
+                                            <?= $val->program_keahlian ?>
                                         </option>
                                         <?php
                                                 }
@@ -51,43 +52,42 @@
                                     </select>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row data-kelas" id="input13">
                 <!-- <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card text-center">
-                        <div class="card-header">
-                            <h5 class="card-title mb-0">Kelas XIIA</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div class="flex-shrink-0 me-4 symbol symbol-65 symbol-circle me-5">
-                                </div>
-                                <p class="card-text">Kelas XIIA RPL (2023 - 2024)</p>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#"
-                                class="btn btn-outline-primary btn-sm text-uppercase font-weight-bolder mt-5 mt-sm-0 mr-auto mr-sm-0 ml-sm-auto float-start">Details</a>
-                            <a href="#"
-                                class="btn btn-primary btn-sm text-uppercase font-weight-bolder mt-5 mt-sm-0 mr-auto mr-sm-0 ml-sm-auto float-end">Pindahkan</a>
-                        </div>
-                    </div>
-                </div> -->
+                                        <div class="card text-center">
+                                            <div class="card-header">
+                                                <h5 class="card-title mb-0">Kelas XIIA</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0 me-4 symbol symbol-65 symbol-circle me-5">
+                                                    </div>
+                                                    <p class="card-text">Kelas XIIA RPL (2023 - 2024)</p>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <a href="#"
+                                                    class="btn btn-outline-primary btn-sm text-uppercase font-weight-bolder mt-5 mt-sm-0 mr-auto mr-sm-0 ml-sm-auto float-start">Details</a>
+                                                <a href="#"
+                                                    class="btn btn-primary btn-sm text-uppercase font-weight-bolder mt-5 mt-sm-0 mr-auto mr-sm-0 ml-sm-auto float-end">Pindahkan</a>
+                                            </div>
+                                        </div>
+                                    </div> -->
             </div>
         </div>
     </div>
 
     <script>
-        $(document).ready(function () {
-            $('select#thn').change(function () {
+        $(document).ready(function() {
+            $('select#thn').change(function() {
                 var i = $(this).val()
                 $('#idthn').val(i)
             })
-            $('select#prog').change(function () {
+            $('select#prog').change(function() {
                 var b = $(this).val()
                 var t = $("#idthn").val()
                 $.ajax({
@@ -106,11 +106,18 @@
                 })
             })
 
-            $('.data-kelas').on("click", ".pindahkan", function () {
-                var id=$(this).attr("id")
-                window.location.href=`{{url('pindahkan')}}/`+id
+            $('.data-kelas').on("click", ".pindahkan", function() {
+                var id = $(this).attr("id")
+                window.location.href = `{{ url('pindahkan') }}/` + id
+            })
+
+            $('.data-kelas').on("click", ".detail", function () {
+                var id = $(this).attr("data")
+                window.location.href = `{{ url('ClassDetail') }}/` + id
             })
 
         })
     </script>
+
+
 @endsection

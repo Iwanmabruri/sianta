@@ -50,6 +50,7 @@
     <script src="{{ asset('parsleyjs/i18n/id.js') }}"></script>
     <script src="{{ asset('parsleyjs/i18n/id.extra.js') }}"></script>
     <script src="{{ asset('cropimage-master/cropimage.js') }} "></script>
+    <script src="{{asset('chart.js/Chart.min.js')}}"></script>
 
     <!-- END SETTINGS -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3ZYEKLQ68"></script>

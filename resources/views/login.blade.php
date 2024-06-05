@@ -107,7 +107,7 @@
                                     <div class="card-body">
                                         <div class="m-sm-3">
                                             <div class="d-grid gap-2 mb-3">
-                                                
+
                                             </div>
                                             <form id="form_biasa" alamat="{{route('login_post')}}" rel="simpan"  method="post">
                                                     {{ csrf_field()}}
