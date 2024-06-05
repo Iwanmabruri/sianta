@@ -90,6 +90,12 @@ class ClassroomStudentController extends Controller
         return view('kelasSiswa.index');
     }
 
+    public function getKelas(Request $req) {
+        $idthn = $req->thn;
+        $idprog = $req->prog;
+        return view('kelasSiswa.getKelas', compact("idthn","idprog"));
+    }
+
     public function form_data()
     {
         return view('kelasSiswa.form_data');

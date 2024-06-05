@@ -100,11 +100,12 @@ Route::controller(EmployeeController::class)->group(function () {
 
 Route::controller(ClassroomStudentController::class)->group(function () {
     Route::get('/classroomStudent', 'index')->name('classroomStudent.index');
-    Route::get('/form_data/{id}/{nikPeg}', 'form_data')->name('classroomStudent.form_data');
-    Route::get('/autocomplete', 'autocomplete')->name('classroomStudent.autocomplete');
-    Route::post('/loopSiswa', 'loopSiswa')->name('classroomStudent.loopSiswa');
-    Route::post('/kelasSiswaData', 'kelasSiswaData')->name('classroomStudent.kelasSiswaData');
-    Route::post('/insert_data', 'store')->name('classroomStudent.insert_data');
+    Route::post('getKelas', 'getKelas')->name('classroomStudent.getKelas');
+    // Route::get('/form_data/{id}/{nikPeg}', 'form_data')->name('classroomStudent.form_data');
+    // Route::get('/autocomplete', 'autocomplete')->name('classroomStudent.autocomplete');
+    // Route::post('/loopSiswa', 'loopSiswa')->name('classroomStudent.loopSiswa');
+    // Route::post('/kelasSiswaData', 'kelasSiswaData')->name('classroomStudent.kelasSiswaData');
+    // Route::post('/insert_data', 'store')->name('classroomStudent.insert_data');
 });
 
 Route::get('/user', [UserController::class, 'index'])->name('index');
