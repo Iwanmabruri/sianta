@@ -104,7 +104,7 @@
                         "_token": '{{ csrf_token() }}'
                     },
                     success: function(hasil) {
-                        // $("#loading").css("display", "none")
+                        $("#loading").css("display", "none")
                         // alert(hasil)
                         window.location.href = "{{ url('/step1') }}/" + hasil + "/st"
                     }

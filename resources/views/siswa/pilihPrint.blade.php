@@ -5,7 +5,7 @@
 
 @section('konten')
     <?php
-    $data = DB::table('siswa')->where('nikSiswa', $nik)->first();
+    $data = DB::table('siswa')->where('id_siswa', $id)->first();
     ?>
     <h1 class="h3 mb-3">Print Data</h1>
     <div class="row">
@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <a href="{{ url('/printFormulir') }}/<?= $nik ?>" target="_blank"
+                            <a href="{{ url('/printFormulir') }}/<?= $id ?>" target="_blank"
                                 class="btn btn-primary w-100">Print
                                 Formulir</a>
                         </div>

@@ -1,14 +1,12 @@
 @extends('welcome')
 @section('judul')
-    Data Kelas
+    Data Semester
 @endsection
 
 @section('konten')
-    <h1 class="h3 mb-3">Form Kelas</h1>
+    <h1 class="h3 mb-3">Form Semester</h1>
     <?php
-        $dataThn = DB::table('tahun_ajaran')->where('status','=','aktif')->get();
-        $dataPeg = DB::table('pegawai')->where('status','=','aktif')->get();
-        $dataProg = DB::table('program_keahlian')->where('status','=','aktif')->get();
+        $data = DB::table('tahun_ajaran')->where('status','=','aktif')->get()
     ?>
     <div class="row">
         <div class="col-12">
@@ -20,33 +18,23 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="mb-2 col-md-4">
-                                    <label class="form-label" for="input4">Kelas</label>
-                                    <select class="form-control mb-3" id="kls" name="kls" required>
-                                        <option value="" hidden>Pilih Kelas</option>
-                                        <option value="11" >11</option>
-                                        <option value="12" >12</option>
-                                        <option value="13" >13</option>
+                                    <label class="form-label" for="input4">Semester</label>
+                                    <select class="form-control mb-3" id="smt" name="smt" required>
+                                        <option value="" hidden>Pilih Semester</option>
+                                        <option value="1" >1</option>
+                                        <option value="2" >2</option>
                                     </select>
                                 </div>
                                 <div class="mb-2 col-md-4">
-                                    <label class="form-label" for="input4">Wali Kelas</label>
-                                    <select class="form-control mb-3" id="walikls" name="walikls" required>
-                                        <option value="" hidden>Pilih wali Kelas</option>
-                                        <?php
-                                            foreach ($dataPeg as  $val) {
-                                                ?>
-                                                <option value="<?= $val->id_pegawai ?>"><?= $val->nmPeg ?></option>
-                                            <?php
-                                                }
-                                            ?>
-                                    </select>
+                                    <label class="form-label" for="input4">Nama Semester</label>
+                                    <input type="text" class="form-control mb-3" id="nmSmt" name="nmSmt" readonly>
                                 </div>
                                 <div class="mb-2 col-md-4">
                                     <label class="form-label" for="input4">Tahun Ajaran</label>
                                     <select class="form-control mb-3" name="thn_ajr" required>
                                         <option value="" hidden>Pilih Tahun Ajaran</option>
                                         <?php
-                                            foreach ($dataThn as  $val) {
+                                            foreach ($data as  $val) {
                                                 ?>
                                                 <option value="<?= $val->id_tahun_ajaran ?>"><?= $val->tahun_ajaran ?></option>
                                             <?php
@@ -54,24 +42,6 @@
                                             ?>
                                     </select>
                                 </div>
-                                <div class="mb-2 col-md-6">
-                                    <label class="form-label" for="input4">Program Keahlian</label>
-                                    <select class="form-control mb-3" name="prog_keah" required>
-                                        <option value="" hidden>Pilih Program Keahlian</option>
-                                        <?php
-                                            foreach ($dataProg as  $val) {
-                                                ?>
-                                                <option value="<?= $val->id_program_keahlian ?>"><?= $val->bidang_keahlian ?></option>
-                                            <?php
-                                                }
-                                            ?>
-                                    </select>
-                                </div>
-                                <div class="mb-2 col-md-6">
-                                <label class="form-label" for="input1">Ruang</label>
-                                <input type="text" class="form-control" id="input1" name="ruang"
-                                    placeholder="Isi Nama Ruang" value="" required>
-                            </div>
                             </div>
                     </div>
                     <div class="card-footer">
@@ -107,8 +77,8 @@
                     $('#loading').css("display", "block")
                     $.ajax({
                         type: 'POST',
+                        url: '{{ route('semester.simpanSmt') }}',
                         data: data,
-                        url: '{{ route('kelas.simpanKls') }}',
                         success: function(hasil) {
                             $('#loading').css("display", "none")
                             if (hasil == 'k') {
@@ -125,7 +95,7 @@
                                     icon: 'success',
                                     confirmButtonColor: '#3085d6',
                                 }).then(function () {
-                                    window.location.href = "{{ route('classroom.index') }}" 
+                                    window.location.href = "{{ route('semester.index') }}" 
                                     
                                 })
                             }

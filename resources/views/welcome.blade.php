@@ -2,9 +2,7 @@
 <html lang="en">
 
 
-<!-- Mirrored from appstack.bootlab.io/pages-blank by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 13 Feb 2024 03:05:19 GMT -->
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
 <head>
     <meta charset="utf-8">
@@ -143,6 +141,12 @@
                         </a>
                         <ul id="dashboards" class="sidebar-dropdown list-unstyled collapse show"
                             data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link" href="{{ url('/tahunAjaran') }}">Data
+                                    Tahun Ajaran</a>
+                            </li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="{{ url('/semester') }}">Data
+                                    Semester</a>
+                            </li>
                             <li class="sidebar-item"><a class="sidebar-link" href="{{ url('/program') }}">Data
                                     Jurusan</a>
                             </li>
@@ -246,8 +250,4 @@
     <script src="{{ asset('js/app.js') }}"></script>
 
 </body>
-
-
-<!-- Mirrored from appstack.bootlab.io/pages-blank by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 13 Feb 2024 03:05:19 GMT -->
-
 </html>

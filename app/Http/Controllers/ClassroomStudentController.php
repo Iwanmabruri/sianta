@@ -11,24 +11,34 @@ class ClassroomStudentController extends Controller
 {
     public function kelasSiswaData(Request $req)
     {
-        $data = DB::table("kelas");
+        $data = DB::table("kelas")
+        ->join('pegawai', 'kelas.nik_peg', '=', 'pegawai.nikPeg')
+        ->select('kelas.id_kelas as idKelas', 'kelas.nama_kelas as name', 'kelas.nik_peg as nikpeg', 'pegawai.nmPeg as namaPeg');
         $datatable =  DataTables::of($data);
         return $datatable
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $bt = '
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button id="' . $row->id_kelas . '" class="setting btn btn-info btn-xs" type="button">setting</button>
+                <button id="' . $row->idKelas . '" nikpeg="' . $row->nikpeg . '"  class="setting btn btn-info btn-xs" type="button">setting</button>
             </div>
                 
                 ';
                 return $bt . "";
             })
             ->addColumn('nama', function ($row) {
-                $a = $row->nama_kelas;
+                $a = $row->name;
                 return $a . "";
             })
-            ->rawColumns(['action', 'nama'])
+            ->addColumn('jml', function ($row) {
+                $t = DB::table("sisperKelas")->where('nikPeg', '=', $row->nikpdeg)->count();
+                return $t . "";
+            })
+            ->addColumn('wlKls', function ($row) {
+                $a = $row->namaPeg;
+                return $a . "";
+            })
+            ->rawColumns(['action', 'nama','jml','wlKls'])
             ->make(true);
     }
 

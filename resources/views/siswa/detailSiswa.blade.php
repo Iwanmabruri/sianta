@@ -5,10 +5,10 @@
 
 @section('konten')
     <?php
-    $data = DB::table('siswa')->where('nikSiswa', $nik)->first();
+    $data = DB::table('siswa')->where('id_siswa', $id)->first();
     
-    $prodi = DB::table('prodi')
-        ->where('idProdi', $data->idProdi)
+    $prodi = DB::table('program_keahlian')
+        ->where('id_program_keahlian', $data->id_program_keahlian)
         ->first();
     
     $desa = DB::table('desa')
@@ -27,26 +27,26 @@
         ->where('id', $data->provinsi)
         ->first();
     
-    function tgl_indo($tanggal)
-    {
-        $bulan = [
-            1 => 'Januari',
-            'Februari',
-            'Maret',
-            'April',
-            'Mei',
-            'Juni',
-            'Juli',
-            'Agustus',
-            'September',
-            'Oktober',
-            'November',
-            'Desember',
-        ];
-        $pecahkan = explode('-', $tanggal);
+    // function $tanggal)
+    // {
+    //     $bulan = [
+    //         1 => 'Januari',
+    //         'Februari',
+    //         'Maret',
+    //         'April',
+    //         'Mei',
+    //         'Juni',
+    //         'Juli',
+    //         'Agustus',
+    //         'September',
+    //         'Oktober',
+    //         'November',
+    //         'Desember',
+    //     ];
+    //     $pecahkan = explode('-', $tanggal);
     
-        return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
-    }
+    //     return $pecahkan[2] . ' ' . $bulan[(int) $pecahkan[1]] . ' ' . $pecahkan[0];
+    // }
     ?>
     <h1 class="h3 mb-3">Detail Data Ananda <?= $data->namaSiswa ?></h1>
     <div class="row">
@@ -96,7 +96,7 @@
                                                         <td class="py-1">Tempat Tanggal Lahir</td>
                                                         <td class="py-1">&nbsp;:&nbsp;</td>
                                                         <td class="py-1">
-                                                            <?= $data->tempatLahir . ', ' . tgl_indo($data->tglLahir) ?>
+                                                            <?= $data->tempatLahir . ', ' . $data->tglLahir ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -130,7 +130,7 @@
                                                     <tr>
                                                         <td class="py-1">Program Studi</td>
                                                         <td class="py-1">&nbsp;:&nbsp;</td>
-                                                        <td class="py-1"><?= $prodi->nmProdi ?></td>
+                                                        <td class="py-1"><?= $prodi->program_keahlian ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="py-1">Nomor Hp</td>
@@ -205,7 +205,7 @@
                                                     <tr>
                                                         <td class="py-1">Tanggal Lahir Ayah</td>
                                                         <td class="py-1">&nbsp;:&nbsp;</td>
-                                                        <td class="py-1"><?= tgl_indo($data->tglLahirAyah) ?></td>
+                                                        <td class="py-1"><?= $data->tglLahirAyah ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="py-1">Pendidikan Ayah</td>
@@ -241,7 +241,7 @@
                                                     <tr>
                                                         <td class="py-1">Tanggal Lahir Ibu</td>
                                                         <td class="py-1">&nbsp;:&nbsp;</td>
-                                                        <td class="py-1"><?= tgl_indo($data->tglLahirIbu) ?></td>
+                                                        <td class="py-1"><?= $data->tglLahirIbu ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="py-1">Pendidikan Ibu</td>
@@ -287,7 +287,7 @@
                                                         <tr>
                                                             <td class="py-1">Tanggal Lahir Wali</td>
                                                             <td class="py-1">&nbsp;:&nbsp;</td>
-                                                            <td class="py-1"><?= tgl_indo($data->tglLahirWali) ?></td>
+                                                            <td class="py-1"><?= $data->tglLahirWali ?></td>
                                                         </tr>
                                                         <tr>
                                                             <td class="py-1">Pendidikan Wali</td>

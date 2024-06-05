@@ -3,7 +3,7 @@
     Data Pegawai
 @endsection
 <?php  
-    $data = DB::table('pegawai')->where("nikPeg","=",$id)->first();
+    $data = DB::table('pegawai')->where("id_pegawai","=",$id)->first();
     $waktu = explode("-", $data->ttl);
 ?>
 
@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <input type="hidden" name="nik_p" value="<?= $data->nikPeg?>" required>
+                            <input type="hidden" name="id" value="<?= $data->id_pegawai?>" required>
                             <div class="mb-2 col-md-6">
                                 <label class="form-label" for="input2">NIY Pegawai</label>
                                 <input type="number" class="nomor form-control" id="input2" name="niy_p"
@@ -107,7 +107,7 @@
                                     data-parsley-length-message="harus diisi 12 angka"
                                     placeholder="Isi dengan angka" value="<?= $data->noHp ?>" required>
                             </div>
-                            <div class="mb-2 col-md-3">
+                            <div class="mb-2 col-md-4">
                                 <label class="form-label" for="input8">Jenis Kelamin</label>
                                 <div class="d-flex gap-3">
                                     <div>
@@ -136,10 +136,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-2 col-md-9">
+                            <div class="mb-2 col-md-4">
                                 <label class="form-label" for="input9">Alamat Lengkap</label>
                                 <textarea class="form-control mb-2" id="input9" name="alamat" rows="2"
                                     placeholder="Diisi jalan, dusun, RT dan RW" required><?= $data->alamat ?></textarea>
+                            </div>
+                            <div class="mb-2 col-md-4">
+                                <label class="form-label" for="input9">Tahun Masuk</label>
+                                <input type="date" class="form-control" id="input13" name="thn_masuk"
+                                    placeholder="di Isi" value="<?= $data->tahun_masuk?>" required>
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="form-label" for="input10">Tugas Tambahan</label>
@@ -192,7 +197,7 @@
                     $('#loading').css("display", "block")
                     $.ajax({
                         type: 'POST',
-                        url:"{{route('employee.update_data')}}",
+                        url:"{{route('employee.update_dataPeg')}}",
                         data:data,
                         success: function(hasil) {
                             $('#loading').css("display", "none")

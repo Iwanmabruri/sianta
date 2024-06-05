@@ -1,37 +1,36 @@
 @extends('welcome')
 @section('judul')
-    Data Jurusan
+    Data Tahun Ajaran
 @endsection
 
 @section('konten')
-    <h1 class="h3 mb-3">Data Jurusan</h1>
+    <h1 class="h3 mb-3">Data Tahun Ajaran</h1>
 
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <button type="button" class="btn btn-primary" id="tambah">
-                        Tambah Data
-                    </button>
+                    <button id="tambah" class="btn btn-primary">Tambah Data</button>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped data-table" id="mytable">
+                    <table id="mytable" class="table table-bordered data-table">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Bid. Keahlian</th>
-                                <th class="d-none d-md-table-cell">Prog. Keahlian</th>
-                                <th>Pembuatan</th>
+                                <th>Tahun Ajaran</th>
+                                <th>keterangan</th>
                                 <th>Status</th>
-                                <th>Actions</th>
+                                <th width="100px">Action</th>
                             </tr>
                         </thead>
+                        <tbody>
+                        </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
     </div>
+
     <script type="text/javascript">
         $(document).ready(function() {
             var table = $('#mytable').DataTable({
@@ -39,7 +38,7 @@
                 serverSide: true,
                 ajax: {
                     type: "post",
-                    url: '{{ route('program.dataProgram') }}',
+                    url: '{{ route('tahunAjaran.dataTahunAjaran') }}',
                     data: {
                         "_token": "{{ csrf_token() }}"
                     }
@@ -50,16 +49,12 @@
                         searchable: false
                     },
                     {
-                        data: 'bidangKeahlian',
-                        name: 'bidangKeahlian'
+                        data: 'tahunAjaran',
+                        name: 'tahunAjaran'
                     },
                     {
-                        data: 'programKeahlian',
-                        name: 'programKeahlian',
-                    },
-                    {
-                        data: 'tahunDibuat',
-                        name: 'tahunDibuat',
+                        data: 'keterangan',
+                        name: 'keterangan',
                     },
                     {
                         data: 'status',
@@ -76,12 +71,12 @@
 
 
             $('#tambah').on('click', function() {
-                window.location.href = "{{ url('form_data_progKeh') }}"
+                window.location.href = "{{ url('form_data_thn') }}"
             })
 
             $('.data-table').on("click", ".edit", function () {
                 var id=$(this).attr("id")
-                window.location.href=`{{url('form_data_progKeh2')}}/`+id
+                window.location.href=`{{url('form_data_thn2')}}/`+id
             })
 
             $('.data-table').on("click", ".hapus", function () {
@@ -100,7 +95,7 @@
                         $("#loading").css("display", "block")
                         $.ajax({
                             type: "post",
-                            url: '{{ route('program.hapusProgKeh') }}',
+                            url: '{{ route('tahunAjaran.hapusThn') }}',
                             data: {
                                 "_token": "{{ csrf_token() }}",
                                 "id" : id
@@ -114,7 +109,7 @@
                                             icon: 'success',
                                             confirmButtonColor: '#3085d6',
                                         }).then(function () {
-                                            window.location.href = "{{ route('program.index') }}" 
+                                            window.location.href = "{{ route('tahunAjaran.index') }}" 
                                             
                                         })
                                     }
@@ -122,6 +117,12 @@
                         })
                     }
                 })
+
+            })
+
+            $('.data-table').on("click", ".detail", function () {
+                var id=$(this).attr("id")
+                window.location.href=`{{url('form_detail')}}/`+id
             })
         })
     </script>

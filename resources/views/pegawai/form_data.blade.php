@@ -89,7 +89,7 @@
                                     data-parsley-length-message="harus diisi 12 angka"
                                     placeholder="Isi dengan angka" required>
                             </div>
-                            <div class="mb-2 col-md-3">
+                            <div class="mb-2 col-md-4">
                                 <label class="form-label" for="input8">Jenis Kelamin</label>
                                 <div class="d-flex gap-3">
                                     <div>
@@ -114,10 +114,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-2 col-md-9">
+                            <div class="mb-2 col-md-4">
                                 <label class="form-label" for="input9">Alamat Lengkap</label>
                                 <textarea class="form-control mb-2" id="input9" name="alamat" rows="2"
                                     placeholder="Diisi jalan, dusun, RT dan RW" required></textarea>
+                            </div>
+                            <div class="mb-2 col-md-4">
+                                <label class="form-label" for="input9">Tahun Masuk</label>
+                                <input type="date" class="form-control" id="input13" name="thn_masuk"
+                                    placeholder="di Isi" required>
                             </div>
                             <div class="mb-2 col-md-4">
                                 <label class="form-label" for="input10">Tugas Tambahan</label>
@@ -170,7 +175,7 @@
                     $('#loading').css("display", "block")
                     $.ajax({
                         type: 'POST',
-                        url:"{{route('employee.insert_data')}}",
+                        url:'{{route('employee.insert_dataPeg')}}',
                         data:data,
                         success: function(hasil) {
                             $('#loading').css("display", "none")

@@ -12,31 +12,7 @@
                 {{ csrf_field()}}
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="mb-2 col-md-4">
-                                <label class="form-label" for="input1">NIK Pegawai</label>
-                                <input type="number" class="nomor form-control" id="input1" name="nik_p" required>
-                                <div id="product_list"></div>
-                            </div>
-                            <div class="mb-2 col-md-4">
-                                <label class="form-label" for="input2">Nama Pegawai</label>
-                                <input type="text" class=" form-control" id="input2" name="nm_p" required>
-                            </div>
-                            <div class="mb-2 col-md-4">
-                                <label class="form-label" for="input1">Tahun Ajaran</label>
-                                <select class="form-select" aria-label="Default select example" name="TA">
-                                    <option selected>-- pilih --</option>
-                                    <option value="2223">2022-2023</option>
-                                    <option value="2324">2023-2024</option>
-                                    <option value="2425">2024-2025</option>
-                                </select>
-                            </div>
-                        </div>
-
                         <div class="row mt-4">
-                            <div>
-                                <hr>    
-                            </div>
                             <div class="mb-3 col-md-12">
                                 <div class="d-flex gap-1">
                                     <div>
@@ -46,7 +22,17 @@
                                     <div>
                                         <button id="cari" type="button" class="btn btn-success px-5"> <i data-feather="search"></i> Cari</button>
                                     </div>
+                                
                                 </div>
+                            </div>
+                            <div class="mb-2 col-md-4">
+                                <label class="form-label" for="input1">Tahun Ajaran</label>
+                                <select class="form-select" aria-label="Default select example" name="TA">
+                                    <option selected>-- pilih --</option>
+                                    <option value="2223">2022-2023</option>
+                                    <option value="2324">2023-2024</option>
+                                    <option value="2425">2024-2025</option>
+                                </select>
                             </div>
                             <div class="mb-3 col-md-12">
                                 <div class="d-flex gap-1">
