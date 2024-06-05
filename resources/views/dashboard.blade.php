@@ -28,7 +28,7 @@
                 <div class="card-body py-4">
                     <div class="d-flex align-items-start">
                         <div class="flex-grow-1">
-                            <h3 class="mb-2">700 Siswa</h3>
+                            <h3 class="mb-2"><?= DB::table('siswa')->where('status','aktif')->count()?> Siswa</h3>
                             <p class="mb-2">Jumlah Peserta Didik</p>
                         </div>
                         <div class="d-inline-block ms-3">
@@ -45,7 +45,7 @@
                 <div class="card-body py-4">
                     <div class="d-flex align-items-start">
                         <div class="flex-grow-1">
-                            <h3 class="mb-2">43 Pegawai</h3>
+                            <h3 class="mb-2"><?= DB::table('pegawai')->where('status','aktif')->count()?> Pegawai</h3>
                             <p class="mb-2">Jumlah Pegawai</p>
                         </div>
                         <div class="d-inline-block ms-3">
@@ -62,7 +62,7 @@
                 <div class="card-body py-4">
                     <div class="d-flex align-items-start">
                         <div class="flex-grow-1">
-                            <h3 class="mb-2">14 Ruang</h3>
+                            <h3 class="mb-2"><?= DB::table('kelas')->where('status','aktif')->count()?> Ruang</h3>
                             <p class="mb-2">Jumlah Ruang Kelas</p>
                         </div>
                         <div class="d-inline-block ms-3">
