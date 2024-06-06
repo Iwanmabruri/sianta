@@ -84,6 +84,11 @@
                 window.location.href=`{{url('updateMutasi')}}/`+id
             })
 
+            $('.data-table').on("click", ".print", function () {
+                var id=$(this).attr("id")
+                window.location.href=`{{url('printMutasi')}}/`+id
+            })
+
         })
     </script>
 @endsection

@@ -31,6 +31,7 @@ class MutationController extends Controller
                 $bt = '
             <div class="btn-group" role="group" aria-label="Basic example">
                 <button id="' . $row->idM .'" class="edit btn btn-info btn-xs" type="button">edit</button>
+                <button id="' . $row->idM .'" class="print btn btn-primary btn-xs" type="button">print</button>
             </div>
                 
                 ';
@@ -63,6 +64,16 @@ class MutationController extends Controller
     public function updateMutasi($id)
     {
         return view('mutasi.update_mutasi', compact("id"));
+    }
+
+    public function printMutasi($id)
+    {
+        return view('mutasi.printMutasi', compact("id"));
+    }
+
+    public function printFormMutasi($id)
+    {
+        return view('mutasi.formulir', compact("id"));
     }
 
     public function addMutasi($id)
