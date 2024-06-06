@@ -9,8 +9,8 @@
         $data = DB::table('siswa')->where('id_siswa', $id)->first();
         
         $progrmKeahlian = DB::table('program_keahlian')
-            ->where('status', "aktif")
-            ->get();
+            ->where('id_program_keahlian', $data->id_program_keahlian)
+            ->first();
             
         $kelas = DB::table('kelas')
             ->where('status', "aktif")
@@ -39,16 +39,8 @@
                                 </div>
                                 <div class="col-md-4">
                                 <label class="form-label" for="input4">Program Keahlian</label>
-                                    <select class="form-control mb-3" id="input4" name="progKeah" required>
-                                        <option value="" hidden>Pilih Program Keahlian</option>
-                                        <?php
-                                            foreach ($progrmKeahlian as  $val) {
-                                                ?>
-                                                <option value="<?= $val->id_program_keahlian ?>"><?= $val->bidang_keahlian ?></option>
-                                            <?php
-                                                }
-                                            ?>
-                                    </select>
+                                <input type="text" class="form-control mb-2 text-uppercase" id="input1" name=""
+                                        placeholder="siswa" value="<?= $progrmKeahlian->bidang_keahlian?>"  required readonly  >
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label" for="input4">Kelas</label>

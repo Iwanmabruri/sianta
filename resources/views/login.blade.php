@@ -109,7 +109,8 @@
                                             <div class="d-grid gap-2 mb-3">
 
                                             </div>
-                                            <form>
+                                            <form id="form_biasa" alamat="{{route('login_post')}}" rel="simpan"  method="post">
+                                                    {{ csrf_field()}}
                                                 <div class="mb-3">
                                                     <label class="form-label">Username</label>
                                                     <input class="form-control form-control-lg" type="text"
@@ -121,7 +122,7 @@
                                                         name="password" placeholder="Enter your password" />
                                                 </div>
                                                 <div class="d-grid gap-2 mt-3">
-                                                    <a class='btn btn-lg btn-primary' href=''>LogIn</a>
+                                                    <button class='btn btn-lg btn-primary' type="submit">LogIn</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -138,6 +139,53 @@
         </div>
 
         <script src="{{ asset('js/app.js') }}"></script>
+        <script>
+            $(document).ready(function () {
+                $("#form_biasa").on('submit', function (e) {
+                    e.preventDefault();
+                    var kem = $(this).attr("kem");
+                    var url = $(this).attr("alamat");
+                    var form = $(this);
+                    var data = $(this).serialize();
+                    var username=$("#username").val();
+                    var password=$("#password").val();
+                    if(username==""){
+                        $("#username").focus();
+                        swal("Username harus diisi");
+                    }else if(password==""){
+                        $("#password").focus();
+                        swal("Password harus diisi")
+                    }else{
+                        $("#loading").css("display", "block");
+                        $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: data,
+                        success: function (hasil) {
+                            $("#loading").css("display", "none");
+                            if (hasil == 1) {
+                                swal.fire({
+                                    title: 'Sucess',
+                                    text: 'Login Berhasil',
+                                    icon: 'success'
+                                }).then(function() {
+                                    window.location.href = "{{url('/dashboard')}}";
+                                });
+                            } else if (hasil == 2) {
+                                swal.fire({
+                                    title: 'Error',
+                                    text: 'Login Gagal',
+                                    icon: 'error'
+                                }).then(function() {
+                                });
+                            } 
+                        }
+                    }); 
+                    }
+                    
+                });
+            });
+        </script>
     </body>
 
 </html>

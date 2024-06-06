@@ -10,6 +10,8 @@ use App\Http\Controllers\ClassroomStudentController;
 use App\Http\Controllers\MutationController;
 use App\Http\Controllers\TahunAjaranController;
 use App\Http\Controllers\SemesterController;
+use App\Http\Controllers\LoginController;
+
 
 
 /*
@@ -22,14 +24,10 @@ use App\Http\Controllers\SemesterController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('/login_post',[LoginController::class, 'login_post'])->name("login_post");
+Route::get('/',[LoginController::class, 'login'])->name("login");
+Route::get('/dashboard', function () { return view('dashboard');});
 
-Route::get('/', function () {
-    return view('dashboard');
-});
-
-Route::get('/login', function () {
-    return view('login');
-});
 
 Route::controller(TahunAjaranController::class)->group(function () {
     Route::get('/tahunAjaran', 'index')->name('tahunAjaran.index');
