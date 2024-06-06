@@ -67,6 +67,7 @@ Route::controller(StudentController::class)->group(function () {
     Route::get('step1/{id}/{bt}', [StudentController::class, 'step1']);
     Route::get('/step2/{id}/{bt}', [StudentController::class, 'step2']);
     Route::get('/step3/{id}/{bt}', [StudentController::class, 'step3']);
+    Route::get('/step4/{id}/{bt}', [StudentController::class, 'step4']);
     Route::get('/detailSiswa/{id}', [StudentController::class, 'detail_siswa']);
     Route::get('/uploadBerkas/{id}', [StudentController::class, 'upload_berkas']);
     Route::get('/printData/{id}', [StudentController::class, 'print_data']);
@@ -75,6 +76,7 @@ Route::controller(StudentController::class)->group(function () {
     Route::post('simpanStep1', [StudentController::class, 'simpan1'])->name('simpanStep1');
     Route::post('simpanStep2', [StudentController::class, 'simpan2'])->name('simpanStep2');
     Route::post('simpanStep3', [StudentController::class, 'simpan3'])->name('simpanStep3');
+    Route::post('simpanStep4', [StudentController::class, 'simpan4'])->name('simpanStep4');
     Route::post('upload-berkas', [StudentController::class, 'simpanBerkas'])->name('upload-berkas');
     Route::post('batal', [StudentController::class, 'batalkan'])->name('batal');
     Route::post('getKabupaten', [StudentController::class, 'get_kabupaten'])->name('getKabupaten');

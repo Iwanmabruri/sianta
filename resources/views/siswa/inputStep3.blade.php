@@ -264,7 +264,7 @@
                                 <a href="" class="btn btn-warning">Refresh</a>
                                 <div class="float-end">
                                     <button type="button" id="formSebelumnya" class="btn btn-primary">Kembali</button>
-                                    <button type="submit" class="btn btn-success">Selesai</button>
+                                    <button type="submit" class="btn btn-primary">Lanjut</button>
                                 </div>
                             </div>
                         </div>
@@ -366,41 +366,30 @@
                 var form = $(this)
                 form.parsley().validate()
                 if (form.parsley().isValid()) {
-                    swal.fire({
-                        title: "Apakah sudah selesai?",
-                        text: 'Pastikan semua data telah benar!',
-                        icon: "question",
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Ya',
-                        cancelButtonText: 'Tidak'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            $('#loading').css("display", "block")
-                            $.ajax({
-                                type: 'POST',
-                                url: '{{ route('simpanStep3') }}',
-                                data: data,
-                                success: function(hasil) {
-                                    $("#loading").css("display", "none")
-                                    if (hasil == 1) {
-                                        swal.fire({
-                                            title: 'Tersimpan',
-                                            text: 'Data berhasil tersimpan',
-                                            icon: 'success',
-                                            confirmButtonColor: '#3085d6',
-                                        }).then(() => {
-                                            window.location.href =
-                                                "{{ url('/student') }}"
-                                        })
-                                    }
-                                }
-                            })
+                    $('#loading').css("display", "block")
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ route('simpanStep3') }}',
+                        data: data,
+                        success: function(hasil) {
+                            // $('#loading').css("display", "none")
+                            console.log(hasil)
+                            if (hasil == 'k') {
+                                swal.fire({
+                                    title: 'Error',
+                                    text: 'Gagal dalam menyimpan data',
+                                    icon: 'error',
+                                    confirmButtonColor: '#3085d6'
+                                })
+                            } else {
+                                window.location.href = "{{ url('/step4') }}/" + hasil +
+                                    "/<?= $bt ?>"
+                            }
                         }
                     })
                 }
             })
+
         })
     </script>
 @endsection

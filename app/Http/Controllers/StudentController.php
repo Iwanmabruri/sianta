@@ -23,7 +23,7 @@ class StudentController extends Controller
 
     public function siswa_data()
     {
-        $data = DB::table('siswa')->where('status', 'Aktif');
+        $data = DB::table('siswa')->where('status', 'Aktif')->orderBy("id_siswa", "desc");
         $datatable = DataTables::of($data);
         return $datatable
             ->addIndexColumn()
@@ -125,6 +125,11 @@ class StudentController extends Controller
     public function step3($id, $bt)
     {
         return view('siswa.inputStep3', compact("id", "bt"));
+    }
+
+    public function step4($id, $bt)
+    {
+        return view('siswa.inputStep4', compact("id", "bt"));
     }
 
     public function detail_siswa($id)
@@ -289,6 +294,21 @@ class StudentController extends Controller
         $data['tglDiterima'] = $request->tglDiterima;
         $data['status'] = 'Aktif';
         $update = DB::table('siswa')->where('id_siswa', $request->id)->update($data);
+
+        if ($update == 0 || $update == 1) {
+            return $request->id;
+        } else {
+            return "k";
+        }
+    }
+
+    public function simpan4(Request $request)
+    {
+        $data = array();
+        $data['id_kelas'] = $request->kelas;
+        $data['id_siswa'] = $request->id;
+        $data['status'] = 'aktif';
+        $update = DB::table('siswa_perkelas')->insert($data);
 
         if ($update == 0 || $update == 1) {
             return 1;
