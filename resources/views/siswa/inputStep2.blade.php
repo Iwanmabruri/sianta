@@ -140,21 +140,165 @@
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input6">Pekerjaan Ayah</label>
-                                <input type="text" class="form-control mb-3 text-uppercase" id="input6" required
+                                <select name="pkrjnAyah" id="input6" class="form-select mb-3 text-uppercase" required>
+                                    <option value="">Pilih Pekerjaan</option>
+                                    <option <?= $data->pkrjnAyah == 'Wiraswasta' ? 'selected' : '' ?> value="Wiraswasta">
+                                        Wiraswasta
+                                    </option>
+                                    <option <?= $data->pkrjnAyah == 'Nelayan' ? 'selected' : '' ?> value="Nelayan">Nelayan
+                                    </option>
+                                    <option <?= $data->pkrjnAyah == 'Petani' ? 'selected' : '' ?> value="Petani">Petani
+                                    </option>
+                                    <option <?= $data->pkrjnAyah == 'Peternak' ? 'selected' : '' ?> value="Peternak">
+                                        Peternak
+                                    </option>
+                                    <option <?= $data->pkrjnAyah == 'PNS/TNI/Polri' ? 'selected' : '' ?>
+                                        value="PNS/TNI/Polri">PNS/TNI/Polri
+                                    </option>
+                                    <option <?= $data->pkrjnAyah == 'Karyawan Swasta' ? 'selected' : '' ?>
+                                        value="Karyawan Swasta">Karyawan Swasta
+                                    </option>
+                                    <option <?= $data->pkrjnAyah == 'Pedagang Besar' ? 'selected' : '' ?>
+                                        value="Pedagang Besar">Pedagang Besar
+                                    </option>
+                                    <option <?= $data->pkrjnAyah == 'Pedagang Kecil' ? 'selected' : '' ?>
+                                        value="Pedagang Kecil">Pedagang Kecil
+                                    </option>
+                                    <option <?= $data->pkrjnAyah == 'Tidak Bekerja' ? 'selected' : '' ?>
+                                        value="Tidak Bekerja">Tidak Bekerja
+                                    </option>
+                                </select>
+                                {{-- <input type="text" class="form-control mb-3 text-uppercase" id="input6" required
                                     name="pkrjnAyah" placeholder="Pekerjaan Ayah" autocomplete="off"
-                                    value="<?= $data->pkrjnAyah ?>">
+                                    value="<?= $data->pkrjnAyah ?>"> --}}
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input7">Pendidikan Ayah</label>
-                                <input type="text" class="form-control mb-3 text-uppercase" id="input7" required
+                                <select name="pndknAyah" id="input7" class="form-select mb-3 text-uppercase" required>
+                                    <option value="">Pilih Pendidikan</option>
+                                    <option <?= $data->pendAyah == 'D1' ? 'selected' : '' ?> value="D1">
+                                        D1
+                                    </option>
+                                    <option <?= $data->pendAyah == 'D2' ? 'selected' : '' ?> value="D2">
+                                        D2
+                                    </option>
+                                    <option <?= $data->pendAyah == 'D3' ? 'selected' : '' ?> value="D3">
+                                        D3
+                                    </option>
+                                    <option <?= $data->pendAyah == 'D4' ? 'selected' : '' ?> value="D4">
+                                        D4
+                                    </option>
+                                    <option <?= $data->pendAyah == 'Informal' ? 'selected' : '' ?> value="Informal">
+                                        Informal
+                                    </option>
+                                    <option <?= $data->pendAyah == 'Non Formal' ? 'selected' : '' ?> value="Non Formal">
+                                        Non Formal
+                                    </option>
+                                    <option <?= $data->pendAyah == 'Paket A' ? 'selected' : '' ?> value="Paket A">
+                                        Paket A
+                                    </option>
+                                    <option <?= $data->pendAyah == 'Paket B' ? 'selected' : '' ?> value="Paket B">
+                                        Paket B
+                                    </option>
+                                    <option <?= $data->pendAyah == 'Paket C' ? 'selected' : '' ?> value="Paket C">
+                                        Paket C
+                                    </option>
+                                    <option <?= $data->pendAyah == 'Paud' ? 'selected' : '' ?> value="Paud">
+                                        Paud
+                                    </option>
+                                    <option <?= $data->pendAyah == 'Profesi' ? 'selected' : '' ?> value="Profesi">
+                                        Profesi
+                                    </option>
+                                    <option <?= $data->pendAyah == 'Putus SD' ? 'selected' : '' ?> value="Putus SD">
+                                        Putus SD
+                                    </option>
+                                    <option <?= $data->pendAyah == 'S1' ? 'selected' : '' ?> value="S1">
+                                        S1
+                                    </option>
+                                    <option <?= $data->pendAyah == 'S2' ? 'selected' : '' ?> value="S2">
+                                        S2
+                                    </option>
+                                    <option <?= $data->pendAyah == 'S2 Terapan' ? 'selected' : '' ?> value="S2 Terapan">
+                                        S2 Terapan
+                                    </option>
+                                    <option <?= $data->pendAyah == 'S3' ? 'selected' : '' ?> value="S3">
+                                        S3
+                                    </option>
+                                    <option <?= $data->pendAyah == 'S3 Terapan' ? 'selected' : '' ?> value="S3 Terapan">
+                                        S3 Terapan
+                                    </option>
+                                    <option <?= $data->pendAyah == 'SD/sederajat' ? 'selected' : '' ?>
+                                        value="SD/sederajat">
+                                        SD/sederajat
+                                    </option>
+                                    <option <?= $data->pendAyah == 'SMP/sederajat' ? 'selected' : '' ?>
+                                        value="SMP/sederajat">
+                                        SMP/sederajat
+                                    </option>
+                                    <option <?= $data->pendAyah == 'SMA/sederajat' ? 'selected' : '' ?>
+                                        value="SMA/sederajat">
+                                        SMA/sederajat
+                                    </option>
+                                    <option <?= $data->pendAyah == 'Sp-1' ? 'selected' : '' ?> value="Sp-1">
+                                        Sp-1
+                                    </option>
+                                    <option <?= $data->pendAyah == 'Sp-2' ? 'selected' : '' ?> value="Sp-2">
+                                        Sp-2
+                                    </option>
+                                    <option <?= $data->pendAyah == 'TK/sederajat' ? 'selected' : '' ?>
+                                        value="TK/sederajat">
+                                        TK/sederajat
+                                    </option>
+                                    <option <?= $data->pendAyah == 'Tidak Sekolah' ? 'selected' : '' ?>
+                                        value="Tidak Sekolah">
+                                        Tidak Sekolah
+                                    </option>
+                                    <option <?= $data->pendAyah == 'Lainnya' ? 'selected' : '' ?> value="Lainnya">
+                                        Lainnya
+                                    </option>
+                                </select>
+                                {{-- <input type="text" class="form-control mb-3 text-uppercase" id="input7" required
                                     name="pndknAyah" placeholder="Pendidikan Ayah" autocomplete="off"
-                                    value="<?= $data->pendAyah ?>">
+                                    value="<?= $data->pendAyah ?>"> --}}
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input8">Penghasilan Ayah</label>
-                                <input type="text" class="form-control mb-3 text-uppercase" id="input8" required
+                                <select name="pndptnAyah" id="input8" class="form-select mb-3 text-uppercase"
+                                    required>
+                                    <option value="">Pilih Penghasilan</option>
+                                    <option <?= $data->penghAyah == 'Kurang dari Rp. 500.000' ? 'selected' : '' ?>
+                                        value="Kurang dari Rp. 500.000">
+                                        Kurang dari Rp. 500.000
+                                    </option>
+                                    <option <?= $data->penghAyah == 'Rp. 500.000 - Rp. 999.999' ? 'selected' : '' ?>
+                                        value="Rp. 500.000 - Rp. 999.999">
+                                        Rp. 500.000 - Rp. 999.999
+                                    </option>
+                                    <option <?= $data->penghAyah == 'Rp. 1.000.000 - Rp. 1.999.999' ? 'selected' : '' ?>
+                                        value="Rp. 1.000.000 - Rp. 1.999.999">
+                                        Rp. 1.000.000 - Rp. 1.999.999
+                                    </option>
+                                    <option <?= $data->penghAyah == 'Rp. 2.000.000 - Rp. 4.999.999' ? 'selected' : '' ?>
+                                        value="Rp. 2.000.000 - Rp. 4.999.999">
+                                        Rp. 2.000.000 - Rp. 4.999.999
+                                    </option>
+                                    <option <?= $data->penghAyah == 'Rp. 5.000.000 - Rp. 20.000.000' ? 'selected' : '' ?>
+                                        value="Rp. 5.000.000 - Rp. 20.000.000">
+                                        Rp. 5.000.000 - Rp. 20.000.000
+                                    </option>
+                                    <option <?= $data->penghAyah == 'Lebih dari Rp. 20.000.000' ? 'selected' : '' ?>
+                                        value="Lebih dari Rp. 20.000.000">
+                                        Lebih dari Rp. 20.000.000
+                                    </option>
+                                    <option <?= $data->penghAyah == 'Tidak Berpenghasilan' ? 'selected' : '' ?>
+                                        value="Tidak Berpenghasilan">
+                                        Tidak Berpenghasilan
+                                    </option>
+
+                                </select>
+                                {{-- <input type="text" class="form-control mb-3 text-uppercase" id="input8" required
                                     name="pndptnAyah" placeholder="Penghasilan Ayah" autocomplete="off"
-                                    value="<?= $data->penghAyah ?>">
+                                    value="<?= $data->penghAyah ?>"> --}}
                             </div>
                         </div>
                     </div>
@@ -281,21 +425,162 @@
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input14">Pekerjaan Ibu</label>
-                                <input type="text" class="form-control mb-3 text-uppercase" id="input14" required
+                                <select name="pkrjnIbu" id="input14" class="form-select mb-3 text-uppercase">
+                                    <option value="">Pilih Pekerjaan</option>
+                                    <option <?= $data->pkrjnIbu == 'Wiraswasta' ? 'selected' : '' ?> value="Wiraswasta">
+                                        Wiraswasta
+                                    </option>
+                                    <option <?= $data->pkrjnIbu == 'Nelayan' ? 'selected' : '' ?> value="Nelayan">Nelayan
+                                    </option>
+                                    <option <?= $data->pkrjnIbu == 'Petani' ? 'selected' : '' ?> value="Petani">Petani
+                                    </option>
+                                    <option <?= $data->pkrjnIbu == 'Peternak' ? 'selected' : '' ?> value="Peternak">
+                                        Peternak
+                                    </option>
+                                    <option <?= $data->pkrjnIbu == 'PNS/TNI/Polri' ? 'selected' : '' ?>
+                                        value="PNS/TNI/Polri">PNS/TNI/Polri
+                                    </option>
+                                    <option <?= $data->pkrjnIbu == 'Karyawan Swasta' ? 'selected' : '' ?>
+                                        value="Karyawan Swasta">Karyawan Swasta
+                                    </option>
+                                    <option <?= $data->pkrjnIbu == 'Pedagang Besar' ? 'selected' : '' ?>
+                                        value="Pedagang Besar">Pedagang Besar
+                                    </option>
+                                    <option <?= $data->pkrjnIbu == 'Pedagang Kecil' ? 'selected' : '' ?>
+                                        value="Pedagang Kecil">Pedagang Kecil
+                                    </option>
+                                    <option <?= $data->pkrjnIbu == 'Tidak Bekerja' ? 'selected' : '' ?>
+                                        value="Tidak Bekerja">Tidak Bekerja
+                                    </option>
+                                </select>
+                                {{-- <input type="text" class="form-control mb-3 text-uppercase" id="input14" required
                                     name="pkrjnIbu" placeholder="Pekerjaan Ibu" autocomplete="off"
-                                    value="<?= $data->pkrjnIbu ?>">
+                                    value="<?= $data->pkrjnIbu ?>"> --}}
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input15">Pendidikan Ibu</label>
-                                <input type="text" class="form-control mb-3 text-uppercase" id="input15" required
+                                <select name="pndknIbu" id="input15" class="form-select mb-3 text-uppercase">
+                                    <option value="">Pilih Pendidikan</option>
+                                    <option <?= $data->pendIbu == 'D1' ? 'selected' : '' ?> value="D1">
+                                        D1
+                                    </option>
+                                    <option <?= $data->pendIbu == 'D2' ? 'selected' : '' ?> value="D2">
+                                        D2
+                                    </option>
+                                    <option <?= $data->pendIbu == 'D3' ? 'selected' : '' ?> value="D3">
+                                        D3
+                                    </option>
+                                    <option <?= $data->pendIbu == 'D4' ? 'selected' : '' ?> value="D4">
+                                        D4
+                                    </option>
+                                    <option <?= $data->pendIbu == 'Informal' ? 'selected' : '' ?> value="Informal">
+                                        Informal
+                                    </option>
+                                    <option <?= $data->pendIbu == 'Non Formal' ? 'selected' : '' ?> value="Non Formal">
+                                        Non Formal
+                                    </option>
+                                    <option <?= $data->pendIbu == 'Paket A' ? 'selected' : '' ?> value="Paket A">
+                                        Paket A
+                                    </option>
+                                    <option <?= $data->pendIbu == 'Paket B' ? 'selected' : '' ?> value="Paket B">
+                                        Paket B
+                                    </option>
+                                    <option <?= $data->pendIbu == 'Paket C' ? 'selected' : '' ?> value="Paket C">
+                                        Paket C
+                                    </option>
+                                    <option <?= $data->pendIbu == 'Paud' ? 'selected' : '' ?> value="Paud">
+                                        Paud
+                                    </option>
+                                    <option <?= $data->pendIbu == 'Profesi' ? 'selected' : '' ?> value="Profesi">
+                                        Profesi
+                                    </option>
+                                    <option <?= $data->pendIbu == 'Putus SD' ? 'selected' : '' ?> value="Putus SD">
+                                        Putus SD
+                                    </option>
+                                    <option <?= $data->pendIbu == 'S1' ? 'selected' : '' ?> value="S1">
+                                        S1
+                                    </option>
+                                    <option <?= $data->pendIbu == 'S2' ? 'selected' : '' ?> value="S2">
+                                        S2
+                                    </option>
+                                    <option <?= $data->pendIbu == 'S2 Terapan' ? 'selected' : '' ?> value="S2 Terapan">
+                                        S2 Terapan
+                                    </option>
+                                    <option <?= $data->pendIbu == 'S3' ? 'selected' : '' ?> value="S3">
+                                        S3
+                                    </option>
+                                    <option <?= $data->pendIbu == 'S3 Terapan' ? 'selected' : '' ?> value="S3 Terapan">
+                                        S3 Terapan
+                                    </option>
+                                    <option <?= $data->pendIbu == 'SD/sederajat' ? 'selected' : '' ?> value="SD/sederajat">
+                                        SD/sederajat
+                                    </option>
+                                    <option <?= $data->pendIbu == 'SMP/sederajat' ? 'selected' : '' ?>
+                                        value="SMP/sederajat">
+                                        SMP/sederajat
+                                    </option>
+                                    <option <?= $data->pendIbu == 'SMA/sederajat' ? 'selected' : '' ?>
+                                        value="SMA/sederajat">
+                                        SMA/sederajat
+                                    </option>
+                                    <option <?= $data->pendIbu == 'Sp-1' ? 'selected' : '' ?> value="Sp-1">
+                                        Sp-1
+                                    </option>
+                                    <option <?= $data->pendIbu == 'Sp-2' ? 'selected' : '' ?> value="Sp-2">
+                                        Sp-2
+                                    </option>
+                                    <option <?= $data->pendIbu == 'TK/sederajat' ? 'selected' : '' ?> value="TK/sederajat">
+                                        TK/sederajat
+                                    </option>
+                                    <option <?= $data->pendIbu == 'Tidak Sekolah' ? 'selected' : '' ?>
+                                        value="Tidak Sekolah">
+                                        Tidak Sekolah
+                                    </option>
+                                    <option <?= $data->pendIbu == 'Lainnya' ? 'selected' : '' ?> value="Lainnya">
+                                        Lainnya
+                                    </option>
+                                </select>
+                                {{-- <input type="text" class="form-control mb-3 text-uppercase" id="input15" required
                                     name="pndknIbu" placeholder="Pendidikan Ibu" autocomplete="off"
-                                    value="<?= $data->pendIbu ?>">
+                                    value="<?= $data->pendIbu ?>"> --}}
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input16">Penghasilan Ibu</label>
-                                <input type="text" class="form-control mb-3 text-uppercase" id="input16" required
+                                <select class="form-control mb-3 text-uppercase" id="input16" required
+                                    name="pndptnIbu">
+                                    <option value="">Pilih Penghasilan</option>
+                                    <option <?= $data->penghIbu == 'Kurang dari Rp. 500.000' ? 'selected' : '' ?>
+                                        value="Kurang dari Rp. 500.000">
+                                        Kurang dari Rp. 500.000
+                                    </option>
+                                    <option <?= $data->penghIbu == 'Rp. 500.000 - Rp. 999.999' ? 'selected' : '' ?>
+                                        value="Rp. 500.000 - Rp. 999.999">
+                                        Rp. 500.000 - Rp. 999.999
+                                    </option>
+                                    <option <?= $data->penghIbu == 'Rp. 1.000.000 - Rp. 1.999.999' ? 'selected' : '' ?>
+                                        value="Rp. 1.000.000 - Rp. 1.999.999">
+                                        Rp. 1.000.000 - Rp. 1.999.999
+                                    </option>
+                                    <option <?= $data->penghIbu == 'Rp. 2.000.000 - Rp. 4.999.999' ? 'selected' : '' ?>
+                                        value="Rp. 2.000.000 - Rp. 4.999.999">
+                                        Rp. 2.000.000 - Rp. 4.999.999
+                                    </option>
+                                    <option <?= $data->penghIbu == 'Rp. 5.000.000 - Rp. 20.000.000' ? 'selected' : '' ?>
+                                        value="Rp. 5.000.000 - Rp. 20.000.000">
+                                        Rp. 5.000.000 - Rp. 20.000.000
+                                    </option>
+                                    <option <?= $data->penghIbu == 'Lebih dari Rp. 20.000.000' ? 'selected' : '' ?>
+                                        value="Lebih dari Rp. 20.000.000">
+                                        Lebih dari Rp. 20.000.000
+                                    </option>
+                                    <option <?= $data->penghIbu == 'Tidak Berpenghasilan' ? 'selected' : '' ?>
+                                        value="Tidak Berpenghasilan">
+                                        Tidak Berpenghasilan
+                                    </option>
+                                </select>
+                                {{-- <input type="text" class="form-control mb-3 text-uppercase" id="input16" required
                                     name="pndptnIbu" placeholder="Penghasilan Ibu" autocomplete="off"
-                                    value="<?= $data->penghIbu ?>">
+                                    value="<?= $data->penghIbu ?>"> --}}
                             </div>
                         </div>
                     </div>
