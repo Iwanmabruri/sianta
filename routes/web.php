@@ -104,6 +104,7 @@ Route::controller(ClassroomStudentController::class)->group(function () {
     Route::post('ambilKelas', 'ambilKelas')->name('classroomStudent.ambilKelas');
     Route::get('/ClassDetail/{id}', 'detail_kelas')->name('classroomStudent.detail_kelas');
     Route::get('/pindahkan/{id}', 'pindah_kelas')->name('classroomStudent.pindah_kelas');
+    Route::post('simpanPindah', 'simpanPindah')->name('classroomStudent.simpanPindah');
     // Route::get('/form_data/{id}/{nikPeg}', 'form_data')->name('classroomStudent.form_data');
     // Route::get('/autocomplete', 'autocomplete')->name('classroomStudent.autocomplete');
     // Route::post('/loopSiswa', 'loopSiswa')->name('classroomStudent.loopSiswa');

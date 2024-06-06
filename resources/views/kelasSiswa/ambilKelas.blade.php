@@ -18,27 +18,7 @@ if (count($data) == "0") {
 <?php
 foreach ($data as $value) {
 ?>
-<option value="<?= $value->idK ?>">Kelas <?= $value->kls?></option>
-    {{-- <div class="col-12 col-md-6 col-lg-3">
-        <div class="card text-center shadow-lg">
-            <div class="card-header">
-                <h5 class="card-title mb-0">Kelas <?= $value->kls?></h5>
-            </div>
-            <div class="card-body">
-                <div class="">
-                    <p class="card-text">Kelas <?= $value->kls?>&nbsp;<?= $value->rag?> <?= $value->progKeah?> (<?= $value->thnAjr?>)</p>
-                </div>
-            </div>
-            <div class="card-footer d-flex justify-content-center">
-                <button
-                    type="button"
-                    data="<?= $value->idK ?>"
-                    class="btn btn-outline-primary btn-sm text-uppercase font-weight-bolder mt-5 mt-sm-0 mr-auto mr-sm-0 ml-sm-auto float-start pilih">
-                    Pilih
-                </button>
-            </div>
-        </div>
-    </div> --}}
+<option value="<?= $value->idK ?>">Kelas <?= $value->kls?>&nbsp;<?= $value->rag?></option>
 <?php
 }
 }
