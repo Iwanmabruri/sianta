@@ -140,9 +140,9 @@
                             <i class="align-middle" data-feather="list"></i> <span class="align-middle">Data
                                 Induk</span>
                         </a>
-                        <ul id="dashboards" class="sidebar-dropdown list-unstyled collapse show"
+                        <ul id="dashboards" class="sidebar-dropdown list-unstyled collapse"
                             data-bs-parent="#sidebar">
-                            <li class="sidebar-item"><a class="sidebar-link" href="{{ url('/tahunAjaran') }}">Data
+                            <li class="sidebar-item show"><a class="sidebar-link" href="{{ url('/tahunAjaran') }}">Data
                                     Tahun Ajaran</a>
                             </li>
                             <li class="sidebar-item"><a class="sidebar-link" href="{{ url('/semester') }}">Data
@@ -165,14 +165,14 @@
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item"><a class='sidebar-link'
-                                    href='{{ url('/classroom') }}'>Kelas</a>
+                                    href="{{ url('/classroom') }}">Kelas</a>
                             </li>
                             <li class="sidebar-item"><a class='sidebar-link'
-                                    href='{{ route('classroomStudent.index') }}'>Siswa
+                                    href="{{ route('classroomStudent.index') }}">Siswa
                                     Perkelas</a>
                             </li>
                             <li class="sidebar-item"><a class='sidebar-link'
-                                    href='{{ url('/mutation') }}'>Mutasi</a>
+                                    href="{{ url('/mutation') }}">Mutasi</a>
                             </li>
                         </ul>
                     <li class="sidebar-item">

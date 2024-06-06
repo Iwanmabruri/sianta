@@ -125,6 +125,37 @@ class ClassroomStudentController extends Controller
         return view('kelasSiswa.pindahkan', compact('id'));
     }
 
+    public function simpanPindah(Request $req)
+    {
+        // $row = [];
+        // $dataKelas = DB::table('siswa_perkelas')->where('id_kelas', $req->idKelasLama)->get();
+        // foreach ($dataKelas as $key => $value) {
+        //     $row[]=[
+        //         'id_kelas' => $req->kelas,
+        //         'id_siswa' => $value->id_siswa,
+        //         'status' => 'aktif'
+        //     ];
+        // }
+       
+        // $update = DB::table('siswa_perkelas')->insert($row);
+        $data = array();
+        $data["id_kelas"] = "1";
+        $data["id_siswa"] = "1";
+        $data["status"] = "aktif";
+        $tambah = DB::table("siswa_perkelas")->insert($data);
+        if ($tambah) {
+            return "S";
+        } else {
+            return "k";
+        }
+
+        // if ($req->idKelasLama == 0 || $req->idKelasLama == 1) {
+        //     return 1;
+        // } else {
+        //     return "k";
+        // }
+    }
+
 
     /**
      * Display the specified resource.
