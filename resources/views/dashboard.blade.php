@@ -28,7 +28,7 @@
                 <div class="card-body py-4">
                     <div class="d-flex align-items-start">
                         <div class="flex-grow-1">
-                            <h3 class="mb-2"><?= DB::table('siswa')->where('status','aktif')->count()?> Siswa</h3>
+                            <h3 class="mb-2"><?= DB::table('siswa')->where('status', 'aktif')->count() ?> Siswa</h3>
                             <p class="mb-2">Jumlah Peserta Didik</p>
                         </div>
                         <div class="d-inline-block ms-3">
@@ -45,7 +45,7 @@
                 <div class="card-body py-4">
                     <div class="d-flex align-items-start">
                         <div class="flex-grow-1">
-                            <h3 class="mb-2"><?= DB::table('pegawai')->where('status','aktif')->count()?> Pegawai</h3>
+                            <h3 class="mb-2"><?= DB::table('pegawai')->where('status', 'aktif')->count() ?> Pegawai</h3>
                             <p class="mb-2">Jumlah Pegawai</p>
                         </div>
                         <div class="d-inline-block ms-3">
@@ -62,7 +62,7 @@
                 <div class="card-body py-4">
                     <div class="d-flex align-items-start">
                         <div class="flex-grow-1">
-                            <h3 class="mb-2"><?= DB::table('kelas')->where('status','aktif')->count()?> Ruang</h3>
+                            <h3 class="mb-2"><?= DB::table('kelas')->where('status', 'aktif')->count() ?> Ruang</h3>
                             <p class="mb-2">Jumlah Ruang Kelas</p>
                         </div>
                         <div class="d-inline-block ms-3">
@@ -104,21 +104,17 @@
         </div>
     </div>
     <?php
-        $dataSiswaPertahun = DB::table('siswa')->select(DB::raw("COUNT(id_siswa) as jml"), DB::raw("YEAR(tglDiterima) as thn"))
-                ->groupBy(DB::raw("YEAR(tglDiterima)"))->where('status','aktif')
-                ->get();
-        $dataSiswaMutasi = DB::table('mutasi')->select(DB::raw("COUNT(id_siswa) as jml"), DB::raw("YEAR(tglMutasi) as thn"))
-                ->groupBy(DB::raw("YEAR(tglMutasi)"))
-                ->get();
-        
-        foreach ($dataSiswaPertahun as $res) {
-                $jml[] = $res->jml;
-                $thn[] = $res->thn;
-            }
-        foreach ($dataSiswaMutasi as $res) {
-                $jmlM[] = $res->jml;
-                $thnM[] = $res->thn;
-            }
+    $dataSiswaPertahun = DB::table('siswa')->select(DB::raw('COUNT(id_siswa) as jml'), DB::raw('YEAR(tglDiterima) as thn'))->groupBy(DB::raw('YEAR(tglDiterima)'))->where('status', 'aktif')->get();
+    $dataSiswaMutasi = DB::table('mutasi')->select(DB::raw('COUNT(id_siswa) as jml'), DB::raw('YEAR(tglMutasi) as thn'))->groupBy(DB::raw('YEAR(tglMutasi)'))->get();
+    
+    foreach ($dataSiswaPertahun as $res) {
+        $jml[] = $res->jml;
+        $thn[] = $res->thn;
+    }
+    foreach ($dataSiswaMutasi as $res) {
+        $jmlM[] = $res->jml;
+        $thnM[] = $res->thn;
+    }
     
     ?>
 
@@ -126,59 +122,59 @@
         const ctx = document.getElementById('myChart');
 
         new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: <?=  json_encode($thn) ?>,
-            datasets: [{
-            label: 'siswa',
-            data: <?= json_encode($jml) ?>,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-            ],
-            borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-            y: {
-                beginAtZero: true
+            type: 'bar',
+            data: {
+                labels: <?= json_encode($thn) ?>,
+                datasets: [{
+                    label: 'siswa',
+                    data: <?= json_encode($jml) ?>,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 205, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
             }
-            }
-        }
         });
 
         const ctx2 = document.getElementById('myChart2');
 
         new Chart(ctx2, {
-        type: 'bar',
-        data: {
-            labels: <?=  json_encode($thnM) ?>,
-            datasets: [{
-            label: 'siswa',
-            data: <?= json_encode($jmlM) ?>,
-            backgroundColor: [
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-            ],
-            borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-            y: {
-                beginAtZero: true
+            type: 'bar',
+            data: {
+                labels: <?= json_encode($thnM) ?>,
+                datasets: [{
+                    label: 'siswa',
+                    data: <?= json_encode($jmlM) ?>,
+                    backgroundColor: [
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 205, 86, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
             }
-            }
-        }
         });
     </script>
 @endsection
