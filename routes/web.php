@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\StudyProgramController;
 use App\Http\Controllers\ClassroomStudentController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\MutationController;
 use App\Http\Controllers\TahunAjaranController;
 use App\Http\Controllers\SemesterController;
@@ -24,9 +25,12 @@ use App\Http\Controllers\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::post('/login_post',[LoginController::class, 'login_post'])->name("login_post");
-Route::get('/',[LoginController::class, 'login'])->name("login");
-Route::get('/dashboard', function () { return view('dashboard');});
+
+Route::post('/login_post', [LoginController::class, 'login_post'])->name("login_post");
+Route::get('/', [LoginController::class, 'login'])->name("login");
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
 
 
 Route::controller(TahunAjaranController::class)->group(function () {
@@ -95,7 +99,6 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::post('update_dataPeg', 'update')->name('employee.update_dataPeg');
     Route::post('upload_data', 'upload_data')->name('employee.upload_data');
     Route::post('hapusPeg', 'hapusPeg')->name('employee.hapusPeg');
-
 });
 
 Route::controller(ClassroomStudentController::class)->group(function () {
@@ -124,8 +127,6 @@ Route::controller(ClassroomController::class)->group(function () {
     Route::post('simpanKls', 'simpanKls')->name('kelas.simpanKls');
     Route::post('editKls', 'editKls')->name('kelas.editKls');
     Route::post('hapusKls', 'hapusKls')->name('kelas.hapusKls');
-
-
 });
 // Route::get('/classroom', [ClassroomController::class, 'index'])->name('classroom');
 // Route::get('/create-class', [ClassroomController::class, 'create'])->name('create-class');
@@ -141,4 +142,12 @@ Route::controller(MutationController::class)->group(function () {
     Route::post('dataMutasi', 'dataMutasi')->name('mutasi.dataMutasi');
     Route::post('uploadBerkasMutasi', 'uploadBerkasMutasi')->name('mutasi.uploadBerkasMutasi');
     Route::post('simpanMutasi', 'simpanMutasi')->name('mutasi.simpanMutasi');
+});
+
+Route::controller(ExportController::class)->group(function () {
+    Route::get('/export', 'index')->name('export.index');
+    Route::get('/pertahun/{prodi}/{tahun}', 'pertahun')->name('export.pertahun');
+    Route::post('cekDataPertahun', 'cekDataPertahun')->name('export.cekDataPertahun');
+    Route::post('cekDataPerkelas', 'cekDataPerkelas')->name('export.cekDataPerkelas');
+    Route::get('/perkelas/{prodi}/{tahun}/{kelas}', 'perkelas')->name('export.perkelas');
 });

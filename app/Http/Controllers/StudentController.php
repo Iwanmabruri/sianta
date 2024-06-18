@@ -254,14 +254,14 @@ class StudentController extends Controller
         $data['nikAyah'] = $request->nik_a;
         $data['nmAyah'] = strtoupper($request->nm_a);
         $data['tglLahirAyah'] = $request->thnLahirAyah . '-' . $request->blnLahirAyah . '-' . $request->tglLahirAyah;
-        $data['pendAyah'] = strtoupper($request->pkrjnAyah);
-        $data['pkrjnAyah'] = strtoupper($request->pndknAyah);
+        $data['pendAyah'] = strtoupper($request->pndknAyah);
+        $data['pkrjnAyah'] = strtoupper($request->pkrjnAyah);
         $data['penghAyah'] = strtoupper($request->pndptnAyah);
         $data['nikIbu'] = $request->nik_i;
         $data['nmIbu'] = strtoupper($request->nm_i);
         $data['tglLahirIbu'] = $request->thnLahirIbu . '-' . $request->blnLahirIbu . '-' . $request->tglLahirIbu;
-        $data['pendIbu'] = strtoupper($request->pkrjnIbu);
-        $data['pkrjnIbu'] = strtoupper($request->pndknIbu);
+        $data['pendIbu'] = strtoupper($request->pndknIbu);
+        $data['pkrjnIbu'] = strtoupper($request->pkrjnIbu);
         $data['penghIbu'] = strtoupper($request->pndptnIbu);
 
         $update = DB::table('siswa')->where('id_siswa', $request->id)->update($data);
