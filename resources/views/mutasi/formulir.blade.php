@@ -46,12 +46,12 @@
         }
     </style>
 
-    <script>
+    <!-- <script>
         window.print();
         window.onafterprint = function(e) {
             window.close();
         };
-    </script>
+    </script> -->
 </head>
 
 <body>
