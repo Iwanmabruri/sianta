@@ -279,8 +279,8 @@ class StudentController extends Controller
         $data['nikWali'] = $request->nik_w;
         $data['nmWali'] = strtoupper($request->nm_w);
         $data['tglLahirWali'] = $request->thnLahirWali . '-' . $request->blnLahirWali . '-' . $request->tglLahirWali;
-        $data['pendWali'] = strtoupper($request->pkrjnWali);
-        $data['pkrjnWali'] = strtoupper($request->pndknWali);
+        $data['pendWali'] = strtoupper($request->pndknWali);
+        $data['pkrjnWali'] = strtoupper($request->pkrjnWali);
         $data['penghWali'] = strtoupper($request->pndptnWali);
         $data['jnsTempTinggal'] = strtoupper($request->tmpTinggal);
         $data['statusAnak'] = $request->statusAnak;
