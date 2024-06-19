@@ -12,7 +12,7 @@
         <div class="col-md-6 offset-3">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <h3 class="card-title">Print data <?= $data->namaSiswa ?></h3>
+                    <h3 class="card-title">Print Mutasi <?= $data->namaSiswa ?></h3>
                     <a href="{{ url('/mutation') }}" class="btn btn-danger">Kembali</a>
                 </div>
                 <div class="card-body">
@@ -20,7 +20,7 @@
                         <div class="col-md-12">
                             <a href="{{ url('/printFormMutasi') }}/<?= $id ?>" target="_blank"
                                 class="btn btn-primary w-100">Print
-                                Formulir</a>
+                                Mutasi</a>
                         </div>
                     </div>
                 </div>
