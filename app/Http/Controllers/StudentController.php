@@ -23,7 +23,7 @@ class StudentController extends Controller
 
     public function siswa_data()
     {
-        $data = DB::table('siswa')->where('status', 'Aktif');
+        $data = DB::table('siswa')->where('status', 'Aktif')->orderBy("id_siswa", "desc");
         $datatable = DataTables::of($data);
         return $datatable
             ->addIndexColumn()
@@ -125,6 +125,11 @@ class StudentController extends Controller
     public function step3($id, $bt)
     {
         return view('siswa.inputStep3', compact("id", "bt"));
+    }
+
+    public function step4($id, $bt)
+    {
+        return view('siswa.inputStep4', compact("id", "bt"));
     }
 
     public function detail_siswa($id)
@@ -249,14 +254,14 @@ class StudentController extends Controller
         $data['nikAyah'] = $request->nik_a;
         $data['nmAyah'] = strtoupper($request->nm_a);
         $data['tglLahirAyah'] = $request->thnLahirAyah . '-' . $request->blnLahirAyah . '-' . $request->tglLahirAyah;
-        $data['pendAyah'] = strtoupper($request->pkrjnAyah);
-        $data['pkrjnAyah'] = strtoupper($request->pndknAyah);
+        $data['pendAyah'] = strtoupper($request->pndknAyah);
+        $data['pkrjnAyah'] = strtoupper($request->pkrjnAyah);
         $data['penghAyah'] = strtoupper($request->pndptnAyah);
         $data['nikIbu'] = $request->nik_i;
         $data['nmIbu'] = strtoupper($request->nm_i);
         $data['tglLahirIbu'] = $request->thnLahirIbu . '-' . $request->blnLahirIbu . '-' . $request->tglLahirIbu;
-        $data['pendIbu'] = strtoupper($request->pkrjnIbu);
-        $data['pkrjnIbu'] = strtoupper($request->pndknIbu);
+        $data['pendIbu'] = strtoupper($request->pndknIbu);
+        $data['pkrjnIbu'] = strtoupper($request->pkrjnIbu);
         $data['penghIbu'] = strtoupper($request->pndptnIbu);
 
         $update = DB::table('siswa')->where('id_siswa', $request->id)->update($data);
@@ -289,6 +294,21 @@ class StudentController extends Controller
         $data['tglDiterima'] = $request->tglDiterima;
         $data['status'] = 'Aktif';
         $update = DB::table('siswa')->where('id_siswa', $request->id)->update($data);
+
+        if ($update == 0 || $update == 1) {
+            return $request->id;
+        } else {
+            return "k";
+        }
+    }
+
+    public function simpan4(Request $request)
+    {
+        $data = array();
+        $data['id_kelas'] = $request->kelas;
+        $data['id_siswa'] = $request->id;
+        $data['status'] = 'aktif';
+        $update = DB::table('siswa_perkelas')->insert($data);
 
         if ($update == 0 || $update == 1) {
             return 1;

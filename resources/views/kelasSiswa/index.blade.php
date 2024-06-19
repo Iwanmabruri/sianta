@@ -36,7 +36,7 @@
                                             ?>
                                     </select>
                                 </div>
-                                <div class="col-md-6   ">
+                                <div class="col-md-6">
                                     <label class="form-label" for="input4">Program Keahlian</label>
                                     <select class="form-control mb-3" id="prog" name="prog" required>
                                         <option value="" hidden>Pilih Program Keahlian</option>
@@ -58,25 +58,25 @@
             </div>
             <div class="row data-kelas" id="input13">
                 <!-- <div class="col-12 col-md-6 col-lg-4">
-                                        <div class="card text-center">
-                                            <div class="card-header">
-                                                <h5 class="card-title mb-0">Kelas XIIA</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-shrink-0 me-4 symbol symbol-65 symbol-circle me-5">
+                                            <div class="card text-center">
+                                                <div class="card-header">
+                                                    <h5 class="card-title mb-0">Kelas XIIA</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-shrink-0 me-4 symbol symbol-65 symbol-circle me-5">
+                                                        </div>
+                                                        <p class="card-text">Kelas XIIA RPL (2023 - 2024)</p>
                                                     </div>
-                                                    <p class="card-text">Kelas XIIA RPL (2023 - 2024)</p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <a href="#"
+                                                        class="btn btn-outline-primary btn-sm text-uppercase font-weight-bolder mt-5 mt-sm-0 mr-auto mr-sm-0 ml-sm-auto float-start">Details</a>
+                                                    <a href="#"
+                                                        class="btn btn-primary btn-sm text-uppercase font-weight-bolder mt-5 mt-sm-0 mr-auto mr-sm-0 ml-sm-auto float-end">Pindahkan</a>
                                                 </div>
                                             </div>
-                                            <div class="card-footer">
-                                                <a href="#"
-                                                    class="btn btn-outline-primary btn-sm text-uppercase font-weight-bolder mt-5 mt-sm-0 mr-auto mr-sm-0 ml-sm-auto float-start">Details</a>
-                                                <a href="#"
-                                                    class="btn btn-primary btn-sm text-uppercase font-weight-bolder mt-5 mt-sm-0 mr-auto mr-sm-0 ml-sm-auto float-end">Pindahkan</a>
-                                            </div>
-                                        </div>
-                                    </div> -->
+                                        </div> -->
             </div>
         </div>
     </div>
@@ -111,13 +111,11 @@
                 window.location.href = `{{ url('pindahkan') }}/` + id
             })
 
-            $('.data-kelas').on("click", ".detail", function () {
+            $('.data-kelas').on("click", ".detail", function() {
                 var id = $(this).attr("data")
                 window.location.href = `{{ url('ClassDetail') }}/` + id
             })
 
         })
     </script>
-
-
 @endsection

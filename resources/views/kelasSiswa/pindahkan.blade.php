@@ -59,6 +59,7 @@ $dataProg = DB::table('program_keahlian')->where('status', '=', 'aktif')->get();
         </div>
         <div class="col-12">
             <form id="formSiswa" data-parsley-validate method="post">
+                {{ csrf_field() }}
                 <div class="card">
                     <div class="card-header">
                         Set siswa perkelas
@@ -130,14 +131,13 @@ $dataProg = DB::table('program_keahlian')->where('status', '=', 'aktif')->get();
                 var form = $(this)
                 form.parsley().validate()
                 if (form.parsley().isValid()) {
-                    // $('#loading').css("display", "block")
+                    $('#loading').css("display", "block")
                     $.ajax({
                         type: 'POST',
                         url: '{{ route('classroomStudent.simpanPindah') }}',
                         data: data,
                         success: function(hasil) {
                             $('#loading').css("display", "none")
-                            console.log(hasil)
                             if (hasil == 'k') {
                                 swal.fire({
                                     title: 'Error',
@@ -146,7 +146,16 @@ $dataProg = DB::table('program_keahlian')->where('status', '=', 'aktif')->get();
                                     confirmButtonColor: '#3085d6'
                                 })
                             } else {
+                                swal.fire({
+                                    title: 'Berhasil',
+                                    text: 'Data Berhasil dipindahkan',
+                                    icon: 'success',
+                                    confirmButtonColor: '#3085d6'
+                                }).then(function() {
+                                    window.location.href =
+                                        {{ url('/classroomStudent') }} " 
 
+                                })
                             }
                         }
                     })

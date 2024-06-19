@@ -27,8 +27,7 @@
     <!-- BEGIN SETTINGS -->
     <!-- Remove this after purchasing -->
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link class="js-stylesheet" href="{{ asset('css/light.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('parsleyjs/parsley.css') }}">
@@ -110,9 +109,7 @@
         <nav id="sidebar" class="sidebar">
             <div class="sidebar-content js-simplebar">
                 <a class='sidebar-brand' href="{{ url('/') }}">
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20"
-                        enable-background="new 0 0 20 20" xml:space="preserve">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
                         <path d="M19.4,4.1l-9-4C10.1,0,9.9,0,9.6,0.1l-9,4C0.2,4.2,0,4.6,0,5s0.2,0.8,0.6,0.9l9,4C9.7,10,9.9,10,10,10s0.3,0,0.4-0.1l9-4
               C19.8,5.8,20,5.4,20,5S19.8,4.2,19.4,4.1z" />
                         <path d="M10,15c-0.1,0-0.3,0-0.4-0.1l-9-4c-0.5-0.2-0.7-0.8-0.5-1.3c0.2-0.5,0.8-0.7,1.3-0.5l8.6,3.8l8.6-3.8c0.5-0.2,1.1,0,1.3,0.5
@@ -131,8 +128,7 @@
 
                     <li class="sidebar-item">
                         <a class='sidebar-link' href="{{ url('/dashboard') }}">
-                            <i class="align-middle" data-feather="sliders"></i> <span
-                                class="align-middle">Dashboard</span>
+                            <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
@@ -140,8 +136,7 @@
                             <i class="align-middle" data-feather="list"></i> <span class="align-middle">Data
                                 Induk</span>
                         </a>
-                        <ul id="dashboards" class="sidebar-dropdown list-unstyled collapse"
-                            data-bs-parent="#sidebar">
+                        <ul id="dashboards" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item show"><a class="sidebar-link" href="{{ url('/tahunAjaran') }}">Data
                                     Tahun Ajaran</a>
                             </li>
@@ -164,21 +159,19 @@
                                 Sekolah</span>
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item"><a class='sidebar-link'
-                                    href="{{ url('/classroom') }}">Kelas</a>
+                            <li class="sidebar-item"><a class='sidebar-link' href="{{ url('/classroom') }}">Kelas</a>
                             </li>
-                            <li class="sidebar-item"><a class='sidebar-link'
-                                    href="{{ route('classroomStudent.index') }}">Siswa
+                            <li class="sidebar-item"><a class='sidebar-link' href="{{ route('classroomStudent.index') }}">Siswa
                                     Perkelas</a>
                             </li>
-                            <li class="sidebar-item"><a class='sidebar-link'
-                                    href="{{ url('/mutation') }}">Mutasi</a>
+                            <li class="sidebar-item"><a class='sidebar-link' href="{{ url('/mutation') }}">Mutasi</a>
+                            </li>
+                            <li class="sidebar-item"><a class='sidebar-link' href="{{ url('/export') }}">Export Data</a>
                             </li>
                         </ul>
                     <li class="sidebar-item">
                         <a class='sidebar-link' href="{{ url('/user') }}">
-                            <i class="align-middle" data-feather="users"></i> <span
-                                class="align-middle">Pengguna</span>
+                            <i class="align-middle" data-feather="users"></i> <span class="align-middle">Pengguna</span>
                         </a>
                     </li>
                 </ul>
@@ -194,22 +187,16 @@
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav navbar-align">
                         <li class="nav-item dropdown">
-                            <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#"
-                                data-bs-toggle="dropdown">
+                            <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
                                 <i class="align-middle" data-feather="settings"></i>
                             </a>
 
-                            <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#"
-                                data-bs-toggle="dropdown">
-                                <img src="{{ asset('img/avatars/avatar.jpg') }}"
-                                    class="avatar img-fluid rounded-circle me-1" alt="Chris Wood" /> <span
-                                    class="text-dark">Chris Wood</span>
+                            <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                                <img src="{{ asset('img/avatars/avatar.jpg') }}" class="avatar img-fluid rounded-circle me-1" alt="Chris Wood" /> <span class="text-dark">Chris Wood</span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class='dropdown-item' href='pages-profile.html'><i class="align-middle me-1"
-                                        data-feather="user"></i> Profile</a>
-                                <a class="dropdown-item" href="#"><i class="align-middle me-1"
-                                        data-feather="pie-chart"></i> Analytics</a>
+                                <a class='dropdown-item' href='pages-profile.html'><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+                                <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
                                 <div class="dropdown-divider"></div>
                                 <a class='dropdown-item' href='pages-settings.html'>Settings & Privacy</a>
                                 <a class="dropdown-item" href="#">Help</a>
@@ -251,4 +238,5 @@
     <script src="{{ asset('js/app.js') }}"></script>
 
 </body>
+
 </html>
