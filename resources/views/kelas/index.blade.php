@@ -18,7 +18,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Kelas</th>
-                                <th>Ruang</th>
+                                <th>Rumble</th>
                                 <th>Wali Kelas</th>
                                 <th>Program Keahlian</th>
                                 <th>Tahun Ajaran</th>
@@ -56,8 +56,8 @@
                         name: 'kelas',
                     },
                     {
-                        data: 'ruang',
-                        name: 'ruang',
+                        data: 'rumble',
+                        name: 'rumble',
                     },
                     {
                         data: 'waliKelas',

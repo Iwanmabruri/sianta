@@ -103,9 +103,9 @@
                                     </select>
                                 </div>
                                 <div class="mb-2 col-md-6">
-                                <label class="form-label" for="input1">Ruang</label>
-                                <input type="text" class="form-control" id="input1" name="ruang"
-                                    placeholder="Isi Nama Ruang" value="<?= $data->ruang ?>" required>
+                                <label class="form-label" for="input1">Rumble</label>
+                                <input type="text" class="form-control" id="input1" name="rumble"
+                                    placeholder="Isi Nama rumble" value="<?= $data->rumble ?>" required>
                             </div>
                             </div>
                     </div>
