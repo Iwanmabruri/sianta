@@ -140,7 +140,7 @@
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input6">Pekerjaan Ayah</label>
-                                <select name="pkrjnAyah" id="input6" class="form-select mb-3 text-uppercase" required>
+                                <select name="pkrjnAyah" id="input6" class="form-control mb-3 text-uppercase" required>
                                     <option value="">Pilih Pekerjaan</option>
                                     <option <?= $data->pkrjnAyah == 'WIRASWASTA' ? 'selected' : '' ?> value="Wiraswasta">
                                         Wiraswasta
@@ -174,7 +174,7 @@
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input7">Pendidikan Ayah</label>
-                                <select name="pndknAyah" id="input7" class="form-select mb-3 text-uppercase" required>
+                                <select name="pndknAyah" id="input7" class="form-control mb-3 text-uppercase" required>
                                     <option value="">Pilih Pendidikan</option>
                                     <option <?= $data->pendAyah == 'D1' ? 'selected' : '' ?> value="D1">
                                         D1
@@ -263,7 +263,7 @@
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input8">Penghasilan Ayah</label>
-                                <select name="pndptnAyah" id="input8" class="form-select mb-3 text-uppercase"
+                                <select name="pndptnAyah" id="input8" class="form-control mb-3 text-uppercase"
                                     required>
                                     <option value="">Pilih Penghasilan</option>
                                     <option <?= $data->penghAyah == 'KURANG dari RP. 500.000' ? 'selected' : '' ?>
@@ -425,7 +425,7 @@
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input14">Pekerjaan Ibu</label>
-                                <select name="pkrjnIbu" id="input14" class="form-select mb-3 text-uppercase">
+                                <select name="pkrjnIbu" id="input14" class="form-control mb-3 text-uppercase">
                                     <option value="">Pilih Pekerjaan</option>
                                     <option <?= $data->pkrjnIbu == 'WIRASWASTA' ? 'selected' : '' ?> value="Wiraswasta">
                                         Wiraswasta
@@ -459,7 +459,7 @@
                             </div>
                             <div class="mb-2 col-md-3">
                                 <label class="form-label" for="input15">Pendidikan Ibu</label>
-                                <select name="pndknIbu" id="input15" class="form-select mb-3 text-uppercase">
+                                <select name="pndknIbu" id="input15" class="form-control mb-3 text-uppercase">
                                     <option value="">Pilih Pendidikan</option>
                                     <option <?= $data->pendIbu == 'D1' ? 'selected' : '' ?> value="D1">
                                         D1
