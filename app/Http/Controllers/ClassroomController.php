@@ -26,7 +26,7 @@ class ClassroomController extends Controller
         ->join('tahun_ajaran', 'kelas.id_tahun_ajaran', '=', 'tahun_ajaran.id_tahun_ajaran')
         ->join('program_keahlian', 'kelas.id_program_keahlian', '=', 'program_keahlian.id_program_keahlian')
         ->select('kelas.id_kelas as idK', 'kelas.id_pegawai as idP', 'kelas.id_tahun_ajaran as idT',
-        'kelas.id_program_keahlian as idProg', 'kelas.kelas as kls', 'kelas.ruang as rag', 'kelas.status as sts',
+        'kelas.id_program_keahlian as idProg', 'kelas.kelas as kls', 'kelas.rumble as rum', 'kelas.status as sts',
         'pegawai.nmPeg as namaPegawai', 'tahun_ajaran.tahun_ajaran as thnAjr', 'program_keahlian.program_keahlian as progKeah')
         ->where('kelas.status','=', 'aktif');
         $datatable =  DataTables::of($data);
@@ -47,8 +47,8 @@ class ClassroomController extends Controller
                 $a = $row->kls;
                 return $a . "";
             })
-            ->addColumn('ruang', function ($row) {
-                $a = $row->rag;
+            ->addColumn('rumble', function ($row) {
+                $a = $row->rum;
                 return $a . "";
             })
             ->addColumn('waliKelas', function ($row) {
@@ -69,7 +69,7 @@ class ClassroomController extends Controller
                 ';
                 return $a . "";
             })
-            ->rawColumns(['action','kelas','ruang','progKeahlian' ,'tahunAjaran','waliKelas','status'])
+            ->rawColumns(['action','kelas','rumble','progKeahlian' ,'tahunAjaran','waliKelas','status'])
             ->make(true);
     }
 
@@ -94,7 +94,7 @@ class ClassroomController extends Controller
         $data["id_tahun_ajaran"] = $req->thn_ajr;
         $data["id_program_keahlian"] = $req->prog_keah;
         $data["kelas"] = $req->kls;
-        $data["ruang"] = $req->ruang;
+        $data["rumble"] = $req->rumble;
         $data["status"] = "aktif";
         $tambah = DB::table("kelas")->insert($data);
         if ($tambah) {
@@ -110,7 +110,7 @@ class ClassroomController extends Controller
         $data["id_tahun_ajaran"] = $req->thn_ajr;
         $data["id_program_keahlian"] = $req->prog_keah;
         $data["kelas"] = $req->kls;
-        $data["ruang"] = $req->ruang;
+        $data["rumble"] = $req->rumble;
         $tambah = DB::table("kelas")
         ->where('id_kelas', '=', $req->id)
         ->update($data);

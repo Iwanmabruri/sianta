@@ -24,6 +24,11 @@
                                     required>
                                 </div>
                                 <div class="mb-2 col-md-4">
+                                    <label class="form-label" for="input4">Konsentrasi Keahlian</label>
+                                    <input type="text" class="form-control mb-3 text-uppercase"  name="konsKeh" required
+                                    value="<?= $data->konsentrasi_keahlian ?>">
+                                </div>
+                                <div class="mb-2 col-md-4">
                                     <label class="form-label" for="input4">Program Keahlian</label>
                                     <input type="text" class="form-control mb-3 text-uppercase"  name="progKeh" required value="<?= $data->program_keahlian ?>">
                                 </div>

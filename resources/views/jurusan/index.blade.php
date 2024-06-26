@@ -19,6 +19,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Kons. Keahlian</th>
                                 <th>Bid. Keahlian</th>
                                 <th class="d-none d-md-table-cell">Prog. Keahlian</th>
                                 <th>Pembuatan</th>
@@ -48,6 +49,10 @@
                         data: 'DT_RowIndex',
                         orderable: false,
                         searchable: false
+                    },
+                    {
+                        data: 'konsentrasiKeahlian',
+                        name: 'konsentrasiKeahlian'
                     },
                     {
                         data: 'bidangKeahlian',

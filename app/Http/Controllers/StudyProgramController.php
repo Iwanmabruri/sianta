@@ -30,6 +30,10 @@ class StudyProgramController extends Controller
                 ';
                 return $bt . "";
             })
+            ->addColumn('konsentrasiKeahlian', function ($row) {
+                $a = $row->konsentrasi_keahlian;
+                return $a . "";
+            })
             ->addColumn('bidangKeahlian', function ($row) {
                 $a = $row->bidang_keahlian;
                 return $a . "";
@@ -48,7 +52,7 @@ class StudyProgramController extends Controller
                 ';
                 return $a . "";
             })
-            ->rawColumns(['action', 'bidangKeahlian','programKeahlian','tahunDibuat','status'])
+            ->rawColumns(['action','bidangKeahlian','konsentrasiKeahlian','programKeahlian','tahunDibuat','status'])
             ->make(true);
     }
     
@@ -66,6 +70,7 @@ class StudyProgramController extends Controller
         $data = array();
         $data["bidang_keahlian"] = strtoupper($req->bidKeh);
         $data["program_keahlian"] = strtoupper($req->progKeh);
+        $data["konsentrasi_keahlian"] = strtoupper($req->konsKeh);
         $data["tahun_dibuat"] = $req->thn;
         $data["status"] = "aktif";
         $tambah = DB::table("program_keahlian")->insert($data);
@@ -81,6 +86,7 @@ class StudyProgramController extends Controller
         $data = array();
         $data["bidang_keahlian"] = strtoupper($req->bidKeh);
         $data["program_keahlian"] = strtoupper($req->progKeh);
+        $data["konsentrasi_keahlian"] = strtoupper($req->konsKeh);
         $data["tahun_dibuat"] = $req->thn;
         $tambah = DB::table("program_keahlian")->where('id_program_keahlian','=',$req->id)->update($data);
         if ($tambah) {

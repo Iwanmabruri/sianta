@@ -45,9 +45,9 @@
                                                         <td class="py-1"><?= $data->kelas ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="py-1">Ruang</td>
+                                                        <td class="py-1">Rumble</td>
                                                         <td class="py-1">&nbsp;:&nbsp;</td>
-                                                        <td class="py-1"><?= $data->ruang ?></td>
+                                                        <td class="py-1"><?= $data->rumble ?></td>
                                                     </tr>
                                                     <tr>
                                                         <td class="py-1">Wali Kelas</td>
