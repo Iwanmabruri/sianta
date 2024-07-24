@@ -23,17 +23,23 @@
         }
     </style>
 
-    <script>
+    {{-- <script>
         window.print();
         window.onafterprint = function(e) {
             window.close();
         };
-    </script>
+    </script> --}}
 </head>
 
 <body>
     <?php
-    $data = DB::table('siswa')->where('id_siswa', $id)->first();
+    $data_mutasi = DB::table('mutasi')->where('id_mutasi', $id)->first();
+    
+    $data = DB::table('siswa')
+        ->where('id_siswa', $data_mutasi->id_siswa)
+        ->first();
+    
+    $tanggal_mutasi = explode('-', $data_mutasi->tglMutasi);
     
     $desa = DB::table('desa')
         ->where('id', $data->desa)
@@ -85,7 +91,8 @@
             </div>
             <div
                 style="font-size: 14px;font-family: 'Times New Roman', Times, serif;display: flex;justify-content: center;margin-top: 0;margin-bottom: 20px;padding: 0;">
-                <p style="margin: 0; padding: 2px 0;">Nomor : YNAA-10/004/0097/SKP/02-2024</p>
+                <p style="margin: 0; padding: 2px 0;">Nomor :
+                    YNAA-10/004/0097/SKP/<?= $tanggal_mutasi[1] ?>-<?= $tanggal_mutasi[0] ?></p>
             </div>
         </div>
         <div style="font-size: 14px;font-family: 'Times New Roman', Times, serif;margin: 0px 20px;">
@@ -119,7 +126,7 @@
                         <td>5.</td>
                         <td>NISN</td>
                         <td>&nbsp;:&nbsp;</td>
-                        <td><?= $data->nipdSiswa ?></td>
+                        <td><?= $data->nisnSiswa ?></td>
                     </tr>
                     <tr>
                         <td>6.</td>

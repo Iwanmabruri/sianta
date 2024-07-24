@@ -19,19 +19,27 @@ class MutationController extends Controller
     public function dataMutasi(Request $req)
     {
         $data = DB::table("mutasi")
-        ->join('siswa', 'mutasi.id_mutasi', '=', 'siswa.id_siswa')
-        ->join('kelas', 'mutasi.id_mutasi', '=', 'kelas.id_kelas')
-        ->join('program_keahlian', 'mutasi.id_mutasi', '=', 'program_keahlian.id_program_keahlian')
-        ->select('mutasi.id_mutasi as idM', 'mutasi.tglMutasi as tglMts', 'mutasi.noSuratMutasi as NSM', 'mutasi.pindah as PN',
-        'mutasi.AlasanPindah as AP', 'mutasi.suratPernyataan as SP', 'siswa.namaSiswa as NS', 'kelas.kelas as KLS');
+            ->join('siswa', 'mutasi.id_siswa', '=', 'siswa.id_siswa')
+            ->join('kelas', 'mutasi.id_kelas', '=', 'kelas.id_kelas')
+            ->join('program_keahlian', 'mutasi.id_mutasi', '=', 'program_keahlian.id_program_keahlian')
+            ->select(
+                'mutasi.id_mutasi as idM',
+                'mutasi.tglMutasi as tglMts',
+                'mutasi.noSuratMutasi as NSM',
+                'mutasi.pindah as PN',
+                'mutasi.AlasanPindah as AP',
+                'mutasi.suratPernyataan as SP',
+                'siswa.namaSiswa as NS',
+                'kelas.kelas as KLS'
+            );
         $datatable =  DataTables::of($data);
         return $datatable
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $bt = '
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button id="' . $row->idM .'" class="edit btn btn-info btn-xs" type="button">edit</button>
-                <button id="' . $row->idM .'" class="print btn btn-primary btn-xs" type="button">print</button>
+                <button id="' . $row->idM . '" class="edit btn btn-info btn-xs" type="button">edit</button>
+                <button id="' . $row->idM . '" class="print btn btn-primary btn-xs" type="button">print</button>
             </div>
                 
                 ';
@@ -57,7 +65,7 @@ class MutationController extends Controller
                 $e = $row->AP;
                 return $e . "";
             })
-            ->rawColumns(['action', 'nama','kelas','tgl','pindah','alasanPindah'])
+            ->rawColumns(['action', 'nama', 'kelas', 'tgl', 'pindah', 'alasanPindah'])
             ->make(true);
     }
 
@@ -81,7 +89,8 @@ class MutationController extends Controller
         return view('mutasi.add_mutasi', compact("id"));
     }
 
-    public function uploadBerkasMutasi(Request $request) {
+    public function uploadBerkasMutasi(Request $request)
+    {
         $data = array();
 
         function acakangkahuruf($panjang)
@@ -167,7 +176,7 @@ class MutationController extends Controller
         $tambah = DB::table("mutasi")->insert($data);
         $datas = array();
         $datas["status"] = "Tidak";
-        $update = DB::table("siswa")->where('id_siswa',$req->idS)->update($datas);
+        $update = DB::table("siswa")->where('id_siswa', $req->idS)->update($datas);
         if ($tambah) {
             return "S";
         } else {

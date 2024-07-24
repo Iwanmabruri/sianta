@@ -5,7 +5,12 @@
 
 @section('konten')
     <?php
-    $data = DB::table('siswa')->where('id_siswa', $id)->first();
+    $data_mutasi = DB::table('mutasi')->where('id_mutasi', $id)->first();
+    
+    $data = DB::table('siswa')
+        ->where('id_siswa', $data_mutasi->id_siswa)
+        ->first();
+    
     ?>
     <h1 class="h3 mb-3">Print Data</h1>
     <div class="row">
